@@ -1,0 +1,71 @@
+
+.lesson-creator__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lesson-creator__title {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-style: oblique;
+}
+
+.form__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form__container input, select {
+    width: 100px;
+    height: 25px;
+    padding: 0px 5px;
+    border: none;
+    box-shadow: 1px 1px 2px #333333;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-style: oblique;
+    background-color: #d8d5d5;
+}
+
+.form__container input::placeholder {
+    color: #000000;
+}
+
+.paid-label {
+    display: flex;
+    gap: 10px;
+    width: 45%;
+    font-size: 0.8rem;
+    color: #ffffff;
+    font-style: oblique;
+}
+
+#SUBMIT {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 1px 5px 5px #333333c1;
+    font-size: 0.7rem;
+    font-style: oblique;
+    font-weight: 900;
+    color: #333333c7;
+    background-image: url('../../../../assets/tennis-ball-submit-button.png');
+    background-repeat: no-repeat;
+    background-size: 117%;
+    background-position: center;
+}
+
+#SUBMIT:active {
+    transform: scale(0.98);
+    box-shadow: 2px 2px 2px #333333;
+}
