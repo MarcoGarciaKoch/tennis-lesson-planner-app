@@ -1,0 +1,123 @@
+
+.register-main__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #090943aa;
+}
+
+.register-main__container::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../assets/court.png');
+    background-size: 21%;
+    background-position: center;
+    z-index: -10;
+    opacity: 0.2;
+}
+
+.register-title-logo__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.register-title {
+    color: #ffffff;
+    font-style: oblique;
+}
+
+.register-logo {
+    width: 50%;
+    height: 110px;
+    background-image: url('../../../assets/tennis-logo.png');
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.register-form label {
+    color: #ffffff;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.register-form input {
+    height: 30px;
+    font-style: oblique;
+    color: #61370e;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#register {
+    align-self: center;
+    width: 60%;
+    height: 30px;
+    font-style: oblique;
+    font-weight: 900;
+    color: #61370e;
+    border-radius: 7px;
+    border: none;
+}
+
+#register:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 2px #333333;
+}
+
+
+.register-back-login-link {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.register-back-login-link span {
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+.email-sent-massage__container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #b9834e;
+    font-size: 0.9rem;
+    font-weight: 700;
+    background-color: #1b1b5e3a;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.email-sent-massage__container p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.message-visible {
+    opacity: 1;
+}
+
+.message-non-visible {
+    opacity: 0;
+}

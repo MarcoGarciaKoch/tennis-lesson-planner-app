@@ -1,6 +1,7 @@
 .footer__container {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     height: 50px;
     background-color: #3060b1;
@@ -9,21 +10,23 @@
 
 .name-github__container {
     display: flex;
-    gap: 50px;
+    align-items: center;
+    gap: 10px;
 }
 
 .footer_name, .github-info__container > h4, .footer-attributions {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 400;
     color: #ffffff;
     margin-block-start: 0.7em;
-    margin-block-end: 0.4em;
+    margin-block-end: 0.2em;
     margin-left: 5px;
 }
 
 .github-info__container {
     display: flex;
+    height: 20px;
     align-items:center;
-    gap: 10px;
 }
 
 .github-logo {

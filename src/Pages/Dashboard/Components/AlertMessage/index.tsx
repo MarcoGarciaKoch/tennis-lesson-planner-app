@@ -7,9 +7,9 @@ import { sortLessons } from '../../utils';
 
 
 const AlertMessage: React.FC = () => {
-    const [lessonRecord, updateLessonRecord] = useContext(LessonRecordContext);
-    const [isVisible, updateIsVisible] = useState<boolean>(false);
-    const [alertParameters] = useContext(AlertMessageCallContext);
+    const {lessonRecord, updateLessonRecord} = useContext(LessonRecordContext);
+    const [isVisible, updateIsVisible] = useState<boolean>(true);
+    const { alertParameters } = useContext(AlertMessageCallContext);
 
     useEffect(() =>{
         if(alertParameters.show) updateIsVisible(true);
@@ -17,10 +17,10 @@ const AlertMessage: React.FC = () => {
 
      // Function to move one lesson from 'Clases Pendientes de Cobro' to 'Clases Cobradas' or viceversa
     const moveLessonToPaidOrPending = () => {
-        const updateLesson = lessonRecord.find((l:LessonData) => l.id === alertParameters.id);
-        if (updateLesson.paid === 'yes') {
+        const updateLesson = lessonRecord.find((l:LessonData) => l.id === alertParameters.id)!;
+        if (updateLesson?.paid === 'yes') {
             updateLesson.paid = 'no'; // Update paid status to 'no'
-        }else {
+        }else if (updateLesson?.paid === 'no') {
             updateLesson.paid = 'yes'; //update paid status to 'yes'
         }
         const arrWithoutUpdateLesson = lessonRecord.filter((l:LessonData) => l.id !== alertParameters.id);
@@ -38,12 +38,12 @@ const AlertMessage: React.FC = () => {
 
     return (
         <main className={isVisible === true ? 'alert-visible' : 'alert-not-visible'}>
-            <h1>{`¿Seguro que quieres ${alertParameters.action === 'delete' ? 'borrar' : 'mover'} la clase de tenis?`}</h1>
+            <h1>{`¿Are you sure you want to ${alertParameters.action === 'delete' ? 'delete' : 'move'} this tennis lesson?`}</h1>
             <section className='alert-buttons__container'>
                 <button 
                     className='yes-button' 
                     onClick={alertParameters.action === 'delete' ? deleteLesson : moveLessonToPaidOrPending}
-                >SI</button>
+                >YES</button>
                 <button 
                     className='no-button' 
                     onClick={() => updateIsVisible(false)}

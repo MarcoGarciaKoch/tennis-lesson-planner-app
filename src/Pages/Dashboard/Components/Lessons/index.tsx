@@ -3,7 +3,6 @@ import { LessonData } from '../../dashboard.model';
 import { useState, useContext } from 'react';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
 import { calcFinalPrice } from '../../utils';
-import { MdDeleteOutline } from 'react-icons/md'
 import { AlertMessageCallContext } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
 
 
@@ -16,8 +15,8 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     const [totalPriceValue, updateTotalPriceValue] = useState<string>(lesson.price);
     const [playersValue,  updatePlayersValue] = useState<string>(lesson.players)
     const [clubValue, updateClubValue] = useState<string>(lesson.club);
-    const [lessonRecord, updateLessonRecord] = useContext(LessonRecordContext);
-    const [, updateAlertParameters] = useContext(AlertMessageCallContext);
+    const { lessonRecord, updateLessonRecord } = useContext(LessonRecordContext);
+    const { updateAlertParameters } = useContext(AlertMessageCallContext);
 
     
     //Function that allows to edit the card editable fields and update the main array of lessons with the lesson edited
@@ -43,7 +42,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                                 ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
                                 }>
                     <label>
-                        Fecha:
+                        Date:
                         <input  type="text" 
                                 onChange={e => updateDateValue(e.target.value)} 
                                 value={dateValue.split('-').reverse().join('-')} 
@@ -51,7 +50,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                                 disabled={!disableButton} />
                     </label>
                     <label>
-                        Comienzo:
+                        Starting Time:
                         <input  type="text" 
                                 onChange={e => {
                                     updateStartTimeValue(e.target.value); 
@@ -63,7 +62,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                                 disabled={!disableButton} />
                     </label>
                     <label>
-                        Finalización:
+                        Finishing Time:
                         <input  type="text" 
                                 onChange={e => {
                                     updateFinishTimeValue(e.target.value); 
@@ -80,14 +79,14 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                                 ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
                                 }>
                     <label>
-                        Precio total:
+                        Total Price:
                         <input  type="text" 
                                 onChange={e => updateTotalPriceValue(e.target.value)} 
                                 value={totalPriceValue} readOnly={!disableButton} 
                                 disabled={!disableButton} />
                     </label>
                     <label>
-                        Alumnos:
+                        Players:
                         <textarea  onChange={e => updatePlayersValue(e.target.value)} 
                                    value={playersValue} 
                                    readOnly={!disableButton} 
@@ -109,11 +108,11 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                 </div> 
                 <div className='buttons__container'>
                     <button className={`button ${disableButton === false ? lesson.paid === 'no' ? 'pending-button' : 'paid-button' : 'innactive'}`} 
-                            onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>{lesson.paid === 'no' ? 'MOVER A COBRADA' : 'MOVER A PENDIENTE'}</button>
+                            onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>{lesson.paid === 'no' ? 'MOVE TO PAID' : 'MOVE TO PENDING'}</button>
                     <button className='button edit-button' 
-                            onClick={editLesson}> {disableButton === true ? 'GUARDAR' : 'EDITAR'} </button>
+                            onClick={editLesson}> {disableButton === true ? 'SAVE' : 'EDIT'} </button>
                     <button className={`button ${disableButton === false ? 'delete-button' : 'innactive'}`} 
-                            onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'delete'}) : ''}><MdDeleteOutline /></button>
+                            onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'delete'}) : ''}>DELETE</button>
                 </div>  
             </section>
         </main>

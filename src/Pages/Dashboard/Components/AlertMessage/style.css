@@ -8,7 +8,7 @@
     align-items: center;
     gap: 20px;
     width: 85%;
-    height: 170px;
+    height: 160px;
     background-color: #698699;
     border: none;
     border-radius: 20px;
@@ -20,7 +20,7 @@
 }
 
 .alert-visible h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
     margin: 10px;
     color: #f0f8ff;
@@ -37,7 +37,7 @@
     height: 40px;
     border: none;
     border-radius: 20px;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 900;
     color: #313f49;
 }

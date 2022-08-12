@@ -6,7 +6,7 @@ import { LessonData } from '../../dashboard.model';
 import { calcFinalPrice, sortLessons } from '../../utils';
 
 const LessonCreator: React.FC = () => {
-    const [lessonRecord, updateLessonRecord] = useContext(LessonRecordContext); 
+    const {lessonRecord, updateLessonRecord} = useContext(LessonRecordContext); 
 
      // Function that creates a new Lesson and adds it to the lessonRecord array.
      const createNewLesson = (e:React.FormEvent<HTMLFormElement>) => {
@@ -30,21 +30,21 @@ const LessonCreator: React.FC = () => {
    
     return (
         <section className='lesson-creator__container'>
-            <h1 className='lesson-creator__title'>Registra Una Nueva Clase</h1>
+            <h1 className='lesson-creator__title'>Register a New Lesson</h1>
             <form className='form__container' onSubmit={createNewLesson}>
                     <input type="date" name='date' required/>
                     <input type="time" name='startTime' required/>
                     <input type="time" name='finishTime' required/>
-                    <input type="text" name='rate' placeholder='Precio Hora'/>
-                    <input type="text" name='players' placeholder='Alumnos'/>
+                    <input type="text" name='rate' placeholder='Hour Rate'/>
+                    <input type="text" name='players' placeholder='Players'/>
                     <input type="text" name='club' placeholder='Club'/>
-                    <label className='paid-label' htmlFor="PAID">¿Pagada?
+                    <label className='paid-label' htmlFor="PAID">Paid?
                         <select name="paid" id="PAID">
-                            <option value="no">No</option>
-                            <option value="yes">Si</option>
+                            <option value="no">NO</option>
+                            <option value="yes">YES</option>
                         </select>
                     </label>
-                    <input id='SUBMIT' type="submit" value={'Crear'} />
+                    <input id='SUBMIT' type="submit" value={'GO'} />
             </form>
         </section>
     )

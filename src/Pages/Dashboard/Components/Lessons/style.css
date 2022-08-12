@@ -105,13 +105,13 @@ label input, textarea {
 }
 
 .edit-button {
-    background-color: #cfd737;
+    background-color: #bac229;
     font-size: 0.7rem;
 }
 
 .delete-button {
     background-color: #b43929;
-    font-size: 1rem;
+    font-size: 0.7rem;
 }
 
 .pending-button {
