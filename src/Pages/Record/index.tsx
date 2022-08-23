@@ -1,13 +1,12 @@
 import './style.css';
-import { ReactElement, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { LessonRecordContext } from '../../Context/LessonRecord/lessonRecord.context';
-import { LessonData } from '../Dashboard/dashboard.model';
 import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
 
 
 const Record: React.FC = () => {
-    const { lessonRecord } = useContext(LessonRecordContext)
+    const { lessonRecord } = useContext(LessonRecordContext);
 
     useEffect( () => {
         console.log(lessonRecord)

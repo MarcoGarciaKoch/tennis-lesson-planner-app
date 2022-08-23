@@ -4,12 +4,15 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 import { AlertMessageCallContext } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
 import { LessonData } from '../../dashboard.model';
 import { sortLessons } from '../../utils';
+import { alertMessageInitialValues } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
+import { useUsers } from '../../../../Core/users/users.hook';
 
 
 const AlertMessage: React.FC = () => {
     const {lessonRecord, updateLessonRecord} = useContext(LessonRecordContext);
-    const [isVisible, updateIsVisible] = useState<boolean>(true);
-    const { alertParameters } = useContext(AlertMessageCallContext);
+    const [isVisible, updateIsVisible] = useState<boolean>(false);
+    const { alertParameters, updateAlertParameters } = useContext(AlertMessageCallContext);
+    const { updateLesson, deleteLesson } = useUsers();
 
     useEffect(() =>{
         if(alertParameters.show) updateIsVisible(true);
@@ -17,23 +20,27 @@ const AlertMessage: React.FC = () => {
 
      // Function to move one lesson from 'Clases Pendientes de Cobro' to 'Clases Cobradas' or viceversa
     const moveLessonToPaidOrPending = () => {
-        const updateLesson = lessonRecord.find((l:LessonData) => l.id === alertParameters.id)!;
-        if (updateLesson?.paid === 'yes') {
-            updateLesson.paid = 'no'; // Update paid status to 'no'
-        }else if (updateLesson?.paid === 'no') {
-            updateLesson.paid = 'yes'; //update paid status to 'yes'
+        const updatedLesson = lessonRecord.find((l:LessonData) => l.id === alertParameters.id)!;
+        if (updatedLesson?.paid === 'yes') {
+            updatedLesson.paid = 'no'; // Update paid status to 'no'
+        }else if (updatedLesson?.paid === 'no') {
+            updatedLesson.paid = 'yes'; //update paid status to 'yes'
         }
-        const arrWithoutUpdateLesson = lessonRecord.filter((l:LessonData) => l.id !== alertParameters.id);
-        const sortedLessonArray = sortLessons([...arrWithoutUpdateLesson, updateLesson]); //call 'sortLessons function to sort the lesson array in ascending order by date
-        updateLessonRecord(sortedLessonArray);
+        updateLesson(updatedLesson).then(r => {
+            const sortedLessonArray = sortLessons([...r.lessons, updateLesson]); //call 'sortLessons function to sort the lesson array in ascending order by date
+            updateLessonRecord(sortedLessonArray);
+        })
         updateIsVisible(false);
+        updateAlertParameters(alertMessageInitialValues);
     }
 
-     // Function to delete one lesson either from 'Clases Pendientes de Cobro' or 'Clases Cobradas'
-    const deleteLesson = () => {
-        const updatedLessonsArr = lessonRecord.filter((l:LessonData) => l.id !== alertParameters.id);
-        updateLessonRecord(updatedLessonsArr);
+     // Function to delete one lesson either from 'Pending Lessons To Get Paid' or 'Paid Lessons'
+    const deleted = () => {
+        deleteLesson(alertParameters).then(r => {
+            updateLessonRecord(r);
+        })
         updateIsVisible(false);
+        updateAlertParameters(alertMessageInitialValues);
     }
 
     return (
@@ -42,11 +49,14 @@ const AlertMessage: React.FC = () => {
             <section className='alert-buttons__container'>
                 <button 
                     className='yes-button' 
-                    onClick={alertParameters.action === 'delete' ? deleteLesson : moveLessonToPaidOrPending}
+                    onClick={alertParameters.action === 'delete' ? deleted : moveLessonToPaidOrPending}
                 >YES</button>
                 <button 
                     className='no-button' 
-                    onClick={() => updateIsVisible(false)}
+                    onClick={() => {
+                        updateIsVisible(false);
+                        updateAlertParameters(alertMessageInitialValues);
+                    }}
                 >NO</button>
             </section>
         </main>

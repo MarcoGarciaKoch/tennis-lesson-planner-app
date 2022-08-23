@@ -11,3 +11,12 @@ export type LoginUserData = {
     email: string,
     password:string
 }
+
+export type ResendValidationEmail = {
+    email:string
+}
+
+export type DisplayedMessage = {
+    messageOne:string,
+    messageTwo:string
+}

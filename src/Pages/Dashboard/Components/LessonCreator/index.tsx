@@ -1,12 +1,15 @@
 import './style.css';
-import { useContext } from 'react';
-import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
 import { v4 as uuidv4 } from 'uuid';
 import { LessonData } from '../../dashboard.model';
 import { calcFinalPrice, sortLessons } from '../../utils';
+import { useUsers } from '../../../../Core/users/users.hook';
+import { useContext, useState } from 'react';
+import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
 
 const LessonCreator: React.FC = () => {
-    const {lessonRecord, updateLessonRecord} = useContext(LessonRecordContext); 
+    const { registerNewLesson } = useUsers();
+    const { updateLessonRecord } = useContext(LessonRecordContext);
+    const [isFormVisible, updateIsFormVisible] = useState<boolean>(false);
 
      // Function that creates a new Lesson and adds it to the lessonRecord array.
      const createNewLesson = (e:React.FormEvent<HTMLFormElement>) => {
@@ -23,15 +26,21 @@ const LessonCreator: React.FC = () => {
             players: e.currentTarget.players.value,
             club: e.currentTarget.club.value
         }
-        const sortedLessonArray = sortLessons([...lessonRecord, newLesson]); //call 'sortLessons function to sort the lesson array in ascending order by date
-        updateLessonRecord(sortedLessonArray)
+        registerNewLesson(newLesson).then(r => {
+            const sortedLessonArray = sortLessons(r.lessons); //call 'sortLessons function to sort the lesson array in ascending order by date
+            updateLessonRecord(sortedLessonArray)
+        });
         e.currentTarget.reset();
+        updateIsFormVisible(false);
     }
    
     return (
         <section className='lesson-creator__container'>
-            <h1 className='lesson-creator__title'>Register a New Lesson</h1>
-            <form className='form__container' onSubmit={createNewLesson}>
+            <button 
+                className='register-lesson__button' 
+                onClick={() => updateIsFormVisible(!isFormVisible)}>{isFormVisible ? 'Dismiss' : 'Register a New Lesson'}
+            </button>
+            <form className={isFormVisible ? 'form__container' : 'hidden-form__container'} onSubmit={createNewLesson}>
                     <input type="date" name='date' required/>
                     <input type="time" name='startTime' required/>
                     <input type="time" name='finishTime' required/>
@@ -44,7 +53,7 @@ const LessonCreator: React.FC = () => {
                             <option value="yes">YES</option>
                         </select>
                     </label>
-                    <input id='SUBMIT' type="submit" value={'GO'} />
+                    <input id='SUBMIT' type="submit" value={'GO!'} />
             </form>
         </section>
     )

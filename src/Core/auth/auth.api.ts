@@ -1,4 +1,4 @@
-import { RegisterUserData, LoginUserData } from "./auth.model";
+import { RegisterUserData, ResendValidationEmail, LoginUserData } from "./auth.model";
 
 
 const generateAuthPostRequest = (user:RegisterUserData | LoginUserData) => (
@@ -19,13 +19,17 @@ const generateAuthPostRequest = (user:RegisterUserData | LoginUserData) => (
     return await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, generateAuthPostRequest(user));
 }
 
+export const resendValidationEmailAPI = async (user: ResendValidationEmail) => {
+    return await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/resendEmail?email=${user.email}`,);
+}
+
 export const validateTokenAPI = async (token: string) => {
-    return await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/validate?token=${token}`)
+    return await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/validate?token=${token}`);
 }
 
 export const loginAPI = async (user: LoginUserData) => {
     const r = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, generateAuthPostRequest(user));
-    console.log(r);
-    if(!r.ok) throw new Error(r.status.toString());
-    return await r.json();
+    let token = {access_token: ''};
+    if(r.status === 201) token = await r.json();
+    return { serverRes: r, token};
 }

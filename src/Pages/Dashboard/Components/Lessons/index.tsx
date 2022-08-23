@@ -2,9 +2,9 @@ import './style.css';
 import { LessonData } from '../../dashboard.model';
 import { useState, useContext } from 'react';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
-import { calcFinalPrice } from '../../utils';
+import { calcFinalPrice, sortLessons } from '../../utils';
 import { AlertMessageCallContext } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
-
+import { useUsers } from '../../../../Core/users/users.hook';
 
 const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     
@@ -15,10 +15,11 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     const [totalPriceValue, updateTotalPriceValue] = useState<string>(lesson.price);
     const [playersValue,  updatePlayersValue] = useState<string>(lesson.players)
     const [clubValue, updateClubValue] = useState<string>(lesson.club);
-    const { lessonRecord, updateLessonRecord } = useContext(LessonRecordContext);
+    const { updateLessonRecord } = useContext(LessonRecordContext);
     const { updateAlertParameters } = useContext(AlertMessageCallContext);
+    const { updateLesson } = useUsers();
 
-    
+
     //Function that allows to edit the card editable fields and update the main array of lessons with the lesson edited
     const editLesson = () => {
         setDisableButton(!disableButton)
@@ -29,10 +30,12 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
         lesson.players = playersValue;
         lesson.club = clubValue;
         
-        const arrayWithoutCurrentLesson = lessonRecord.filter((l:LessonData) => l.id !== lesson.id);
-        updateLessonRecord([...arrayWithoutCurrentLesson, lesson]);
+        updateLesson(lesson).then(r => {
+            const sortedLessonArray = sortLessons(r.lessons); //call 'sortLessons function to sort the lesson array in ascending order by date
+            updateLessonRecord(sortedLessonArray)
+        })
+        
     }
-
 
     return (
         <main>

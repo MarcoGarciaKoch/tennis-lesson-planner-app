@@ -8,6 +8,7 @@ import LessonRecordProvider from './Context/LessonRecord/lessonRecord.provider';
 import AlertMessageCallProvider from './Context/AlertMessageCall/alertMessageCall.provider';
 import Register from './Pages/Auth/register';
 import Validate from './Pages/Auth/validate';
+import RequireAuth from './Core/auth/auth.component';
 
 
 function App() {
@@ -21,9 +22,9 @@ function App() {
             <Route path='/login' element={<Navigate to='/' replace />} />
             <Route path='/register' element={<Register />} />
             <Route path='/validate' element={<Validate />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/record' element={<Record />} />
-            <Route path='/attributions'  element={<Attributions />} />
+            <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} />
+            <Route path='/record' element={<RequireAuth><Record /></RequireAuth>} />
+            <Route path='/attributions'  element={<RequireAuth><Attributions /></RequireAuth>} />
           </Routes>
         </BrowserRouter>
         </AlertMessageCallProvider>

@@ -3,24 +3,39 @@ import { useNavigate } from 'react-router-dom';
 import { LoginUserData } from '../../../Core/auth/auth.model';
 import { useAuth } from '../../../Core/auth/auth.hook';
 import LoadingSpinner from '../../../SharedComponents/LoadingSpinner';
+import { useEffect, useState } from 'react';
+import { getLoginMessage } from '../../../Core/auth/auth.utils';
 
 
 const Login: React.FC = () => {
     const { isAuth, isLoading, login } = useAuth()
     const navigate = useNavigate();
+    const [isMessageVisible, updateIsMessageVisible] = useState<boolean>(false)
+    const [displayedMessageOne, updateDisplayedMessageOne] = useState<string>('');
+    const [displayedMessageTwo, updateDisplayedMessageTwo] = useState<string>('');
 
-    if(isAuth) navigate('/dashboard'); // If already registered, it will redirect to Dashboard page
+    useEffect(() => {
+        if(isAuth) navigate('/dashboard'); // If already logged in, it will redirect to Dashboard page
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
-    const handleSubmitRegistration = (e:React.FormEvent<HTMLFormElement>) => {
+    const handleSubmitLogin = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const user: LoginUserData = {
             email: e.currentTarget.user.value,
             password: e.currentTarget.password.value
         }
         e.currentTarget.reset();
-        login(user).then(() => {
+        login(user).then(r => {
             //After login is successfull it will redirect to Dashboard page
-            navigate('/dashboard');
+            if(r.status === 201) {
+                navigate('/dashboard');
+            }else {
+                const message = getLoginMessage(r.status)!;
+                updateIsMessageVisible(true);
+                updateDisplayedMessageOne(message.messageOne);
+                updateDisplayedMessageTwo(message.messageTwo);
+            }
         });
     }
 
@@ -31,7 +46,11 @@ const Login: React.FC = () => {
                 <div className='login-logo'></div>
                 <h1 className='login-title'>Tennis Lesson Planner</h1>
             </section>
-            <form className='login-form' action="" method='POST' onSubmit={handleSubmitRegistration}>
+            <section className={`login-massage__container ${isMessageVisible ? 'login-message-visible' : ''}`}>
+                <p>{displayedMessageOne}</p>
+                <p>{displayedMessageTwo}</p>
+            </section>
+            <form className='login-form' action="" method='POST' onSubmit={handleSubmitLogin}>
                 <label htmlFor="USER">
                     User email
                     <input type="text" name='user' id='USER' required/>

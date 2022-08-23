@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { registerAPI, validateTokenAPI, loginAPI } from "./auth.api";
-import { RegisterUserData, LoginUserData } from "./auth.model";
+import { registerAPI, resendValidationEmailAPI, validateTokenAPI, loginAPI } from "./auth.api";
+import { RegisterUserData, LoginUserData, ResendValidationEmail } from "./auth.model";
 import { AUTH_STORAGE_KEY } from "./auth.utils";
 
 
@@ -22,10 +22,19 @@ export const useAuth = () => {
     const [isLoading, updateIsLoading] = useState<boolean>(false);
     const [accountValidated, updateAccountValidated] = useState<boolean>(false);
 
-    const register = async (user: RegisterUserData ) => {
+    const register = async (user: RegisterUserData) => {
         updateIsLoading(true); // loading mode on
-        await registerAPI(user); // Call API register function
+        const result = await registerAPI(user); // Call API register function
         updateIsLoading(false); // When API call finishes, loading mode off
+        return result;
+    }
+
+
+    const resendValidationEmail = async (user:ResendValidationEmail) => {
+        updateIsLoading(true); // loading mode on
+        const result = await resendValidationEmailAPI(user); // Call API resend validation email function
+        updateIsLoading(false); // When API call finishes, loading mode off
+        return result;
     }
 
 
@@ -39,11 +48,17 @@ export const useAuth = () => {
 
     const login = async (user: LoginUserData) => {
         updateIsLoading(true); // loading mode on
-        const token = await loginAPI(user); // Call API login function
+        const result = await loginAPI(user); // Call API login function
         updateIsAuth(true);
-        sessionStorage.setItem(AUTH_STORAGE_KEY, token.access_token);
+        if(result.serverRes.status === 201) sessionStorage.setItem(AUTH_STORAGE_KEY, result.token.access_token);
         updateIsLoading(false); // When API call finishes, loading mode off
+        return result.serverRes;
      }
+
+
+    const logout = () => {
+        sessionStorage.removeItem(AUTH_STORAGE_KEY);
+    }
 
 
     return {
@@ -51,7 +66,9 @@ export const useAuth = () => {
         isLoading,
         accountValidated,
         register,
+        resendValidationEmail,
         validate,
-        login
+        login,
+        logout
     }
 }
