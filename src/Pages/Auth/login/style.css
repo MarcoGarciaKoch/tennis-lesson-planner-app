@@ -1,0 +1,126 @@
+
+.login-main__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 75px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #090943aa;
+}
+
+.login-main__container::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../assets/court.png');
+    background-size: 21%;
+    background-position: center;
+    z-index: -10;
+    opacity: 0.2;
+}
+
+.login-title-logo__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.login-title {
+    color: #ffffff;
+    font-style: oblique;
+}
+
+.login-logo {
+    width: 50%;
+    height: 110px;
+    background-image: url('../../../assets/tennis-logo.png');
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*Message shown based on the user action outcome*/
+
+.login-massage__container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #b9834e;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background-color: #1b1b5e3a;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+.login-massage__container p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.login-message-visible {
+    opacity: 1;
+}
+
+/*Login form*/
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.login-form label {
+    color: #ffffff;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.login-form input {
+    height: 30px;
+    font-style: oblique;
+    color: #61370e;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#LOGIN {
+    align-self: center;
+    width: 60%;
+    height: 30px;
+    font-style: oblique;
+    font-weight: 900;
+    color: #61370e;
+    border-radius: 7px;
+    border: none;
+}
+
+#LOGIN:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 2px #333333;
+}
+
+/*Login create account link*/
+
+
+.login-create-account-link {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.login-create-account-link span {
+    font-size: 0.9rem;
+    text-decoration: underline;
+}

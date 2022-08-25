@@ -1,0 +1,43 @@
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 50px;
+    background-color: #3060b1;
+    margin-top: auto;
+}
+
+.name-github__container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer_name, .github-info__container > h4, .footer-attributions {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-block-start: 0.7em;
+    margin-block-end: 0.2em;
+    margin-left: 5px;
+}
+
+.github-info__container {
+    display: flex;
+    height: 20px;
+    align-items:center;
+}
+
+.github-logo {
+    background-image: url('../../assets/github.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+}
+
+.github-link {
+    color: #ffffff;
+    font-size: 0.65rem;
+}

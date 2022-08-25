@@ -1,0 +1,49 @@
+
+.nav__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #3060b1;
+}
+
+.logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+    background-image: url('../../assets/tennis-logo.png');
+    margin-left: 10px;
+    transform: rotateZ(15deg);
+}
+
+.nav_title {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.record-logout-buttons__container {
+    display: flex;
+    gap: 20px;
+}
+
+.record-logo {
+    width: 28px;
+    height: 28px;
+    background-image: url('../../assets/notes.png');
+}
+
+.logout-logo {
+    width: 30px;
+    height: 30px;
+    background-image: url('../../assets/log-out.png');
+    margin-right: 10px;
+}
+
+.nav-logo:hover, .record-logo:hover, .logout-logo:hover {
+    cursor: pointer;
+}

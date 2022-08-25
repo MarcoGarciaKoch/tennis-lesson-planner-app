@@ -1,0 +1,127 @@
+
+.lesson-creator__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.register-lesson__button {
+    width: 70%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #bebcbc;
+    color: #61370e;
+    font-size: 1rem;
+    font-weight: 900;
+    font-style: oblique;
+}
+
+.register-lesson__button:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 2px #595959;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    animation: FormDisplay 0.4s 1 linear;
+    transform-origin: top;
+}
+
+.hidden-form__container {
+    display: none;
+}
+
+/* ANIMATION HEADER & NAV MENU */
+
+@keyframes FormDisplay {
+    0% {
+        transform: scaleY(0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: scaleY(0.25);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scaleY(0.5);
+        opacity: 1;
+    }
+
+    75% {
+        transform: scaleY(0.75);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.form__container input, select {
+    width: 50%;
+    height: 30px;
+    padding: 0px 5px;
+    border: none;
+    box-shadow: 1px 1px 2px #333333;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-style: oblique;
+    color: #61370e;
+    font-weight: 600;
+    background-color: #d8d5d5;
+}
+
+.form__container input::placeholder {
+    color: #61370e;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.paid-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 52%;
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-style: oblique;
+}
+
+.paid-label select {
+    width: 100%;
+}
+
+#SUBMIT {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 1px 5px 5px #333333c1;
+    font-size: 0.7rem;
+    font-style: oblique;
+    font-weight: 900;
+    color: #333333c7;
+    background-image: url('../../../../assets/tennis-ball-submit-button.png');
+    background-repeat: no-repeat;
+    background-size: 117%;
+    background-position: center;
+}
+
+#SUBMIT:active {
+    transform: scale(0.98);
+    box-shadow: 2px 2px 2px #333333;
+}
