@@ -10,9 +10,10 @@ const LessonCreator: React.FC = () => {
     const { registerNewLesson } = useUsers();
     const { updateLessonRecord } = useContext(LessonRecordContext);
     const [isFormVisible, updateIsFormVisible] = useState<boolean>(false);
+    
 
      // Function that creates a new Lesson and adds it to the lessonRecord array.
-     const createNewLesson = (e:React.FormEvent<HTMLFormElement>) => {
+    const createNewLesson = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const newLesson: LessonData = {
@@ -23,6 +24,7 @@ const LessonCreator: React.FC = () => {
             rate: e.currentTarget.rate.value,
             price:`${calcFinalPrice(e.currentTarget.startTime.value, e.currentTarget.finishTime.value, e.currentTarget.rate.value)}€`,
             paid: e.currentTarget.paid.value,
+            type: e.currentTarget.type.value,
             players: e.currentTarget.players.value,
             club: e.currentTarget.club.value
         }
@@ -36,21 +38,27 @@ const LessonCreator: React.FC = () => {
    
     return (
         <section className='lesson-creator__container'>
-            <button 
-                className='register-lesson__button' 
-                onClick={() => updateIsFormVisible(!isFormVisible)}>{isFormVisible ? 'Dismiss' : 'Register a New Lesson'}
+            <button className='register-lesson__button' onClick={() => updateIsFormVisible(!isFormVisible)}>
+                {isFormVisible ? 'Dismiss' : 'Register a New Lesson'}
             </button>
             <form className={isFormVisible ? 'form__container' : 'hidden-form__container'} onSubmit={createNewLesson}>
-                    <input type="date" name='date' required/>
-                    <input type="time" name='startTime' required/>
-                    <input type="time" name='finishTime' required/>
-                    <input type="text" name='rate' placeholder='Hour Rate'/>
+                    <input type="date" name='date' placeholder='dd/mm/aaaa' required/>
+                    <input type="time" name='startTime' placeholder='hh:mm' required/>
+                    <input type="time" name='finishTime' placeholder='hh:mm' required/>
+                    <input type="text" name='rate' placeholder='Hour Rate' required/>
+                    <label className='type-label' htmlFor="TYPE">Type
+                        <select name="type" id="TYPE">
+                            <option value="school">School</option>
+                            <option value="private">Private Lesson</option>
+                            <option value="special">Special</option>
+                        </select>
+                    </label>
                     <input type="text" name='players' placeholder='Players'/>
                     <input type="text" name='club' placeholder='Club'/>
                     <label className='paid-label' htmlFor="PAID">Paid?
                         <select name="paid" id="PAID">
-                            <option value="no">NO</option>
-                            <option value="yes">YES</option>
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
                         </select>
                     </label>
                     <input id='SUBMIT' type="submit" value={'GO!'} />

@@ -10,6 +10,7 @@ export const lessonDataInitialValues = {
     rate: '',
     price: '',
     paid: '',
+    type: '',
     players: '',
     club: ''
 }
