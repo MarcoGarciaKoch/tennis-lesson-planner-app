@@ -1,0 +1,75 @@
+{
+    "general": {
+        "footer": {
+            "github": "Comprueba el repositorio de GitHub",
+            "here" : "aquí",
+            "attributions" : "Atribuciones"
+        }
+    },
+    "specific": {
+        "register": {
+            "name": "Nombre",
+            "lastname": "Apellidos",
+            "email": "Email",
+            "password": "Contraseña",
+            "register-button": "REGISTRAR",
+            "back" : "Volver a ",
+            "re-send": "No has recibido el email para validar tu cuenta? ",
+            "click": "Click ",
+            "here" : "aquí",
+            "re-write": "Por favor, escribe tu email",
+            "re-send-button" : "ENVIAR"
+        },
+        "login": {
+            "email": "Email de usuario",
+            "password": "Contraseña",
+            "button": "ENTRAR",
+            "account": "Todavía no tienes una cuenta? Regístrate",
+            "here" : "aquí"
+        },
+        "dashboard": {
+            "messageOne": "No hay ninguna clase creada todavía.",
+            "messageTwo": "Para registrar tu primera clase, presiona el botón de arriba y completa los campos requeridos.",
+            "messageThree": "Una vez la clase se haya creado, podrás visualizarla en tu panel.",
+            "pending": "Clases Pendientes de Pago",
+            "paid": "Clases Pagadas"
+        },
+        "alertMessage" : {
+            "messageStart": "¿Estás seguro que quieres ",
+            "delete" : "borrar ",
+            "move" : "mover ",
+            "messageEnd" : "esta clase de tenis?",
+            "yes" : "SI",
+            "no" : "NO"
+        },
+        "lessonCreator" : {
+            "register" : "Registra una Nueva Clase",
+            "dismiss" : "Descartar",
+            "rate" : "Tarifa Hora",
+            "type" : "Tipo",
+            "school" : "Escuela",
+            "private" : "Clase particular",
+            "special" : "Especial",
+            "players" : "Jugadores",
+            "club" : "Club",
+            "paid": "Pagado?",
+            "yes": "Si",
+            "no" : "No"
+        },
+        "lesson" : {
+            "school": "E",
+            "private": "P",
+            "date": "Fecha:",
+            "start": "Hora Comienzo:",
+            "finish" : "Hora Fin:",
+            "price" : "Precio Total:",
+            "players" : "Jugadores:",
+            "club" : "Club:",
+            "buttonPaid" : "MOVER A PAGADO",
+            "buttonPending" : "MOVER A PENDIENTE",
+            "buttonSave" : "GUARDAR",
+            "buttonEdit" : "EDITAR",
+            "buttonDelete" : "BORRAR"
+        }
+    }
+}

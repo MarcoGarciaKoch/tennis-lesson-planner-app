@@ -15,7 +15,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../../assets/court.png');
+    background-image: url('../../../assets/images/court.png');
     background-size: 21%;
     background-position: center;
     z-index: -10;
@@ -38,7 +38,7 @@
 .login-logo {
     width: 50%;
     height: 110px;
-    background-image: url('../../../assets/tennis-logo.png');
+    background-image: url('../../../assets/images/tennis-logo.png');
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: center;

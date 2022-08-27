@@ -16,10 +16,27 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('../../assets/court.png');
+    background-image: url('../../assets/images/court.png');
     background-size: 21%; 
     z-index: -10;
     opacity: 0.2;
+}
+
+.lesson-creator-record__container {
+    position: relative;
+    width: 100%;
+}
+
+.record-logo {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    margin-right: 20px;
+    width: 28px;
+    height: 28px;
+    background-image: url('../../assets/images/notes.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .pending-lessons-title, .paid-lessons-title {

@@ -19,6 +19,7 @@ const Attributions: React.FC = () => {
             <a href="https://www.flaticon.com/free-icons/tennis" title="tennis icons">Tennis icons created by Smashicons - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/tennis-ball" title="tennis ball icons">Tennis ball icons created by IdeaGrafc - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/notes" title="notes icons">Notes icons created by Freepik - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/english-language" title="english language icons">English language icons created by Freepik - Flaticon</a>
         </main>
         <Footer></Footer>
         </>

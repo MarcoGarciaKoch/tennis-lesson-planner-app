@@ -1,0 +1,75 @@
+{
+    "general": {
+        "footer": {
+            "github": "Check the GitHub repository",
+            "here" : "here",
+            "attributions" : "Attributions"
+        }
+    },
+    "specific": {
+        "register": {
+            "name": "Name",
+            "lastname": "Lastname",
+            "email": "Email",
+            "password": "Password",
+            "register-button": "REGISTER",
+            "back" : "Back to ",
+            "re-send": "Did not receive the email to validate your account? ",
+            "click": "Click ",
+            "here" : "here",
+            "re-write": "Please write your email",
+            "re-send-button" : "SEND"
+        },
+        "login": {
+            "email": "User email",
+            "password": "Password",
+            "button": "LOGIN",
+            "account": "Don`t you have an account ? Register",
+            "here" : "here"
+        },
+        "dashboard": {
+            "messageOne": "There are no lessons created to preview yet.",
+            "messageTwo": "To register your first lesson, press the button above and complete the required fields.",
+            "messageThree": "Once the lesson is created, you will see it in your dashboard.",
+            "pending": "Pending Lessons To Get Paid",
+            "paid": "Paid Lessons"
+        },
+        "alertMessage" : {
+            "messageStart": "Are you sure you want to ",
+            "delete" : "delete ",
+            "move" : "move ",
+            "messageEnd" : "this tennis lesson?",
+            "yes" : "YES",
+            "no" : "NO"
+        },
+        "lessonCreator" : {
+            "register" : "Register a New Lesson",
+            "dismiss" : "Dismiss",
+            "rate" : "Hour Rate",
+            "type" : "Type",
+            "school" : "School",
+            "private" : "Private Lesson",
+            "special" : "Special",
+            "players" : "Players",
+            "club" : "Club",
+            "paid": "Paid?",
+            "yes": "Yes",
+            "no" : "No"
+        },
+        "lesson" : {
+            "school": "S",
+            "private": "P",
+            "date": "Date:",
+            "start": "Starting Time:",
+            "finish" : "Finishing Time:",
+            "price" : "Total Price:",
+            "players" : "Players:",
+            "club" : "Club:",
+            "buttonPaid" : "MOVE TO PAID",
+            "buttonPending" : "MOVE TO PENDING",
+            "buttonSave" : "SAVE",
+            "buttonEdit" : "EDIT",
+            "buttonDelete" : "DELETE"
+        }
+    }
+}

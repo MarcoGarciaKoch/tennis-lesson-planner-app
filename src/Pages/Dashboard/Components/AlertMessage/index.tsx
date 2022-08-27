@@ -6,6 +6,7 @@ import { LessonData } from '../../dashboard.model';
 import { sortLessons } from '../../utils';
 import { alertMessageInitialValues } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
 import { useUsers } from '../../../../Core/users/users.hook';
+import { useTranslation } from 'react-i18next';
 
 
 const AlertMessage: React.FC = () => {
@@ -13,6 +14,7 @@ const AlertMessage: React.FC = () => {
     const [isVisible, updateIsVisible] = useState<boolean>(false);
     const { alertParameters, updateAlertParameters } = useContext(AlertMessageCallContext);
     const { updateLesson, deleteLesson } = useUsers();
+    const [t] = useTranslation('translation');
 
     useEffect(() =>{
         if(alertParameters.show) updateIsVisible(true);
@@ -45,19 +47,19 @@ const AlertMessage: React.FC = () => {
 
     return (
         <main className={isVisible === true ? 'alert-visible' : 'alert-not-visible'}>
-            <h1>{`¿Are you sure you want to ${alertParameters.action === 'delete' ? 'delete' : 'move'} this tennis lesson?`}</h1>
+            <h1>{`${t('specific.alertMessage.messageStart')} ${alertParameters.action === 'delete' ? t('specific.alertMessage.delete') : t('specific.alertMessage.move')} ${t('specific.alertMessage.messageEnd')}`}</h1>
             <section className='alert-buttons__container'>
                 <button 
                     className='yes-button' 
                     onClick={alertParameters.action === 'delete' ? deleted : moveLessonToPaidOrPending}
-                >YES</button>
+                >{t('specific.alertMessage.yes')}</button>
                 <button 
                     className='no-button' 
                     onClick={() => {
                         updateIsVisible(false);
                         updateAlertParameters(alertMessageInitialValues);
                     }}
-                >NO</button>
+                >{t('specific.alertMessage.no')}</button>
             </section>
         </main>
     )

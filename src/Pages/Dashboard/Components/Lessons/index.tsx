@@ -5,6 +5,8 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 import { calcFinalPrice, sortLessons } from '../../utils';
 import { AlertMessageCallContext } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
 import { useUsers } from '../../../../Core/users/users.hook';
+import { useTranslation } from 'react-i18next';
+
 
 const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     
@@ -18,6 +20,8 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     const { updateLessonRecord } = useContext(LessonRecordContext);
     const { updateAlertParameters } = useContext(AlertMessageCallContext);
     const { updateLesson } = useUsers();
+    const [displayFullLessonData, updateDisplayFullLessonData] = useState<boolean>(false);
+    const [t] = useTranslation('translation');
 
 
     //Function that allows to edit the card editable fields and update the main array of lessons with the lesson edited
@@ -36,90 +40,97 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
         })
         
     }
-
+    
     return (
-        <main>
-                <section className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`}>
-                <div className={`time__container 
-                                ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
-                                ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
-                                }>
-                    <label>
-                        Date:
-                        <input  type="text" 
-                                onChange={e => updateDateValue(e.target.value)} 
-                                value={dateValue.split('-').reverse().join('-')} 
+        <section className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`}>
+            <div className='lesson-type__icon'>{lesson.type === 'school' ? t('specific.lesson.school') : lesson.type === 'private' ? t('specific.lesson.private') : '⭐'}</div>
+            <div className={`time__container 
+                        ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
+                        ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
+                        }
+                onClick={() => disableButton === false ? updateDisplayFullLessonData(!displayFullLessonData) : ''}>
+                <label>
+                    {t('specific.lesson.date')}
+                    <input  type="text" 
+                            onChange={e => updateDateValue(e.target.value)} 
+                            value={dateValue.split('-').reverse().join('-')} 
+                            readOnly={!disableButton} 
+                            disabled={!disableButton} />
+                </label>
+                <label>
+                    {t('specific.lesson.start')}
+                    <input  type="text" 
+                            onChange={e => {
+                                updateStartTimeValue(e.target.value); 
+                                const result = calcFinalPrice(e.target.value, finishTimeValue, lesson.rate);
+                                updateTotalPriceValue(`${result}€`);
+                            }} 
+                            value={startTimeValue} 
+                            readOnly={!disableButton} 
+                            disabled={!disableButton} />
+                </label>
+                <label>
+                    {t('specific.lesson.finish')}
+                    <input  type="text" 
+                            onChange={e => {
+                                updateFinishTimeValue(e.target.value); 
+                                const result = calcFinalPrice(startTimeValue, e.target.value, lesson.rate);
+                                updateTotalPriceValue(`${result}€`);
+                            }} 
+                            value={finishTimeValue} 
+                            readOnly={!disableButton} 
+                            disabled={!disableButton} />
+                </label>
+            </div>
+            <div className={`${displayFullLessonData ? 'price-players-club__container' : 'non-visible__container'}
+                        ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
+                        ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
+                        }>
+                <label>
+                    {t('specific.lesson.price')}
+                    <input  type="text" 
+                            onChange={e => updateTotalPriceValue(e.target.value)} 
+                            value={totalPriceValue} readOnly={!disableButton} 
+                            disabled={!disableButton} />
+                </label>
+                <label>
+                    {t('specific.lesson.players')}
+                    <textarea  onChange={e => updatePlayersValue(e.target.value)} 
+                                value={playersValue} 
                                 readOnly={!disableButton} 
-                                disabled={!disableButton} />
-                    </label>
-                    <label>
-                        Starting Time:
-                        <input  type="text" 
-                                onChange={e => {
-                                    updateStartTimeValue(e.target.value); 
-                                    const result = calcFinalPrice(e.target.value, finishTimeValue, lesson.rate);
-                                    updateTotalPriceValue(`${result}€`);
-                                }} 
-                                value={startTimeValue} 
+                                disabled={!disableButton} 
+                                cols={20} 
+                                rows={2} 
+                                wrap='hard'/>
+                </label>
+                <label>
+                    {t('specific.lesson.club')}
+                    <textarea  onChange={e => updateClubValue(e.target.value)} 
+                                value={clubValue} 
                                 readOnly={!disableButton} 
-                                disabled={!disableButton} />
-                    </label>
-                    <label>
-                        Finishing Time:
-                        <input  type="text" 
-                                onChange={e => {
-                                    updateFinishTimeValue(e.target.value); 
-                                    const result = calcFinalPrice(startTimeValue, e.target.value, lesson.rate);
-                                    updateTotalPriceValue(`${result}€`);
-                                }} 
-                                value={finishTimeValue} 
-                                readOnly={!disableButton} 
-                                disabled={!disableButton} />
-                    </label>
-                </div>
-                <div className={`price-players-club__container 
-                                ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
-                                ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
-                                }>
-                    <label>
-                        Total Price:
-                        <input  type="text" 
-                                onChange={e => updateTotalPriceValue(e.target.value)} 
-                                value={totalPriceValue} readOnly={!disableButton} 
-                                disabled={!disableButton} />
-                    </label>
-                    <label>
-                        Players:
-                        <textarea  onChange={e => updatePlayersValue(e.target.value)} 
-                                   value={playersValue} 
-                                   readOnly={!disableButton} 
-                                   disabled={!disableButton} 
-                                   cols={20} 
-                                   rows={2} 
-                                   wrap='hard'/>
-                    </label>
-                    <label>
-                        Club:
-                        <textarea  onChange={e => updateClubValue(e.target.value)} 
-                                   value={clubValue} 
-                                   readOnly={!disableButton} 
-                                   disabled={!disableButton}
-                                   cols={20} 
-                                   rows={2} 
-                                   wrap='hard' />
-                    </label>
-                </div> 
-                <div className='buttons__container'>
-                    <button className={`button ${disableButton === false ? lesson.paid === 'no' ? 'pending-button' : 'paid-button' : 'innactive'}`} 
-                            onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>{lesson.paid === 'no' ? 'MOVE TO PAID' : 'MOVE TO PENDING'}</button>
-                    <button className='button edit-button' 
-                            onClick={editLesson}> {disableButton === true ? 'SAVE' : 'EDIT'} </button>
-                    <button className={`button ${disableButton === false ? 'delete-button' : 'innactive'}`} 
-                            onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'delete'}) : ''}>DELETE</button>
-                </div>  
-            </section>
-        </main>
+                                disabled={!disableButton}
+                                cols={20} 
+                                rows={2} 
+                                wrap='hard' />
+                </label>
+            </div> 
+            <div className={displayFullLessonData ? 'buttons__container' : 'non-visible__container'}>
+                <button className={`button ${disableButton === false ? lesson.paid === 'no' ? 'pending-button' : 'paid-button' : 'innactive-button'}`} 
+                        onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>{lesson.paid === 'no' ? t('specific.lesson.buttonPaid') : t('specific.lesson.buttonPending')}</button>
+                <button className='button edit-button' 
+                        onClick={editLesson}> {disableButton === true ? t('specific.lesson.buttonSave') : t('specific.lesson.buttonEdit')} </button>
+                <button className={`button ${disableButton === false ? 'delete-button' : 'innactive-button'}`} 
+                        onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'delete'}) : ''}>{t('specific.lesson.buttonDelete')}</button>
+            </div>
+            <div 
+                className={
+                `${lesson.paid === 'no'? 'arrow-pending' : 'arrow-paid'}
+                ${displayFullLessonData ? 'arrow-display-close' : 'arrow-display-open'}`
+                }
+            >▽</div>  
+        </section>
     )
+    
 }
 
 

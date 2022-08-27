@@ -16,7 +16,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../../assets/court.png');
+    background-image: url('../../../assets/images/court.png');
     background-size: 21%;
     background-position: center;
     z-index: -10;
@@ -44,11 +44,11 @@
 }
 
 .validation__gif {
-    background-image: url('../../../assets/djokovic.gif');
+    background-image: url('../../../assets/images/djokovic.gif');
 }
 
 .not-validation__gif {
-    background-image: url('../../../assets/tenor.gif');
+    background-image: url('../../../assets/images/tenor.gif');
 }
 
 

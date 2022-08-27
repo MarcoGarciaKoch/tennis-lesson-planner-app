@@ -1,0 +1,25 @@
+
+.languages__container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flags {
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
+
+.flags:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 2px #333333;
+}
+
+.spain-flag {
+    background-image: url('../../assets/images/spain.png');
+}
+
+.uk-flag {
+    background-image: url('../../assets/images/united-kingdom.png');
+}

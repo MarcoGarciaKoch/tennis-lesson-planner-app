@@ -13,6 +13,7 @@ main {
     padding: 5px;
     border-radius: 10px;
     box-shadow: 1px 1px 1px #656464;
+    position: relative;
 }
 
 .pending {
@@ -21,6 +22,22 @@ main {
 
 .paid {
     background-color: #7fb778;
+}
+
+.lesson-type__icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    background-color: #dabdbd;
+    color: #3333bd;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 900;
+    top: -5px;
+    left: -5px;
 }
 
 .time__container, .price-players-club__container {
@@ -76,7 +93,10 @@ label input, textarea {
 .buttons__container {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 10px;
+}
+
+.non-visible__container {
+    display: none;
 }
 
 .button {
@@ -119,8 +139,33 @@ label input, textarea {
     font-size: 0.6rem;
 }
 
-.innactive {
+.innactive-button {
     background-color: #656464;
     opacity: 0.6;
     font-size: 0.5rem;
+}
+
+.arrow-display-open {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 600;
+    bottom: -9px;
+    left: 47%;
+}
+
+.arrow-display-close {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 600;
+    top: -9px;
+    left: 47%;
+    transform: rotate(180deg);
+}
+
+.arrow-pending {
+    color: #e2a175;
+}
+
+.arrow-paid {
+    color: #7fb778;
 }

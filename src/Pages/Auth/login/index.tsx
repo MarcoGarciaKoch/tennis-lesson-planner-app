@@ -5,6 +5,8 @@ import { useAuth } from '../../../Core/auth/auth.hook';
 import LoadingSpinner from '../../../SharedComponents/LoadingSpinner';
 import { useEffect, useState } from 'react';
 import { getLoginMessage } from '../../../Core/auth/auth.utils';
+import { useTranslation } from 'react-i18next';
+import Multilanguage from '../../../SharedComponents/Multilanguage';
 
 
 const Login: React.FC = () => {
@@ -13,6 +15,7 @@ const Login: React.FC = () => {
     const [isMessageVisible, updateIsMessageVisible] = useState<boolean>(false)
     const [displayedMessageOne, updateDisplayedMessageOne] = useState<string>('');
     const [displayedMessageTwo, updateDisplayedMessageTwo] = useState<string>('');
+    const [t] = useTranslation('translation');
 
     useEffect(() => {
         if(isAuth) navigate('/dashboard'); // If already logged in, it will redirect to Dashboard page
@@ -45,6 +48,7 @@ const Login: React.FC = () => {
             <section className='login-title-logo__container'>
                 <div className='login-logo'></div>
                 <h1 className='login-title'>Tennis Lesson Planner</h1>
+                <Multilanguage></Multilanguage>
             </section>
             <section className={`login-massage__container ${isMessageVisible ? 'login-message-visible' : ''}`}>
                 <p>{displayedMessageOne}</p>
@@ -52,17 +56,18 @@ const Login: React.FC = () => {
             </section>
             <form className='login-form' action="" method='POST' onSubmit={handleSubmitLogin}>
                 <label htmlFor="USER">
-                    User email
+                    {t('specific.login.email')}
                     <input type="text" name='user' id='USER' required/>
                 </label>
                 <label htmlFor="PASSWORD">
-                    Password
+                    {t('specific.login.password')}
                     <input type="password" name='password' id='PASSWORD' required/>
                 </label>
-                <input id='LOGIN' type="submit" value={'LOGIN'} disabled={isLoading} />
+                <input id='LOGIN' type="submit" value={t('specific.login.button')} disabled={isLoading} />
             </form>
             <h4 className='login-create-account-link'>
-                Don`t you have an account ? Register <span onClick={() => navigate('/register')}>here</span></h4>
+                {t('specific.login.account')} <span onClick={() => navigate('/register')}>{t('specific.login.here')}</span>
+            </h4>
             {isLoading ? <LoadingSpinner loading={isLoading}></LoadingSpinner> : ''}
         </main>
     )
