@@ -5,8 +5,8 @@ import { useState } from 'react';
 import LoadingSpinner from '../../../SharedComponents/LoadingSpinner';
 import { useAuth } from '../../../Core/auth/auth.hook';
 import { getRegistrationMessage } from '../../../Core/auth/auth.utils';
-
-
+import { useTranslation } from 'react-i18next';
+import Multilanguage from '../../../SharedComponents/Multilanguage';
 
 
 const Register: React.FC = () => {
@@ -16,6 +16,7 @@ const Register: React.FC = () => {
     const [displayedMessageOne, updateDisplayedMessageOne] = useState<string>('');
     const [displayedMessageTwo, updateDisplayedMessageTwo] = useState<string>('');
     const { register, resendValidationEmail, isLoading } = useAuth();
+    const [t] = useTranslation('translation');
 
 
     // Function that collects the user data to register and passes it to the register function of the custom hook.
@@ -66,6 +67,7 @@ const Register: React.FC = () => {
             <section className='register-title-logo__container'>
                 <div className='register-logo'></div>
                 <h1 className='register-title'>Tennis Lesson Planner</h1>
+                <Multilanguage></Multilanguage>
             </section>
             <section className={`register-massage__container ${isMessageVisible ? 'register-message-visible' : ''}`}>
                 <p>{displayedMessageOne}</p>
@@ -74,40 +76,40 @@ const Register: React.FC = () => {
 
             <form className='register-form' onSubmit={handleSubmitRegistration}>
                 <label htmlFor="NAME">
-                    Name
+                    {t('specific.register.name')}
                     <input type="text" name='username' id='NAME' required/>
                 </label>
                 <label htmlFor="LASTNAME">
-                    Lastname
+                    {t('specific.register.lastname')}
                     <input type="text" name='lastname' id='LASTNAME' required/>
                 </label>
                 <label htmlFor="EMAIL">
-                    Email
+                    {t('specific.register.email')}
                     <input type="email" name='email' id='EMAIL' required/>
                 </label>
                 <label htmlFor="PASSWORD">
-                    Password
+                    {t('specific.register.password')}
                     <input type="password" name='password' id='PASSWORD' required/>
                 </label>
-                <input id='REGISTER' type="submit" value={'REGISTER'} disabled={isLoading} />
+                <input id='REGISTER' type="submit" value={t('specific.register.register-button')} disabled={isLoading} />
             </form>
 
             <section className='back-login-resend-email__container'>
             <h4 className='register-back-login-link'>
-                Back to <span onClick={() => navigate('/login')}>Login</span></h4>
+                {t('specific.register.back')} <span onClick={() => navigate('/login')}>Login</span></h4>
             {isLoading ? <LoadingSpinner loading={isLoading}></LoadingSpinner> : ''}
             <h4 className='resend-email__title'>
-                Did not receive the email to validate your account? 
-                Click <span onClick={() => updateIsResendVisible(true)}>here</span>
+                {t('specific.register.re-send')} 
+                {t('specific.register.click')} <span onClick={() => updateIsResendVisible(true)}> {t('specific.register.here')}</span>
             </h4>
             <form 
                 className={`resend-email__form ${isResendVisible ? 'resend-visble' : ''}`} 
                 onSubmit={handleResendEmail}>
                     <label>
-                        Please write your email
+                        {t('specific.register.re-write')}
                         <input type='email' name='resendEmail' required/>
                     </label>
-                    <input id='RESEND' type="submit" value={'SEND'} disabled={isLoading} />
+                    <input id='RESEND' type="submit" value={t('specific.register.re-send-button')} disabled={isLoading} />
             </form>
             </section>
         </main>

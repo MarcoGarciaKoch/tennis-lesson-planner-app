@@ -29,11 +29,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     background-color: #dabdbd;
     color: #3333bd;
     border-radius: 50%;
+    font-size: 0.9rem;
     font-weight: 900;
     top: -5px;
     left: -5px;
@@ -138,18 +139,33 @@ label input, textarea {
     font-size: 0.6rem;
 }
 
-.innactive {
+.innactive-button {
     background-color: #656464;
     opacity: 0.6;
     font-size: 0.5rem;
 }
 
-.arrow-display {
+.arrow-display-open {
     position: absolute;
-    width: 100%;
-    color: #e2a175;
-    font-size: 1.6rem;
-    font-weight: 900;
+    font-size: 0.7rem;
+    font-weight: 600;
     bottom: -9px;
     left: 47%;
+}
+
+.arrow-display-close {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 600;
+    top: -9px;
+    left: 47%;
+    transform: rotate(180deg);
+}
+
+.arrow-pending {
+    color: #e2a175;
+}
+
+.arrow-paid {
+    color: #7fb778;
 }

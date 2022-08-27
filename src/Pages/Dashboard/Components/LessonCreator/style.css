@@ -8,14 +8,14 @@
 }
 
 .register-lesson__button {
-    width: 70%;
+    width: 65%;
     height: 40px;
     margin-bottom: 20px;
     border: none;
     border-radius: 10px;
     background-color: #bebcbc;
     color: #61370e;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 900;
     font-style: oblique;
 }
@@ -115,7 +115,7 @@
     font-style: oblique;
     font-weight: 900;
     color: #333333c7;
-    background-image: url('../../../../assets/tennis-ball-submit-button.png');
+    background-image: url('../../../../assets/images/tennis-ball-submit-button.png');
     background-repeat: no-repeat;
     background-size: 117%;
     background-position: center;

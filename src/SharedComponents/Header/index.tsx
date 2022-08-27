@@ -1,7 +1,7 @@
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Core/auth/auth.hook';
-
+import Multilanguage from '../Multilanguage';
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
@@ -16,8 +16,8 @@ const Header: React.FC = () => {
         <nav className='nav__container'>
             <div className='logo nav-logo' onClick={() => navigate('/dashboard')}></div>
             <h1 className='nav_title'>Tennis Lesson Planner</h1>
-            <section className='record-logout-buttons__container'>
-                <div className='logo record-logo' onClick={() => navigate('/record')}></div>
+            <section className='languages-logout-buttons__container'>
+                <Multilanguage></Multilanguage>
                 <div className='logo logout-logo' onClick={handleLogout}></div>
             </section>
         </nav>

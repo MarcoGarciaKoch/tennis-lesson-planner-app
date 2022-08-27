@@ -11,11 +11,11 @@
 .name-github__container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .footer_name, .github-info__container > h4, .footer-attributions {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 400;
     color: #ffffff;
     margin-block-start: 0.7em;
@@ -30,7 +30,7 @@
 }
 
 .github-logo {
-    background-image: url('../../assets/github.png');
+    background-image: url('../../assets/images/github.png');
     background-repeat: no-repeat;
     background-size: contain;
     width: 15px;

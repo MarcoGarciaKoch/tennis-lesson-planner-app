@@ -16,7 +16,7 @@
 .nav-logo {
     width: 40px;
     height: 40px;
-    background-image: url('../../assets/tennis-logo.png');
+    background-image: url('../../assets/images/tennis-logo.png');
     margin-left: 10px;
     transform: rotateZ(15deg);
 }
@@ -26,21 +26,15 @@
     font-size: 1rem;
 }
 
-.record-logout-buttons__container {
+.languages-logout-buttons__container {
     display: flex;
-    gap: 20px;
-}
-
-.record-logo {
-    width: 28px;
-    height: 28px;
-    background-image: url('../../assets/notes.png');
+    gap: 25px;
 }
 
 .logout-logo {
     width: 30px;
     height: 30px;
-    background-image: url('../../assets/log-out.png');
+    background-image: url('../../assets/images/log-out.png');
     margin-right: 10px;
 }
 

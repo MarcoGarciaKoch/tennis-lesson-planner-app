@@ -5,6 +5,8 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 import { calcFinalPrice, sortLessons } from '../../utils';
 import { AlertMessageCallContext } from '../../../../Context/AlertMessageCall/alertMessageCall.context';
 import { useUsers } from '../../../../Core/users/users.hook';
+import { useTranslation } from 'react-i18next';
+
 
 const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     
@@ -19,6 +21,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     const { updateAlertParameters } = useContext(AlertMessageCallContext);
     const { updateLesson } = useUsers();
     const [displayFullLessonData, updateDisplayFullLessonData] = useState<boolean>(false);
+    const [t] = useTranslation('translation');
 
 
     //Function that allows to edit the card editable fields and update the main array of lessons with the lesson edited
@@ -37,16 +40,17 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
         })
         
     }
-
+    
     return (
-        <section className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`} onClick={() => updateDisplayFullLessonData(!displayFullLessonData)}>
-            <div className='lesson-type__icon'>{lesson.type === 'school' ? 'S' : lesson.type === 'private' ? 'P' : '⭐'}</div>
+        <section className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`}>
+            <div className='lesson-type__icon'>{lesson.type === 'school' ? t('specific.lesson.school') : lesson.type === 'private' ? t('specific.lesson.private') : '⭐'}</div>
             <div className={`time__container 
                         ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
                         ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
-                        }>
+                        }
+                onClick={() => disableButton === false ? updateDisplayFullLessonData(!displayFullLessonData) : ''}>
                 <label>
-                    Date:
+                    {t('specific.lesson.date')}
                     <input  type="text" 
                             onChange={e => updateDateValue(e.target.value)} 
                             value={dateValue.split('-').reverse().join('-')} 
@@ -54,7 +58,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                             disabled={!disableButton} />
                 </label>
                 <label>
-                    Starting Time:
+                    {t('specific.lesson.start')}
                     <input  type="text" 
                             onChange={e => {
                                 updateStartTimeValue(e.target.value); 
@@ -66,7 +70,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                             disabled={!disableButton} />
                 </label>
                 <label>
-                    Finishing Time:
+                    {t('specific.lesson.finish')}
                     <input  type="text" 
                             onChange={e => {
                                 updateFinishTimeValue(e.target.value); 
@@ -83,14 +87,14 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                         ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
                         }>
                 <label>
-                    Total Price:
+                    {t('specific.lesson.price')}
                     <input  type="text" 
                             onChange={e => updateTotalPriceValue(e.target.value)} 
                             value={totalPriceValue} readOnly={!disableButton} 
                             disabled={!disableButton} />
                 </label>
                 <label>
-                    Players:
+                    {t('specific.lesson.players')}
                     <textarea  onChange={e => updatePlayersValue(e.target.value)} 
                                 value={playersValue} 
                                 readOnly={!disableButton} 
@@ -100,7 +104,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                                 wrap='hard'/>
                 </label>
                 <label>
-                    Club:
+                    {t('specific.lesson.club')}
                     <textarea  onChange={e => updateClubValue(e.target.value)} 
                                 value={clubValue} 
                                 readOnly={!disableButton} 
@@ -111,16 +115,22 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                 </label>
             </div> 
             <div className={displayFullLessonData ? 'buttons__container' : 'non-visible__container'}>
-                <button className={`button ${disableButton === false ? lesson.paid === 'no' ? 'pending-button' : 'paid-button' : 'innactive'}`} 
-                        onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>{lesson.paid === 'no' ? 'MOVE TO PAID' : 'MOVE TO PENDING'}</button>
+                <button className={`button ${disableButton === false ? lesson.paid === 'no' ? 'pending-button' : 'paid-button' : 'innactive-button'}`} 
+                        onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>{lesson.paid === 'no' ? t('specific.lesson.buttonPaid') : t('specific.lesson.buttonPending')}</button>
                 <button className='button edit-button' 
-                        onClick={editLesson}> {disableButton === true ? 'SAVE' : 'EDIT'} </button>
-                <button className={`button ${disableButton === false ? 'delete-button' : 'innactive'}`} 
-                        onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'delete'}) : ''}>DELETE</button>
+                        onClick={editLesson}> {disableButton === true ? t('specific.lesson.buttonSave') : t('specific.lesson.buttonEdit')} </button>
+                <button className={`button ${disableButton === false ? 'delete-button' : 'innactive-button'}`} 
+                        onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'delete'}) : ''}>{t('specific.lesson.buttonDelete')}</button>
             </div>
-            <div className='arrow-display'>⌄</div>  
+            <div 
+                className={
+                `${lesson.paid === 'no'? 'arrow-pending' : 'arrow-paid'}
+                ${displayFullLessonData ? 'arrow-display-close' : 'arrow-display-open'}`
+                }
+            >▽</div>  
         </section>
     )
+    
 }
 
 
