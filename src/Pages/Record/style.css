@@ -4,9 +4,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
     min-height: 100vh;
-    background-color: #2f2f30aa;
+    background-color: #090943aa;
 }
 
 .record__container::before {
@@ -21,3 +20,70 @@
     z-index: -10;
     opacity: 0.2;
 }
+
+.filters__container {
+    width: 90vw;
+    height: 60px;
+    background-color: #00ffff;
+    margin: 10px 0px;
+}
+
+.table-style {
+    width: 90vw;
+    display: flex;
+    background-color: #d8c4a7;
+    color: #3a4a4a;
+    font-style: oblique;
+    font-size: 0.8rem;
+    padding: 5px;
+    border-radius: 5px;
+}
+.month-ref__container {
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.days__container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.individual-day__container {
+    min-height: 20px;
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.monthday-qty__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.day-lessons-qty {
+    width: 20px;
+    height: 20px;
+    background-color: #3a4a4a;
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 500;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.daily-lesson__container {
+    display: none;
+ }
+ 
+ .daily-lesson-visible {
+    display: block;
+ }
