@@ -11,3 +11,8 @@ export type DailyLessonData = {
     players: string;
     club: string
 }
+
+export type CurrentMonth = {
+    monthNumber:number, 
+    monthName:string
+}

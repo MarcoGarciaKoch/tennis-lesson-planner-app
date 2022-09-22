@@ -1,1 +1,75 @@
 
+
+.daily-lesson__container {
+    width: 90vw;
+    display: flex;
+    background-color: #d69635;
+    border-radius: 5px;
+}
+
+.daily-lesson-non-visible {
+    display: none;
+}
+
+.lesson-info__container {
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    position: relative;
+    padding: 15px 10px 0px 0px;
+}
+
+.daily-lesson-type__icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: #cfc9c9;
+    color: #3333bd;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 900;
+    top: -1px;
+    left: -5px;
+}
+
+.type-price__container, .start-time-players__container, .finish-time-club__container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.type-price__container p, .start-time-players__container p, .finish-time-club__container p {
+    width: 60%;
+    margin-block-start: 0em;
+}
+
+.daily-buttons__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.daily-buttons {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #ddd3d3;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #6a6a6a;
+}
+
+.daily-edit-button {
+    background-color: #8484ec;
+}
+
+.daily-delete-button {
+    background-color: #b43929;
+}

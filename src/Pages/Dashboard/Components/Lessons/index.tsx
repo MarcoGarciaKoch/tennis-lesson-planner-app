@@ -43,7 +43,9 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     
     return (
         <section className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`}>
-            <div className='lesson-type__icon'>{lesson.type === 'school' ? t('specific.lesson.school') : lesson.type === 'private' ? t('specific.lesson.private') : '⭐'}</div>
+            <div className='lesson-type__icon'>
+                {lesson.type === 'school' ? t('specific.lesson.school') : lesson.type === 'private' ? t('specific.lesson.private') : '⭐'}
+            </div>
             <div className={`time__container 
                         ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
                         ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
@@ -90,7 +92,8 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                     {t('specific.lesson.price')}
                     <input  type="text" 
                             onChange={e => updateTotalPriceValue(e.target.value)} 
-                            value={totalPriceValue} readOnly={!disableButton} 
+                            value={totalPriceValue} 
+                            readOnly={!disableButton} 
                             disabled={!disableButton} />
                 </label>
                 <label>

@@ -1,0 +1,45 @@
+
+
+.individual-day__container {
+    min-height: 20px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #d8c4a7;
+    color: #3a4a4a;
+    font-style: oblique;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.monthday-qty__container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.day-lesson-title {
+    width: 90%;
+}
+
+.day-lessons-qty {
+    width: 20px;
+    height: 20px;
+    background-color: #3a4a4a;
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 500;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lesson-list__container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
