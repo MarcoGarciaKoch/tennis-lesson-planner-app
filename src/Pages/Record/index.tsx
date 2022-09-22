@@ -1,22 +1,33 @@
 import './style.css';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LessonRecordContext } from '../../Context/LessonRecord/lessonRecord.context';
 import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
+import { monthDays } from './record.utils';
+import MonthDay from './Components/MonthDay';
 
 
 const Record: React.FC = () => {
     const { lessonRecord } = useContext(LessonRecordContext);
+    const [ currentMonth, updateCurrentMonth ] = useState({monthNumber:0, monthName:''});
 
     useEffect( () => {
-        console.log(lessonRecord)
-    },[lessonRecord])
+        const today = new Date();
+        const monthNumber = today.getMonth();
+        const monthName = today.toLocaleString('es-ES', { month: 'long' }).toUpperCase();
+        updateCurrentMonth({ monthNumber, monthName });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <>
         <Header></Header>
         <main className='record__container'>
-            <h1>Hola</h1>
+            <div className='filters__container'></div>
+            <div className='month-ref__container'>{currentMonth.monthName}</div>
+            {Array.from(Array(monthDays[currentMonth.monthNumber]).keys()).map((day:number, i:number) => (
+                <MonthDay key={i} day={day} currentMonth={currentMonth}></MonthDay>
+            ))}
         </main>
         <Footer></Footer>
         </>
