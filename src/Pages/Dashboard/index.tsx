@@ -2,19 +2,31 @@ import './style.css';
 import { LessonData } from './dashboard.model';
 import LessonCreator from './Components/LessonCreator';
 import Lessons from './Components/Lessons';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { LessonRecordContext } from '../../Context/LessonRecord/lessonRecord.context';
 import AlertMessage from './Components/AlertMessage';
 import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { sortLessons } from './utils'
+import { useUsers } from '../../Core/users/users.hook';
 
 
 const Dashboard: React.FC = () => {
-    const { lessonRecord } = useContext(LessonRecordContext);
+    const { lessonRecord, updateLessonRecord } = useContext(LessonRecordContext);
+    const { getLessonList } = useUsers()
     const navigate = useNavigate();
     const [t] = useTranslation('translation');
+
+    useEffect(() => {
+        getLessonList().then((r:{lessons:LessonData[]}) => {
+            //call 'sortLessons function to sort the lesson array in ascending order by date
+            const sortedLessonArray = sortLessons(r.lessons);
+            updateLessonRecord(sortedLessonArray)
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     return (
         <>
