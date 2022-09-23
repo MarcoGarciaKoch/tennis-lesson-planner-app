@@ -2,19 +2,19 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { LessonRecordContext, lessonDataInitialValues } from "./lessonRecord.context";
 import { LessonData } from '../../Pages/Dashboard/dashboard.model';
 import { sortLessons } from "../../Pages/Dashboard/utils";
-import { getLessonsListAPI } from "../../Core/users/users.api";
+import { useUsers } from "../../Core/users/users.hook";
 
 const LessonRecordProvider: React.FC<{children:ReactNode}> = ({children}) => {
     const [lessonRecord, updateLessonRecord] = useState<LessonData[]>([lessonDataInitialValues]);
+    const { getLessonList } = useUsers()
 
     useEffect(() => {
-        getLessonsListAPI().then(r => {
+        getLessonList().then((r:{lessons:LessonData[]}) => {
             //call 'sortLessons function to sort the lesson array in ascending order by date
             const sortedLessonArray = sortLessons(r.lessons);
             updateLessonRecord(sortedLessonArray)
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[getLessonList, lessonRecord])
 
     return (
         <LessonRecordContext.Provider value={{lessonRecord, updateLessonRecord}}>

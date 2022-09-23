@@ -32,7 +32,7 @@
             "messageTwo": "To register your first lesson, press the button above and complete the required fields.",
             "messageThree": "Once the lesson is created, you will see it in your dashboard.",
             "pending": "Pending Lessons To Get Paid",
-            "paid": "Paid Lessons (last 7 lessons shown)"
+            "paid": "Paid Lessons ( up to 7 most recent )"
         },
         "alertMessage" : {
             "messageStart": "Are you sure you want to ",
