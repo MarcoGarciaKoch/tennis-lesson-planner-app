@@ -4,14 +4,20 @@ import { LessonData } from "./dashboard.model";
 // Function that sorts (increasing order) and returns the existing array of Lessons before updating the lessonRecord state (context)
 export const sortLessons = (lessonArray:LessonData[]) => {
     const result = lessonArray?.sort((a:LessonData, b:LessonData) => {
-        if (a.date < b.date) {
+        const reverseA = a.date?.split('-').reverse().join('-')
+        const reverseB = b.date?.split('-').reverse().join('-')
+        if (reverseA < reverseB) {
             return -1;
-        }else if (a.date > b.date) {
+        }else if (reverseA > reverseB) {
             return 1
         }else {
             if (a.startTime < b.startTime) {
                 return -1
             }else if(a.startTime > b.startTime) {
+                return 1
+            }else if(a.finishTime < b.finishTime) {
+                return -1
+            }else if(a.finishTime > b.finishTime) {
                 return 1
             }else {
                 return 0

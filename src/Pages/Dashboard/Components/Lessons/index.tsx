@@ -17,6 +17,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     const [totalPriceValue, updateTotalPriceValue] = useState<string>(lesson.price);
     const [playersValue,  updatePlayersValue] = useState<string>(lesson.players)
     const [clubValue, updateClubValue] = useState<string>(lesson.club);
+    const [typeValue, updateTypeValue] = useState<string>(lesson.type);
     const { updateLessonRecord } = useContext(LessonRecordContext);
     const { updateAlertParameters } = useContext(AlertMessageCallContext);
     const { updateLesson } = useUsers();
@@ -33,6 +34,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
         lesson.price = totalPriceValue;
         lesson.players = playersValue;
         lesson.club = clubValue;
+        lesson.type = typeValue;
         
         updateLesson(lesson).then(r => {
             const sortedLessonArray = sortLessons(r.lessons); //call 'sortLessons function to sort the lesson array in ascending order by date
@@ -43,9 +45,22 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     
     return (
         <section className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`}>
-            <div className='lesson-type__icon'>
-                {lesson.type === 'school' ? t('specific.lesson.school') : lesson.type === 'private' ? t('specific.lesson.private') : '⭐'}
-            </div>
+            {
+                disableButton ?
+                <select name='lessonType'
+                        id='LESSONTYPE'
+                        className='lesson-type__icon icon-select'
+                        onChange={e => updateTypeValue(e.target.value)}>
+                            <option value={typeValue}>{typeValue === 'school' ? t('specific.lesson.school') : typeValue === 'private' ? t('specific.lesson.private') : '⭐'}</option>
+                            <option value="school">{t('specific.lesson.school')}</option>
+                            <option value="private">{t('specific.lesson.private')}</option>
+                            <option value="special">⭐</option>
+                </select>
+                :
+                <div className='lesson-type__icon'>
+                    {typeValue === 'school' ? t('specific.lesson.school') : typeValue === 'private' ? t('specific.lesson.private') : '⭐'}
+                </div>
+            }
             <div className={`time__container 
                         ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
                         ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
@@ -55,7 +70,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                     {t('specific.lesson.date')}
                     <input  type="text" 
                             onChange={e => updateDateValue(e.target.value)} 
-                            value={dateValue.split('-').reverse().join('-')} 
+                            value={dateValue} 
                             readOnly={!disableButton} 
                             disabled={!disableButton} />
                 </label>
