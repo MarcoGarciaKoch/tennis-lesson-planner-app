@@ -20,7 +20,7 @@ const LessonCreator: React.FC = () => {
 
         const newLesson: LessonData = {
             id: uuidv4(),
-            date: e.currentTarget.date.value,
+            date: e.currentTarget.date.value.split('-').reverse().join('-'),
             startTime: e.currentTarget.startTime.value,
             finishTime: e.currentTarget.finishTime.value,
             rate: e.currentTarget.rate.value,
@@ -44,7 +44,7 @@ const LessonCreator: React.FC = () => {
                 {isFormVisible ? t('specific.lessonCreator.dismiss') : t('specific.lessonCreator.register')}
             </button>
             <form className={isFormVisible ? 'form__container' : 'hidden-form__container'} onSubmit={createNewLesson}>
-                    <input type="date" name='date' placeholder='dd/mm/aaaa' required/>
+                    <input type="date" name='date' placeholder='dd/mm/aaaa' required />
                     <input type="time" name='startTime' placeholder='hh:mm' required/>
                     <input type="time" name='finishTime' placeholder='hh:mm' required/>
                     <input type="text" name='rate' placeholder={t('specific.lessonCreator.rate')} required/>

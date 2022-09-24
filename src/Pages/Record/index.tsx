@@ -25,8 +25,8 @@ const Record: React.FC = () => {
         <main className='record__container'>
             <div className='filters__container'></div>
             <div className='month-ref__container'>{currentMonth.monthName}</div>
-            {Array.from(Array(monthDays[currentMonth.monthNumber]).keys()).map((day:number, i:number) => (
-                <MonthDay key={i} day={day} currentMonth={currentMonth}></MonthDay>
+            {Array.from(Array(monthDays[currentMonth.monthNumber]).keys()).map((dayOfMonth:number, i:number) => (
+                <MonthDay key={i} dayOfMonth={dayOfMonth} currentMonth={currentMonth}></MonthDay>
             ))}
         </main>
         <Footer></Footer>

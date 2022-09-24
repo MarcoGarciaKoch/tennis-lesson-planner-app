@@ -7,7 +7,7 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 
 
 
-const MonthDay: React.FC<{day:number, currentMonth:CurrentMonth}> = ({day, currentMonth}) => {
+const MonthDay: React.FC<{dayOfMonth:number, currentMonth:CurrentMonth}> = ({dayOfMonth, currentMonth}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ isDailyVisible, updateIsDailyVisible] = useState<boolean>(false);
 
@@ -15,18 +15,18 @@ const MonthDay: React.FC<{day:number, currentMonth:CurrentMonth}> = ({day, curre
         <main className='individual-day__container'>
             <section className='monthday-qty__container'>
                 <div className='day-lesson-title' onClick={() => updateIsDailyVisible(!isDailyVisible)}>
-                    Clases día {day+1} de {currentMonth.monthName.toLowerCase()}
+                    Clases día {dayOfMonth+1} de {currentMonth.monthName.toLowerCase()}
                 </div>
                 <div className='day-lessons-qty'>
                     {lessonRecord.filter((l:LessonData) =>
                     parseInt(l.date.split('-')[1]) === currentMonth.monthNumber + 1 &&
-                    parseInt(l.date.split('-')[2]) === day + 1).length}
+                    parseInt(l.date.split('-')[0]) === dayOfMonth + 1).length}
                 </div>
             </section>
             <section className='lesson-list__container'>
                 {lessonRecord.map((l:LessonData) => (
                     parseInt(l.date.split('-')[1]) === currentMonth.monthNumber + 1 &&
-                    parseInt(l.date.split('-')[2]) === day + 1
+                    parseInt(l.date.split('-')[0]) === dayOfMonth + 1
                     ? 
                     <DailyLesson key={l.id} dailyLesson={l} isDailyVisible={isDailyVisible}></DailyLesson> 
                     : 
