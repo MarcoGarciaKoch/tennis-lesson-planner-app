@@ -19,7 +19,7 @@
     justify-content: space-around;
     font-size: 0.8rem;
     position: relative;
-    padding: 10px 3px;
+    padding: 10px 3px 5px 3px;
 }
 
 .daily-lesson-type__icon {
@@ -40,31 +40,63 @@
 }
 
 .daily-details__container {
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin-top: 12px;
 }
 
+.daily-details__container span {
+    font-weight: 900;
+    color: #46465e;
+}
+
 .daily-details__container label {
     display: flex;
     gap: 3px;
+    margin-left: 5px;
 }
 
-.daily-details__container input, daily-details__container select, daily-details__container p {
+.daily-details__container select, .daily-details__container textarea {
     font-weight: 600;
     margin-block: 1px;
     background-color: #dbaf6c;
+    color: #683c10;
     text-align: left;
+    margin: 0px;
+    box-shadow: none;
 }
 
-.daily-details__container span {
-    font-weight: 900;
+.editable-daily-details__container textarea, .editable-daily-details__container select   {
+    border: solid 1px #d97f43;
+    background-color: #e1bfa8;
+    border-radius: 5px;
 }
 
-.lesson-type__icon {
-    width: 50px;
+.daily-details__container p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    width: 150px;
+    margin-right: 7px;
+    color: #683c10;
+    font-weight: 600;
+}
+
+.hyphen-container {
+    margin-right: 6px;
+}
+
+.lesson-starting-time {
+    width: 80px;
+}
+
+.lesson-price {
+    width: 35px;
+}
+
+.lesson-select-ispaid {
+    width: 150px;
     height: 26px;
     background-color: #dbaf6c;
     font-weight: 600;
@@ -75,11 +107,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .daily-buttons {
-    width: 50px;
+    width: 60px;
     height: 25px;
     display: flex;
     justify-content: center;
