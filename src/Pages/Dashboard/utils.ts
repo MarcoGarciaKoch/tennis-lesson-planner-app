@@ -35,3 +35,11 @@ export const calcFinalPrice = (start:string, finish:string, rate:string) => {
     const finalPrice = Math.round((((Number(finishingTime[0]) * 60 + Number(finishingTime[1]))/60) - ((Number(startingTime[0]) * 60 + Number(startingTime[1]))/60)) * Number(rate));
     return finalPrice.toString();
     }
+
+
+// Function that given the array with all the lessons, returns a new array with ONLY the LAST 7 lessons PAID
+
+export const getLastSevenPaidLessons = (sortedLessonArray:LessonData[]) => {
+    const paidLessons = sortedLessonArray.filter((l:LessonData) => l.paid === 'yes').slice(-7, sortedLessonArray.length);
+    return paidLessons;
+}
