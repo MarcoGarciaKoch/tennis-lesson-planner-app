@@ -21,12 +21,13 @@
 
 .day-lesson-title {
     width: 90%;
+    color: #505080;
 }
 
 .day-lessons-qty {
     width: 20px;
     height: 20px;
-    background-color: #3a4a4a;
+    background-color: #3a3a67;
     color: #ffffff;
     font-size: 0.6rem;
     font-weight: 500;

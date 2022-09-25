@@ -51,21 +51,23 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                 <div className='daily-lesson-type__icon'>
                     {dailyLesson.type === 'school' ? t('specific.lesson.school') : dailyLesson.type === 'private' ? t('specific.lesson.private') : '⭐'}
                 </div>
-                <div className='daily-details__container'>
+                <div className={disableButton === false ? 'daily-details__container' : 'daily-details__container editable-daily-details__container'}>
                     <label>
                         <span>Horario:</span>
-                        <input  type="text"
+                        <textarea  
+                            className='lesson-starting-time'
                             onChange={e => {
                                 updateStartTimeValue(e.target.value);
-                                updateTotalPriceValue(`${calcFinalPrice(e.target.value, finishTimeValue, dailyLesson.rate)}€`);
+                                updateTotalPriceValue(`${calcFinalPrice(e.target.value, finishTimeValue, dailyLesson.rate)} €`);
                             }} 
                             value={startTimeValue} 
                             readOnly={!disableButton} 
                             disabled={!disableButton} />
-                        <input  type="text"
+                        <div className='hyphen-container'>-</div>
+                        <textarea  
                             onChange={e => {
                                 updateFinishTimeValue(e.target.value);
-                                updateTotalPriceValue(`${calcFinalPrice(startTimeValue, e.target.value, dailyLesson.rate)}€`);
+                                updateTotalPriceValue(`${calcFinalPrice(startTimeValue, e.target.value, dailyLesson.rate)} €`);
                             }} 
                             value={finishTimeValue} 
                             readOnly={!disableButton} 
@@ -73,36 +75,39 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                     </label>
                     <label>
                         <span>Precio:</span>
-                        {
-                        disableButton ?
-                        <select name='isPaidLesson'
-                                className='lesson-type__icon'
-                                onChange={e => updateIsPaidValue(e.target.value)}>
-                                    <option value={isPaidValue}>{isPaidValue === 'yes' ? 'Pagada' : 'No Pagada'}</option>
-                                    <option value={isPaidValue === 'yes' ? 'no' : 'yes'}>{isPaidValue === 'yes' ? 'No Pagada' : 'Pagada'}</option>
-                        </select>
-                        :
-                        <p>
-                            {dailyLesson.paid === 'yes' ? 'Pagada' : 'No Pagada'}
-                        </p>
-                        }
-                        <input  type="text"
+                        <textarea  
+                            className='lesson-price'
                             onChange={e => updateTotalPriceValue(e.target.value)} 
                             value={totalPriceValue}
                             readOnly={!disableButton} 
                             disabled={!disableButton} />
+                        <div className='hyphen-container'>-</div>
+                        {
+                        disableButton ?
+                        <select 
+                            name='isPaidLesson'
+                            className='lesson-select-ispaid'
+                            onChange={e => updateIsPaidValue(e.target.value)}>
+                                <option value={isPaidValue}>{isPaidValue === 'yes' ? 'Pagada' : 'No Pagada'}</option>
+                                <option value={isPaidValue === 'yes' ? 'no' : 'yes'}>{isPaidValue === 'yes' ? 'No Pagada' : 'Pagada'}</option>
+                        </select>
+                        :
+                        <p>
+                            {`${dailyLesson.paid === 'yes' ? 'Pagada' : 'No Pagada'}`}
+                        </p>
+                        }
                     </label>
                     <label>
                         <span>Jugadores: </span>
-                        <input  type="text"
+                        <textarea  
                             onChange={e => updatePlayersValue(e.target.value)} 
-                            value={playersValue} 
+                            value={playersValue}
                             readOnly={!disableButton} 
                             disabled={!disableButton} />
                     </label>
                     <label>
                         <span>Club: </span>
-                        <input  type="text"
+                        <textarea  
                             onChange={e => updateClubValue(e.target.value)} 
                             value={clubValue} 
                             readOnly={!disableButton} 
