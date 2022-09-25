@@ -9,7 +9,7 @@ import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { sortLessons } from './utils'
+import { sortLessons, getLastSevenPaidLessons } from './utils'
 import { useUsers } from '../../Core/users/users.hook';
 
 
@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
         getLessonList().then((r:{lessons:LessonData[]}) => {
             //call 'sortLessons function to sort the lesson array in ascending order by date
             const sortedLessonArray = sortLessons(r.lessons);
-            updateLessonRecord(sortedLessonArray)
+            updateLessonRecord(sortedLessonArray);
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
             <h1 className='pending-lessons-title'>{lessonRecord?.some((l:LessonData) => l.paid === 'no') ? t('specific.dashboard.pending') : ''}</h1>
             {lessonRecord?.map((l:LessonData) => l.paid === 'no' ? <Lessons key={l.id} lesson={l}></Lessons> : '')}
             <h1 className='paid-lessons-title'>{lessonRecord?.some((l:LessonData) => l.paid === 'yes') ? t('specific.dashboard.paid') : ''}</h1>
-            {lessonRecord?.map((l:LessonData, i:number) => l.paid === 'yes' && i >= lessonRecord.length - 7 ? <Lessons key={l.id} lesson={l}></Lessons> : '')}
+            {getLastSevenPaidLessons(lessonRecord)?.map((l:LessonData) => <Lessons key={l.id} lesson={l}></Lessons>)}
             <AlertMessage></AlertMessage>
         </main>
         <Footer></Footer>

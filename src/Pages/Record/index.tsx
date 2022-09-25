@@ -5,6 +5,7 @@ import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
 import { monthDays } from './record.utils';
 import MonthDay from './Components/MonthDay';
+import AlertMessage from '../Dashboard/Components/AlertMessage';
 
 
 const Record: React.FC = () => {
@@ -28,6 +29,7 @@ const Record: React.FC = () => {
             {Array.from(Array(monthDays[currentMonth.monthNumber]).keys()).map((dayOfMonth:number, i:number) => (
                 <MonthDay key={i} dayOfMonth={dayOfMonth} currentMonth={currentMonth}></MonthDay>
             ))}
+            <AlertMessage></AlertMessage>
         </main>
         <Footer></Footer>
         </>

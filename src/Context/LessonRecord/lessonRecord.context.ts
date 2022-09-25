@@ -15,5 +15,5 @@ export const lessonDataInitialValues = {
     club: ''
 }
 
-export const LessonRecordContext = createContext({ lessonRecord: [lessonDataInitialValues], 
+export const LessonRecordContext = createContext({ lessonRecord: [lessonDataInitialValues],
                                                     updateLessonRecord: (lessonRecord:LessonData[]) => {} });

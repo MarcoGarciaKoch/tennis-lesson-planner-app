@@ -1,9 +1,11 @@
 
 
 .daily-lesson__container {
-    width: 90vw;
+    width: 85vw;
     display: flex;
+    margin: 5px auto;
     background-color: #dbaf6c;
+    border: solid 1px #db9a39;
     border-radius: 5px;
 }
 
@@ -14,10 +16,10 @@
 .lesson-info__container {
     width: 97%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 0.8rem;
     position: relative;
-    padding: 15px 10px 0px 0px;
+    padding: 10px 3px;
 }
 
 .daily-lesson-type__icon {
@@ -25,37 +27,59 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background-color: #cfc9c9;
     color: #3333bd;
+    border: solid 1px #8d8c8c;
     border-radius: 50%;
     font-size: 0.8rem;
     font-weight: 900;
-    top: -1px;
+    top: -5px;
     left: -5px;
 }
 
-.type-price__container, .start-time-players__container, .finish-time-club__container {
+.daily-details__container {
     width: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 5px;
+    margin-top: 12px;
 }
 
-.type-price__container p, .start-time-players__container p, .finish-time-club__container p {
-    width: 60%;
-    margin-block-start: 0em;
+.daily-details__container label {
+    display: flex;
+    gap: 3px;
+}
+
+.daily-details__container input, daily-details__container select, daily-details__container p {
+    font-weight: 600;
+    margin-block: 1px;
+    background-color: #dbaf6c;
+    text-align: left;
+}
+
+.daily-details__container span {
+    font-weight: 900;
+}
+
+.lesson-type__icon {
+    width: 50px;
+    height: 26px;
+    background-color: #dbaf6c;
+    font-weight: 600;
 }
 
 .daily-buttons__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
 .daily-buttons {
-    width: 25px;
+    width: 50px;
     height: 25px;
     display: flex;
     justify-content: center;
@@ -63,13 +87,24 @@
     font-size: 1.2rem;
     color: #ddd3d3;
     border-radius: 5px;
-    box-shadow: 1px 1px 1px #6a6a6a;
+    border: none;
+    box-shadow: 1px 1px 2px #7c7c7c;
+}
+
+.daily-buttons:active {
+    transform: scale(0.98);
+    box-shadow: 1px 1px 2px #4e4d4d;
 }
 
 .daily-edit-button {
-    background-color: #8484ec;
+    background-color: #7575ed;
 }
 
 .daily-delete-button {
     background-color: #b43929;
+}
+
+.daily-innactive-button {
+    background-color: #656464;
+    opacity: 0.6;
 }
