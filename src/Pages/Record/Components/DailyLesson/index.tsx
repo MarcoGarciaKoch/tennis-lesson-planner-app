@@ -58,7 +58,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                     <label>
                         <span>Horario:</span>
                         <textarea  
-                            className='lesson-starting-time'
+                            className='lesson-time'
                             onChange={e => {
                                 updateStartTimeValue(e.target.value);
                                 updateTotalPriceValue(`${calcFinalPrice(e.target.value, finishTimeValue, dailyLesson.rate)} €`);
@@ -67,7 +67,8 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                             readOnly={!disableButton} 
                             disabled={!disableButton} />
                         <div className='hyphen-container'>-</div>
-                        <textarea  
+                        <textarea
+                            className='lesson-time'  
                             onChange={e => {
                                 updateFinishTimeValue(e.target.value);
                                 updateTotalPriceValue(`${calcFinalPrice(startTimeValue, e.target.value, dailyLesson.rate)} €`);

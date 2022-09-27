@@ -33,6 +33,7 @@
 .daily-details__container span {
     font-weight: 900;
     color: #46465e;
+    margin-top: 1px;
 }
 
 .daily-details__container label {
@@ -67,11 +68,11 @@
 }
 
 .hyphen-container {
-    margin-right: 6px;
+    margin-right: 12px;
 }
 
-.lesson-starting-time {
-    width: 80px;
+.lesson-time {
+    width: 50px;
 }
 
 .lesson-price {
