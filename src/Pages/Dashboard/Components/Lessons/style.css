@@ -24,33 +24,6 @@ main {
     background-color: #7fb778;
 }
 
-.lesson-type__icon {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 26px;
-    height: 26px;
-    background-color: #dabdbd;
-    color: #3333bd;
-    border-radius: 50%;
-    font-size: 0.9rem;
-    font-weight: 900;
-    top: -5px;
-    left: -5px;
-}
-
-.icon-select {
-    width: 30px;
-    height: 30px;
-    top: -8px;
-    left: -5px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 0px;
-    border: solid 1px #d97f43;
-}
-
 .time__container, .price-players-club__container {
     display: flex;
     justify-content: space-evenly;

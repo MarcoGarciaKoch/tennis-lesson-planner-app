@@ -1,0 +1,35 @@
+.lesson-type__icon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 27px;
+    height: 27px;
+    background-color: #cfc9c9;
+    color: #3333bd;
+    border: solid 1px #8d8c8c;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 900;
+    top: -5px;
+    left: -5px;
+}
+
+.icon-select {
+    width: 28px;
+    height: 28px;
+    top: -6px;
+    left: -5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: -2px;
+    border: solid 1px #d97f43;
+}
+
+.school-option, .private-option {
+    text-align: center;
+}
+
+.special-option {
+    text-align: left;
+}

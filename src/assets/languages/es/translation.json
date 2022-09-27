@@ -57,8 +57,6 @@
             "no" : "No"
         },
         "lesson" : {
-            "school": "E",
-            "private": "P",
             "date": "Fecha:",
             "start": "Hora Comienzo:",
             "finish" : "Hora Fin:",
@@ -70,6 +68,10 @@
             "buttonSave" : "GUARDAR",
             "buttonEdit" : "EDITAR",
             "buttonDelete" : "BORRAR"
+        },
+        "typeLessonIcon" : {
+            "school": "E",
+            "private": "P"
         }
     }
 }
