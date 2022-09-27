@@ -101,7 +101,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                                 </option>
                         </select>
                         :
-                        <p>
+                        <p  className='lesson-select-ispaid'>
                             {`${isPaidValue === 'yes' ? 'Pagada' : 'No Pagada'}`}
                         </p>
                         }
