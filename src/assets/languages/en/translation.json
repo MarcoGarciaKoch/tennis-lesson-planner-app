@@ -70,6 +70,10 @@
             "buttonSave" : "SAVE",
             "buttonEdit" : "EDIT",
             "buttonDelete" : "DELETE"
+        },
+        "typeLessonIcon" : {
+            "school": "S",
+            "private": "P"
         }
     }
 }

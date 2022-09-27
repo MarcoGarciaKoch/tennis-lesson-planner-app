@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { AiFillSave } from 'react-icons/ai';
+import TypeLessonIcon from '../../../../SharedComponents/typeLessonIcon';
 
 
 
@@ -48,9 +49,11 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
     return (
         <main className={isDailyVisible ? 'daily-lesson__container' : 'daily-lesson-non-visible'}>
             <section className='lesson-info__container'>
-                <div className='daily-lesson-type__icon'>
-                    {dailyLesson.type === 'school' ? t('specific.lesson.school') : dailyLesson.type === 'private' ? t('specific.lesson.private') : '⭐'}
-                </div>
+                <TypeLessonIcon 
+                    isDisableButton={disableButton} 
+                    lesson={dailyLesson}
+                    onUpdateTypeValue={updateTypeValue}
+                />
                 <div className={disableButton === false ? 'daily-details__container' : 'daily-details__container editable-daily-details__container'}>
                     <label>
                         <span>Horario:</span>
@@ -87,13 +90,18 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                         <select 
                             name='isPaidLesson'
                             className='lesson-select-ispaid'
-                            onChange={e => updateIsPaidValue(e.target.value)}>
-                                <option value={isPaidValue}>{isPaidValue === 'yes' ? 'Pagada' : 'No Pagada'}</option>
-                                <option value={isPaidValue === 'yes' ? 'no' : 'yes'}>{isPaidValue === 'yes' ? 'No Pagada' : 'Pagada'}</option>
+                            onChange={e => updateIsPaidValue(e.target.value)}
+                            defaultValue={isPaidValue}>
+                                <option value='yes'>
+                                    Pagada
+                                </option>
+                                <option value='no'>
+                                    No Pagada
+                                </option>
                         </select>
                         :
                         <p>
-                            {`${dailyLesson.paid === 'yes' ? 'Pagada' : 'No Pagada'}`}
+                            {`${isPaidValue === 'yes' ? 'Pagada' : 'No Pagada'}`}
                         </p>
                         }
                     </label>

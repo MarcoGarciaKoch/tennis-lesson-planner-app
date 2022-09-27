@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { AiFillSave } from 'react-icons/ai';
+import TypeLessonIcon from '../../../../SharedComponents/typeLessonIcon';
 
 
 const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
@@ -47,22 +48,11 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
     
     return (
         <main className={`card__container ${lesson.paid === 'no' ? 'pending' : 'paid'}`}>
-            {
-                disableButton ?
-                <select name='lessonType'
-                        id='LESSONTYPE'
-                        className='lesson-type__icon icon-select'
-                        onChange={e => updateTypeValue(e.target.value)}>
-                            <option value={typeValue}>{typeValue === 'school' ? t('specific.lesson.school') : typeValue === 'private' ? t('specific.lesson.private') : '⭐'}</option>
-                            <option value="school">{t('specific.lesson.school')}</option>
-                            <option value="private">{t('specific.lesson.private')}</option>
-                            <option value="special">⭐</option>
-                </select>
-                :
-                <div className='lesson-type__icon'>
-                    {typeValue === 'school' ? t('specific.lesson.school') : typeValue === 'private' ? t('specific.lesson.private') : '⭐'}
-                </div>
-            }
+            <TypeLessonIcon
+                isDisableButton={disableButton}
+                lesson={lesson}
+                onUpdateTypeValue={updateTypeValue}
+            />
             <div className={`time__container 
                         ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
                         ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
