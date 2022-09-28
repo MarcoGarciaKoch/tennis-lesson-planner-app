@@ -23,12 +23,6 @@
     opacity: 0.2;
 }
 
-.filters__container {
-    width: 90vw;
-    height: 60px;
-    background-color: #00ffff;
-}
-
 .month-ref__container {
     min-height: 30px;
     width: 90vw;
