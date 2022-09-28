@@ -1,22 +1,22 @@
 
 
-export type RegisterUserData = {
-    name: string,
-    lastname: string,
-    email: string,
-    password: string
+export interface RegisterUserData {
+    name: string;
+    lastname: string;
+    email: string;
+    password: string;
 }
 
-export type LoginUserData = {
-    email: string,
-    password:string
+export interface LoginUserData {
+    email: string;
+    password:string;
 }
 
-export type ResendValidationEmail = {
-    email:string
+export interface ResendValidationEmail {
+    email:string;
 }
 
-export type DisplayedMessage = {
-    messageOne:string,
-    messageTwo:string
+export interface DisplayedMessage {
+    messageOne:string;
+    messageTwo:string;
 }
