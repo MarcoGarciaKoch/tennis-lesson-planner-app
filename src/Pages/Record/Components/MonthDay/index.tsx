@@ -10,8 +10,16 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 const MonthDay: React.FC<{dayOfMonth:number, currentDate:CurrentDate}> = ({dayOfMonth, currentDate}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ isDailyVisible, updateIsDailyVisible] = useState<boolean>(false);
+    
 
     return (
+        lessonRecord.filter((l:LessonData) =>
+            parseInt(l.date.split('-')[1]) === currentDate.monthNumber &&
+            parseInt(l.date.split('-')[0]) === dayOfMonth + 1).length === 0
+    ?
+    <></>
+    :
+    (
         <main className='individual-day__container'>
             <section className='monthday-qty__container'>
                 <div className='day-lesson-title' onClick={() => updateIsDailyVisible(!isDailyVisible)}>
@@ -34,6 +42,7 @@ const MonthDay: React.FC<{dayOfMonth:number, currentDate:CurrentDate}> = ({dayOf
                 )} 
             </section>    
         </main>
+    )
     )
 }
 
