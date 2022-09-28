@@ -7,7 +7,8 @@ import { monthDays } from './record.utils';
 import MonthDay from './Components/MonthDay';
 import AlertMessage from '../Dashboard/Components/AlertMessage';
 import { CurrentDate, TotalCalcValues } from './record.model'
-import { calcHours, calcMoney } from './record.utils';
+import { handleCalculations } from './record.utils';
+import Filters from './Components/Filters';
 
 const Record: React.FC = () => {
     const { lessonRecord } = useContext(LessonRecordContext);
@@ -28,24 +29,9 @@ const Record: React.FC = () => {
     },[])
 
 
-    const handleCalculations = () => {
-        const schoolPaidHours = calcHours(lessonRecord, 'school', 'yes', currentDate.monthNumber, currentDate.year)
-        const schoolPaidMoney = calcMoney(lessonRecord, 'school', 'yes', currentDate.monthNumber, currentDate.year)
-        const schoolNotPaidHours = calcHours(lessonRecord, 'school', 'no', currentDate.monthNumber, currentDate.year)
-        const schoolNotPaidMoney = calcMoney(lessonRecord, 'school', 'no', currentDate.monthNumber, currentDate.year)
-
-        const privatePaidHours = calcHours(lessonRecord, 'private', 'yes', currentDate.monthNumber, currentDate.year)
-        const privatePaidMoney = calcMoney(lessonRecord, 'private', 'yes', currentDate.monthNumber, currentDate.year)
-        const privateNotPaidHours = calcHours(lessonRecord, 'private', 'no', currentDate.monthNumber, currentDate.year)
-        const privateNotPaidMoney = calcMoney(lessonRecord, 'private', 'no', currentDate.monthNumber, currentDate.year)
-
-        const specialPaidHours = calcHours(lessonRecord, 'special', 'yes', currentDate.monthNumber, currentDate.year)
-        const specialPaidMoney = calcMoney(lessonRecord, 'special', 'yes', currentDate.monthNumber, currentDate.year)
-        const specialNotPaidHours = calcHours(lessonRecord, 'special', 'no', currentDate.monthNumber, currentDate.year)
-        const specialNotPaidMoney = calcMoney(lessonRecord, 'special', 'no', currentDate.monthNumber, currentDate.year)
-        updateTotalValues({schoolPaidHours, schoolPaidMoney, schoolNotPaidHours, schoolNotPaidMoney,
-                            privatePaidHours, privatePaidMoney, privateNotPaidHours, privateNotPaidMoney,
-                                specialPaidHours, specialPaidMoney, specialNotPaidHours, specialNotPaidMoney})
+    const getMonthCalculations = () => {
+        const results = handleCalculations(lessonRecord, currentDate);
+        updateTotalValues(results);
     }
 
 
@@ -53,7 +39,7 @@ const Record: React.FC = () => {
         <>
         <Header></Header>
         <main className='record__container'>
-            <div className='filters__container'></div>
+            <Filters></Filters>
             <section className='month-ref__container'>
                 <div className='month-title__container'>
                     <span>{currentDate.monthName}</span>
@@ -95,7 +81,7 @@ const Record: React.FC = () => {
                         </div>
                     </li>
                     <li className='calcs-button__list-item'>
-                        <button className='calculations__button' onClick={handleCalculations}>CALCULAR TOTALES</button>
+                        <button className='calculations__button' onClick={getMonthCalculations}>CALCULAR TOTALES</button>
                     </li>
                 </ul>
             </section>

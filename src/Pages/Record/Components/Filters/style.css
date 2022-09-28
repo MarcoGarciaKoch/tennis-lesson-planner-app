@@ -1,0 +1,42 @@
+.filters__container {
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #4d4dbd54;
+    border-radius: 5px;
+}
+
+.date-filter__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0px 10px 15px;
+}
+
+.date-filter__form label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: #ffffff;
+    font-size: 0.6rem;
+}
+
+.date-filter__form input {
+    width: 100px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: #d3d2d2;
+    color: #424271;
+}
+
+.date-filter__form button {
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #d3d2d2;
+    color: #424271;
+    font-weight: 700;
+}

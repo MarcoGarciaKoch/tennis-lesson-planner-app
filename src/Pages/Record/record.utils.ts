@@ -1,4 +1,5 @@
 import { LessonData } from "../Dashboard/dashboard.model";
+import { CurrentDate } from "./record.model";
 
 export const monthDays = [
     31,
@@ -16,8 +17,31 @@ export const monthDays = [
 ]
 
 
+//Function that handles all the calculations for the different lesson types and returns and object with all the calculated data
+export const handleCalculations = (lessons:LessonData[], currentDate:CurrentDate) => {
+    const schoolPaidHours = calcHours(lessons, 'school', 'yes', currentDate.monthNumber, currentDate.year)
+    const schoolPaidMoney = calcMoney(lessons, 'school', 'yes', currentDate.monthNumber, currentDate.year)
+    const schoolNotPaidHours = calcHours(lessons, 'school', 'no', currentDate.monthNumber, currentDate.year)
+    const schoolNotPaidMoney = calcMoney(lessons, 'school', 'no', currentDate.monthNumber, currentDate.year)
+
+    const privatePaidHours = calcHours(lessons, 'private', 'yes', currentDate.monthNumber, currentDate.year)
+    const privatePaidMoney = calcMoney(lessons, 'private', 'yes', currentDate.monthNumber, currentDate.year)
+    const privateNotPaidHours = calcHours(lessons, 'private', 'no', currentDate.monthNumber, currentDate.year)
+    const privateNotPaidMoney = calcMoney(lessons, 'private', 'no', currentDate.monthNumber, currentDate.year)
+
+    const specialPaidHours = calcHours(lessons, 'special', 'yes', currentDate.monthNumber, currentDate.year)
+    const specialPaidMoney = calcMoney(lessons, 'special', 'yes', currentDate.monthNumber, currentDate.year)
+    const specialNotPaidHours = calcHours(lessons, 'special', 'no', currentDate.monthNumber, currentDate.year)
+    const specialNotPaidMoney = calcMoney(lessons, 'special', 'no', currentDate.monthNumber, currentDate.year)
+    return {schoolPaidHours, schoolPaidMoney, schoolNotPaidHours, schoolNotPaidMoney,
+                        privatePaidHours, privatePaidMoney, privateNotPaidHours, privateNotPaidMoney,
+                            specialPaidHours, specialPaidMoney, specialNotPaidHours, specialNotPaidMoney}
+}
+
+
+
 // Function that calculates the hours worked (output), based on the lesson type, if those are paid or not and month and year to take into account (inputs)
-export const calcHours = (lessons:LessonData[], lessonType:string, paid:string, month:number, year:number) => {
+const calcHours = (lessons:LessonData[], lessonType:string, paid:string, month:number, year:number) => {
     const parsedMonth = month < 10 ? '0' + month : month.toString();
 
     const currentMonthLessons = lessons
@@ -39,7 +63,7 @@ export const calcHours = (lessons:LessonData[], lessonType:string, paid:string, 
 
 
 // Function that calculates the money earned (output), b    ased on the lesson type, if it is paid or not and month and year to take into account (inputs)
-export const calcMoney = (lessons:LessonData[], lessonType:string, paid:string, month:number, year:number) => {
+const calcMoney = (lessons:LessonData[], lessonType:string, paid:string, month:number, year:number) => {
     const parsedMonth = month < 10 ? '0' + month : month.toString();
 
     const currentMonthLessons = lessons
