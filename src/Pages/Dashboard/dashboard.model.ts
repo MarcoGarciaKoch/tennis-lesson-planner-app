@@ -1,5 +1,5 @@
 
-export type LessonData = {
+export interface LessonData {
     id: string;
     date: string;
     startTime: string;
@@ -9,11 +9,11 @@ export type LessonData = {
     paid: string;
     type: string;
     players: string;
-    club: string
+    club: string;
 }
 
-export type AlertMessageData = {
+export interface AlertMessageData {
     id:string;
     show:boolean;
-    action:string
+    action:string;
 }

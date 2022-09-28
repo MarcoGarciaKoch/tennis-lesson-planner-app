@@ -15,7 +15,7 @@ const Header: React.FC = () => {
     return (
         <nav className='nav__container'>
             <div className='logo nav-logo' onClick={() => navigate('/dashboard')}></div>
-            <h1 className='nav_title'>Tennis Lesson Planner</h1>
+            <h1 className='nav_title' onClick={() => navigate('/dashboard')}>Tennis Lesson Planner</h1>
             <section className='languages-logout-buttons__container'>
                 <Multilanguage></Multilanguage>
                 <div className='logo logout-logo' onClick={handleLogout}></div>
