@@ -9,11 +9,15 @@ import AlertMessage from '../Dashboard/Components/AlertMessage';
 import { CurrentDate, TotalCalcValues } from './record.model'
 import { handleCalculations } from './record.utils';
 import Filters from './Components/Filters';
+import PdfGenerator from './Components/PdfGenerator';
+
+
 
 const Record: React.FC = () => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ currentDate, updateCurrentDate ] = useState<CurrentDate>({monthNumber:0, monthName:'', year:0});
     const [ isTotalVisible, updateIsTotalVisible ] = useState<boolean>(false);
+    const [ createPDF, updateCreatePDF] = useState(false);
     const [ totalValues, updateTotalValues] = useState<TotalCalcValues>({schoolPaidHours:0, schoolPaidMoney:0, schoolNotPaidHours:0,
                                                                         schoolNotPaidMoney:0, privatePaidHours:0, privatePaidMoney:0,
                                                                         privateNotPaidHours: 0, privateNotPaidMoney:0, specialPaidHours:0, 
@@ -82,6 +86,7 @@ const Record: React.FC = () => {
                     </li>
                     <li className='calcs-button__list-item'>
                         <button className='calculations__button' onClick={getMonthCalculations}>CALCULAR TOTALES</button>
+                        <button onClick={() => updateCreatePDF(!createPDF)}>Exportar PDF</button>
                     </li>
                 </ul>
             </section>
@@ -89,6 +94,7 @@ const Record: React.FC = () => {
                 <MonthDay key={i} dayOfMonth={dayOfMonth} currentDate={currentDate}></MonthDay>
             ))}
             <AlertMessage></AlertMessage>
+            <PdfGenerator currentDate={currentDate} createPDF={createPDF}></PdfGenerator>
         </main>
         <Footer></Footer>
         </>

@@ -31,6 +31,7 @@
             "messageOne": "There are no lessons created to preview yet.",
             "messageTwo": "To register your first lesson, press the button above and complete the required fields.",
             "messageThree": "Once the lesson is created, you will see it in your dashboard.",
+            "greetings": "Welcome",
             "pending": "Pending Lessons To Get Paid",
             "paid": "Paid Lessons ( 7 most recent )"
         },

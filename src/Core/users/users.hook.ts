@@ -1,6 +1,6 @@
 import { LessonData, AlertMessageData } from "../../Pages/Dashboard/dashboard.model"
 import { useState } from "react";
-import { registerNewLessonAPI, getLessonsListAPI, updateLessonAPI, deleteLessonAPI } from "./users.api";
+import { registerNewLessonAPI, getUserDataAPI, updateLessonAPI, deleteLessonAPI } from "./users.api";
 
 
 
@@ -19,11 +19,11 @@ import { registerNewLessonAPI, getLessonsListAPI, updateLessonAPI, deleteLessonA
 export const useUsers = () => {
     const [isLoading, updateIsLoading] = useState<boolean>(false);
 
-    const getLessonList = async () => {
+    const getUserData = async () => {
         updateIsLoading(true); // loading mode on
-        const lessons = getLessonsListAPI();
+        const userData = getUserDataAPI();
         updateIsLoading(false); // When API call finishes, loading mode off
-        return lessons;
+        return userData;
     }
     
     const registerNewLesson = async (lesson:LessonData) => {
@@ -49,7 +49,7 @@ export const useUsers = () => {
 
     return {
         isLoading,
-        getLessonList,
+        getUserData,
         registerNewLesson,
         updateLesson,
         deleteLesson

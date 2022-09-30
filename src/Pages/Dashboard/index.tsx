@@ -2,7 +2,7 @@ import './style.css';
 import { LessonData } from './dashboard.model';
 import LessonCreator from './Components/LessonCreator';
 import Lessons from './Components/Lessons';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LessonRecordContext } from '../../Context/LessonRecord/lessonRecord.context';
 import AlertMessage from './Components/AlertMessage';
 import Header from '../../SharedComponents/Header';
@@ -15,12 +15,14 @@ import { useUsers } from '../../Core/users/users.hook';
 
 const Dashboard: React.FC = () => {
     const { lessonRecord, updateLessonRecord } = useContext(LessonRecordContext);
-    const { getLessonList } = useUsers()
+    const [ userNameLastname, updateUserNameLastname ] = useState<string[]>([])
+    const { getUserData } = useUsers()
     const navigate = useNavigate();
     const [t] = useTranslation('translation');
 
     useEffect(() => {
-        getLessonList().then((r:{lessons:LessonData[]}) => {
+        getUserData().then((r:{name:string, lastname:string, lessons:LessonData[]}) => {
+            updateUserNameLastname([r.name, r.lastname])
             //call 'sortLessons function to sort the lesson array in ascending order by date
             const sortedLessonArray = sortLessons(r.lessons);
             updateLessonRecord(sortedLessonArray);
@@ -32,6 +34,7 @@ const Dashboard: React.FC = () => {
         <>
         <Header></Header>
         <main className='dashboard__container'>
+            <div className='user-welcome__title'>{t('specific.dashboard.greetings')} <span>{`${userNameLastname[0]} ${userNameLastname[1]}`}</span></div>
             <section className='lesson-creator-record__container'>
                 <LessonCreator></LessonCreator>
                 <div className='record-logo' onClick={() => navigate('/record')}></div>
