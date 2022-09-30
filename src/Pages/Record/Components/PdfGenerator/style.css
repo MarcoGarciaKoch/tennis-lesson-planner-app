@@ -1,0 +1,7 @@
+
+.pdf__container {
+    display: flex;
+    gap: 30px;
+    width: 95%;
+    background-color: #ffffff;
+}

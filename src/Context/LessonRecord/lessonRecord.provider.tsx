@@ -6,15 +6,15 @@ import { useUsers } from "../../Core/users/users.hook";
 
 const LessonRecordProvider: React.FC<{children:ReactNode}> = ({children}) => {
     const [lessonRecord, updateLessonRecord] = useState<LessonData[]>([lessonDataInitialValues]);
-    const { getLessonList } = useUsers();
+    const { getUserData } = useUsers();
 
     useEffect(() => {
-        getLessonList().then((r:{lessons:LessonData[]}) => {
+        getUserData().then((r:{_name:string, _lastname:string, lessons:LessonData[]}) => {
             //call 'sortLessons function to sort the lesson array in ascending order by date
             const sortedLessonArray = sortLessons(r.lessons);
             updateLessonRecord(sortedLessonArray);
         })
-    },[getLessonList, lessonRecord])
+    },[getUserData, lessonRecord])
 
     return (
         <LessonRecordContext.Provider value={{lessonRecord, updateLessonRecord}}>

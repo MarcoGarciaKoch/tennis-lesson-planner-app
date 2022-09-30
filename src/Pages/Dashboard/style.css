@@ -22,6 +22,20 @@
     opacity: 0.2;
 }
 
+.user-welcome__title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-top: 15px;
+    margin-left: 20px;
+    align-self: flex-start;
+}
+
+.user-welcome__title span {
+    font-weight: 500;
+    
+}
+
 .lesson-creator-record__container {
     position: relative;
     width: 100%;
@@ -29,7 +43,7 @@
 
 .record-logo {
     position: absolute;
-    top: 46px;
+    top: 16px;
     right: 0;
     margin-right: 20px;
     width: 28px;

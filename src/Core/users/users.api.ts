@@ -14,8 +14,8 @@ const generateUsersRequest = (data:LessonData | AlertMessageData, methodType:str
 )
 
 
-export const getLessonsListAPI = async () => {
-    const r = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/lessonsList`, wrapUsingAuth());
+export const getUserDataAPI = async () => {
+    const r = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/userData`, wrapUsingAuth());
     return await r.json();
 }
 

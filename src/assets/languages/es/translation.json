@@ -31,6 +31,7 @@
             "messageOne": "No hay ninguna clase creada todavía.",
             "messageTwo": "Para registrar tu primera clase, presiona el botón de arriba y completa los campos requeridos.",
             "messageThree": "Una vez la clase se haya creado, podrás visualizarla en tu panel.",
+            "greetings": "Bienvenido",
             "pending": "Clases Pendientes de Pago",
             "paid": "Clases Pagadas ( 7 más recientes )"
         },

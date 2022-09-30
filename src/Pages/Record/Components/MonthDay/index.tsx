@@ -10,8 +10,8 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 const MonthDay: React.FC<{dayOfMonth:number, currentDate:CurrentDate}> = ({dayOfMonth, currentDate}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ isDailyVisible, updateIsDailyVisible] = useState<boolean>(false);
-    
 
+    
     return (
         lessonRecord.filter((l:LessonData) =>
             parseInt(l.date.split('-')[1]) === currentDate.monthNumber &&
