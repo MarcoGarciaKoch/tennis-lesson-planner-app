@@ -9,28 +9,32 @@ import { jsPDF } from 'jspdf';
 
 
 
-const PdfGenerator: React.FC<{currentDate:CurrentDate, createPDF:boolean}> = ({currentDate, createPDF}) => {
+const PdfGenerator: React.FC<{currentDate:CurrentDate, createPDF:boolean, onUpdateCreatePdf:(value:boolean)=>void}> = ({currentDate, createPDF, onUpdateCreatePdf}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const printRef = useRef(null);
 
     useEffect(() => {
-        const generatePDF = async (ref:any) => {
         if(createPDF) { 
-                const element = ref;
-                const canvas = await html2canvas(element!);
-                const data = canvas.toDataURL('image/png');
-
-                const pdf = new jsPDF();
-                const imgProperties = pdf.getImageProperties(data);
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight =
-                (imgProperties.height * pdfWidth) / imgProperties.width;
-
-                pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('print.pdf');
+                const element = printRef.current!;
+                html2canvas(element)
+                .then(canvas => {
+                    // canvas.style.height = '1200px';
+                    // canvas.height = 1200
+                    console.log(canvas)
+                    const data = canvas.toDataURL('image/png');
+                    
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const imgProperties = pdf.getImageProperties(data)!;
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight =
+                    (imgProperties.height * pdfWidth) / imgProperties.width;
+    
+                    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    pdf.save(`Clases${currentDate.monthName}.pdf`);
+                })
+                onUpdateCreatePdf(false)
             }
-        }
-            generatePDF(printRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[createPDF])
 
 
