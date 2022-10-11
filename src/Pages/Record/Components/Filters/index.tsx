@@ -41,8 +41,9 @@ const Filters: React.FC = () => {
                     Fecha Fin
                     <input type="date" name='finishDate' placeholder='dd/mm/aaaa' required/>
                 </label>
-                <button type='submit'>BUSCAR</button>
+                <button className='search__button' type='submit'>BUSCAR</button>
             </form>
+            <button className='delete-filters__button' type='button'>BORRAR FILTROS</button>
            </section>
            <section>
             Resto de filtros
