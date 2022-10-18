@@ -1,3 +1,26 @@
 .app__container {
     min-height: 100vh;
 }
+
+/* .app__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 75px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #090943aa;
+}
+
+.app__container::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./assets/images/court.png');
+    background-size: 21%;
+    background-position: center;
+    z-index: -10;
+    opacity: 0.2;
+} */

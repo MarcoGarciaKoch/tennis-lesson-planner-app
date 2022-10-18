@@ -7,7 +7,31 @@
     gap: 75px;
     width: 100vw;
     height: 100vh;
-    background-color: #090943aa;
+    background: linear-gradient(
+        145deg,
+        #000066d7 0%,
+        #34006bd7 15%,
+        #50006bd7 24%,
+        #68006bd7 31%,
+        #80006ad7 37%,
+        #940068d7 42%,
+        #a30062d7 47%,
+        #b8005fd7 51%,
+        #c7005ad7 54%,
+        #d60056d7 58%,
+        #e4014dd7 61%,
+        #ef2a47d7 64%,
+        #f83f3fd7 67%,
+        #ff5638d7 70%,
+        #ff692ed7 73%,
+        #ff7b24d7 76%,
+        #ff8e14d7 79%,
+        #ffa200d7 82%,
+        #ffb300d7 86%,
+        #ffc800d7 89%,
+        #ffd900d7 94%,
+        #ffea00d7 100%
+);
 }
 
 .login-main__container::before {
@@ -19,7 +43,7 @@
     background-size: 21%;
     background-position: center;
     z-index: -10;
-    opacity: 0.2;
+    opacity: 0.4;
 }
 
 .login-title-logo__container {
@@ -78,12 +102,21 @@
     flex-direction: column;
     gap: 20px;
     width: 50%;
+    padding: 30px;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.0px);
+    -webkit-backdrop-filter: blur(3.0px);
+    border: 1px solid rgba(255, 255, 255, 0.19);
 }
 
 .login-form label {
     color: #ffffff;
     font-weight: 600;
     font-style: oblique;
+    z-index: 10;
 }
 
 .login-form input {
