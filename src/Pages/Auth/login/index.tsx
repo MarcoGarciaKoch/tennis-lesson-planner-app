@@ -12,7 +12,7 @@ import Multilanguage from '../../../SharedComponents/Multilanguage';
 const Login: React.FC = () => {
     const { isAuth, isLoading, login } = useAuth()
     const navigate = useNavigate();
-    const [isMessageVisible, updateIsMessageVisible] = useState<boolean>(true)
+    const [isMessageVisible, updateIsMessageVisible] = useState<boolean>(false)
     const [displayedMessageOne, updateDisplayedMessageOne] = useState<string>('');
     const [displayedMessageTwo, updateDisplayedMessageTwo] = useState<string>('');
     const [t] = useTranslation('translation');
