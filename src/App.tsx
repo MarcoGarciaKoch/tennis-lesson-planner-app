@@ -9,6 +9,7 @@ import AlertMessageCallProvider from './Context/AlertMessageCall/alertMessageCal
 import Register from './Pages/Auth/register';
 import Validate from './Pages/Auth/validate';
 import RequireAuth from './Core/auth/auth.component';
+import NotFound from './Pages/NotFound';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>} />
             <Route path='/record' element={<RequireAuth><Record /></RequireAuth>} />
             <Route path='/attributions'  element={<RequireAuth><Attributions /></RequireAuth>} />
+            <Route path='*' element={<NotFound></NotFound>} />
           </Routes>
         </BrowserRouter>
         </AlertMessageCallProvider>

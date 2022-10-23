@@ -5,14 +5,14 @@
     align-items: center;
     width: 27px;
     height: 27px;
-    background-color: #cfc9c9;
+    background-color: #dcdcdc;
     color: #3333bd;
     border: solid 1px #8d8c8c;
     border-radius: 50%;
     font-size: 0.9rem;
     font-weight: 900;
-    top: -5px;
-    left: -5px;
+    top: -7px;
+    left: -7px;
 }
 
 .icon-select {

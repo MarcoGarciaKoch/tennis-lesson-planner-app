@@ -48,6 +48,7 @@ const Login: React.FC = () => {
             <section className='login-title-logo__container'>
                 <div className='login-logo'></div>
                 <h1 className='login-title'>Tennis Lesson Planner</h1>
+                <Multilanguage></Multilanguage>
             </section>
             <section className={`login-message__container ${isMessageVisible ? 'login-message-visible' : ''}`}>
                 <p>{displayedMessageOne}</p>
@@ -67,7 +68,6 @@ const Login: React.FC = () => {
             <h4 className='login-create-account-link'>
                 {t('specific.login.account')} <span onClick={() => navigate('/register')}>{t('specific.login.here')}</span>
             </h4>
-            <Multilanguage></Multilanguage>
             {isLoading ? <LoadingSpinner loading={isLoading}></LoadingSpinner> : ''}
         </main>
     )

@@ -1,27 +1,27 @@
 
-main {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-}
 
 .card__container {
+    position: relative;
+    width: 87%;
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 90%;
     padding: 5px;
+
+    /* background: #ffffff1a; */
+    box-shadow: 0 4px 30px #0000001a;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     border-radius: 10px;
-    box-shadow: 1px 1px 1px #656464;
-    position: relative;
+    border: 1px solid #ffffff30;
 }
 
 .pending {
-    background-color: #e2a175;
+    background-color: #fca76e83;
 }
 
 .paid {
-    background-color: #7fb778;
+    background-color: #8cee7f83;
 }
 
 .time__container, .price-players-club__container {
@@ -35,45 +35,43 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 5px;
-    color: #61370e;
+    color: #ffffff86;
     font-size: 0.8rem;
     font-weight: 600;
     width: 30%;
 }
-
-/* .time__container input, .price-players-club__container input, .price-players-club__container textarea {
-    border-top: dashed 1px #61370e;
-} */
 
 label input, textarea {
     width: 100%;
     word-wrap: break-word;
     text-align: center;
     border: none;
-    color: #61370e;
+    color: #ffffff;
     font-size: 0.8rem;
     font-weight: 900;
     resize: none;
 }
 
 .pending__container label input, .pending__container label textarea {
-    background-color: #e2a175;
+    background: none;
 }
 
 .paid__container label input, .paid__container label textarea {
-    background-color: #7fb778;
+    background: none;
 }
 
 .pending-editable label input, .pending-editable label textarea {
     border: solid 1px #d97f43;
     background-color: #e1bfa8;
     border-radius: 5px;
+    color: #ffffffef;
 }
 
 .paid-editable label input, .paid-editable label textarea {
     border: solid 1px #57b04b;
     background-color: #aacfa5;
     border-radius: 5px;
+    color: #ffffffef;
 }
 
 .buttons__container {
@@ -140,23 +138,23 @@ label input, textarea {
     position: absolute;
     font-size: 0.7rem;
     font-weight: 600;
-    bottom: -9px;
-    left: 47%;
+    bottom: -11px;
+    align-self: center;
 }
 
 .arrow-display-close {
     position: absolute;
     font-size: 0.7rem;
     font-weight: 600;
-    top: -9px;
-    left: 47%;
+    top: -11px;
+    align-self: center;
     transform: rotate(180deg);
 }
 
 .arrow-pending {
-    color: #e2a175;
+    color: #fca76e83;
 }
 
 .arrow-paid {
-    color: #7fb778;
+    color: #8cee7f83;
 }

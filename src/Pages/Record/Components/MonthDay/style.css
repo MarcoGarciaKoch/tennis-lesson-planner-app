@@ -6,12 +6,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #d8c4a7;
     color: #3a4a4a;
     font-size: 0.8rem;
     font-weight: 700;
     padding: 5px;
     border-radius: 5px;
+
+    background-color: #ffffff61;
+    box-shadow: 0 4px 30px #0000001a;
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    border-radius: 10px;
+    border: 1px solid #ffffff30;
 }
 
 .monthday-qty__container {
@@ -40,5 +46,5 @@
 .lesson-list__container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 2px;
 }
