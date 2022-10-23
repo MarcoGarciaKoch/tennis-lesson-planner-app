@@ -1,16 +1,34 @@
+/* .app__container {
+    min-height: 100vh;
+} */
+
 .app__container {
     min-height: 100vh;
-}
-
-/* .app__container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 75px;
-    width: 100vw;
-    height: 100vh;
-    background-color: #090943aa;
+    /* background: linear-gradient(
+        145deg,
+        #01017ad7 0%,
+        #370171d7 20%,
+        #50006bd7 29%,
+        #68006bd7 36%,
+        #80006ad7 42%,
+        #940068d7 47%,
+        #a30062d7 52%,
+        #b8005fd7 56%,
+        #c7005ad7 59%,
+        #d60056d7 63%,
+        #e4014dd7 66%,
+        #ef2a47d7 69%,
+        #f83f3fd7 72%,
+        #ff5638d7 75%,
+        #ff692ed7 78%,
+        #ff7b24d7 81%,
+        #ff8e14d7 84%,
+        #ffa200d7 87%,
+        #ffb300d7 91%,
+        #e5b301d7 100%
+); */
+/* background-image: linear-gradient(145deg, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%); */
+background-image: linear-gradient(320deg, #243949f0 20%, #517fa4e9 70%);
 }
 
 .app__container::before {
@@ -22,5 +40,5 @@
     background-size: 21%;
     background-position: center;
     z-index: -10;
-    opacity: 0.2;
-} */
+    opacity: 0.65;
+}

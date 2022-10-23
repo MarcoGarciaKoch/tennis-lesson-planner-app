@@ -44,8 +44,11 @@
             "no" : "NO"
         },
         "lessonCreator" : {
-            "register" : "Registra una Nueva Clase",
+            "register" : "Registrar Nueva Clase",
             "dismiss" : "Descartar",
+            "date": "Fecha",
+            "start": "Hora de comienzo",
+            "finish": "Hora de finalización",
             "rate" : "Tarifa Hora",
             "type" : "Tipo",
             "school" : "Escuela",

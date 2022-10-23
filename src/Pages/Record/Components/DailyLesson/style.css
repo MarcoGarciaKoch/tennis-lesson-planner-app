@@ -4,9 +4,13 @@
     width: 85vw;
     display: flex;
     margin: 5px auto;
-    background-color: #dbaf6c;
-    border: solid 1px #db9a39;
-    border-radius: 5px;
+
+    background-color: #ffffff00;
+    box-shadow: 0 4px 30px #0000001a;
+    backdrop-filter: blur(0.1px);
+    -webkit-backdrop-filter: blur(0.1px);
+    border-radius: 10px;
+    border: solid 1px #cecece;
 }
 
 .daily-lesson-non-visible {
@@ -26,8 +30,9 @@
     width: 70%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-top: 20px;
+    gap: 3px;
+    margin-top: 8px;
+    margin-bottom: 10px;
     padding-left: 5px;
 }
 
@@ -41,21 +46,25 @@
     display: flex;
     gap: 3px;
     margin-left: 5px;
+    height: 25px;
 }
 
-.daily-details__container select, .daily-details__container textarea {
+.daily-details__container select, .daily-details__container textarea, .daily-details__container textarea {
     font-weight: 600;
-    margin-block: 1px;
-    background-color: #dbaf6c;
+    background: none;
     color: #683c10;
     text-align: left;
     margin: 0px;
     box-shadow: none;
 }
 
+.players-textarea {
+    height: 28px;
+}
+
 .editable-daily-details__container textarea, .editable-daily-details__container select   {
-    border: solid 1px #d97f43;
-    background-color: #e1bfa8;
+    border: solid 1px #aeaeae;
+    background-color: #ffffff7f;
     border-radius: 5px;
 }
 
@@ -83,7 +92,7 @@
 .lesson-select-ispaid {
     width: 150px;
     height: 26px;
-    background-color: #dbaf6c;
+    background: none;
     font-weight: 200;
     padding-top: 1px;
 }

@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { LessonData } from '../../Pages/Dashboard/dashboard.model';
 
 
-export const lessonDataInitialValues = {
+export const lessonDataInitialValues:LessonData = {
     id: '',
     date: '',
     startTime: '',

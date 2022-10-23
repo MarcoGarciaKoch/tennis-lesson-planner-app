@@ -8,14 +8,13 @@
 }
 
 .register-lesson__button {
-    width: 65%;
+    width: 57%;
     height: 40px;
-    margin-bottom: 20px;
     border: none;
     border-radius: 10px;
-    background-color: #bebcbc;
-    color: #61370e;
-    font-size: 0.9rem;
+    background-color: #dcdcdcee;
+    color: #61370ef0;
+    font-size: 0.8rem;
     font-weight: 900;
 }
 
@@ -67,36 +66,45 @@
     }
 }
 
-.form__container input, select {
-    width: 50%;
-    height: 30px;
+.label-input__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 45%;
+}
+
+.input-title{
+    color: #ffffff;
+    align-self: flex-start;
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+.label-input__container input, .register-select {
+    height: 27px;
     padding: 0px 5px;
     border: none;
     box-shadow: 1px 1px 2px #333333;
     border-radius: 5px;
     font-size: 0.9rem;
-    color: #61370e;
+    color: #61370eea;
     font-weight: 600;
-    background-color: #d8d5d5;
+    background-color: #dcdcdcee;
 }
 
-.form__container input::placeholder {
-    color: #61370e;
-    font-weight: 600;
+.label-input__container input {
+    width: 95%;
 }
 
-.paid-label, .type-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 52%;
-    font-size: 0.9rem;
-    color: #ffffff;
-}
-
-.paid-label select, .type-label select {
+.register-select {
     width: 100%;
 }
+
+/* .form__container input::placeholder {
+    color: #61370e;
+    font-weight: 600;
+} */
 
 #SUBMIT {
     display: flex;
@@ -109,7 +117,7 @@
     box-shadow: 1px 5px 5px #333333c1;
     font-size: 0.7rem;
     font-weight: 900;
-    color: #333333c7;
+    color: #61370eea;
     background-image: url('../../../../assets/images/tennis-ball-submit-button.png');
     background-repeat: no-repeat;
     background-size: 117%;

@@ -44,25 +44,45 @@ const LessonCreator: React.FC = () => {
                 {isFormVisible ? t('specific.lessonCreator.dismiss') : t('specific.lessonCreator.register')}
             </button>
             <form className={isFormVisible ? 'form__container' : 'hidden-form__container'} onSubmit={createNewLesson}>
-                    <input type="date" name='date' placeholder='dd/mm/aaaa' required />
-                    <input type="time" name='startTime' placeholder='hh:mm' required/>
-                    <input type="time" name='finishTime' placeholder='hh:mm' required/>
-                    <input type="text" name='rate' placeholder={t('specific.lessonCreator.rate')} required/>
-                    <label className='type-label' htmlFor="TYPE">{t('specific.lessonCreator.type')}
-                        <select name="type" id="TYPE">
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.date')}</label>
+                        <input type="date" name='date' required />
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.start')}</label>
+                        <input type="time" name='startTime' required/>
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.finish')}</label>
+                        <input type="time" name='finishTime' required/>
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.rate')}</label>
+                        <input type="text" name='rate' required/>
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.type')}</label>
+                        <select name="type" id="TYPE" className='register-select'>
                             <option value="school">{t('specific.lessonCreator.school')}</option>
                             <option value="private">{t('specific.lessonCreator.private')}</option>
                             <option value="special">{t('specific.lessonCreator.special')}</option>
                         </select>
-                    </label>
-                    <input type="text" name='players' placeholder={t('specific.lessonCreator.players')}/>
-                    <input type="text" name='club' placeholder={t('specific.lessonCreator.club')}/>
-                    <label className='paid-label' htmlFor="PAID">{t('specific.lessonCreator.paid')}
-                        <select name="paid" id="PAID">
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.players')}</label>
+                        <input type="text" name='players' />
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title'>{t('specific.lessonCreator.club')}</label>
+                        <input type="text" name='club' />
+                    </div>
+                    <div className='label-input__container'>
+                        <label className='input-title' htmlFor="PAID">{t('specific.lessonCreator.paid')}</label>
+                        <select name="paid" id="PAID" className='register-select'>
                             <option value="no">{t('specific.lessonCreator.no')}</option>
                             <option value="yes">{t('specific.lessonCreator.yes')}</option>
                         </select>
-                    </label>
+                    </div>
                     <input id='SUBMIT' type="submit" value={'GO!'} />
             </form>
         </section>

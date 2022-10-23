@@ -4,46 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 45px;
+    gap: 50px;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(
-        145deg,
-        #000066d7 0%,
-        #34006bd7 15%,
-        #50006bd7 24%,
-        #68006bd7 31%,
-        #80006ad7 37%,
-        #940068d7 42%,
-        #a30062d7 47%,
-        #b8005fd7 51%,
-        #c7005ad7 54%,
-        #d60056d7 58%,
-        #e4014dd7 61%,
-        #ef2a47d7 64%,
-        #f83f3fd7 67%,
-        #ff5638d7 70%,
-        #ff692ed7 73%,
-        #ff7b24d7 76%,
-        #ff8e14d7 79%,
-        #ffa200d7 82%,
-        #ffb300d7 86%,
-        #ffc800d7 89%,
-        #ffd900d7 94%,
-        #ffea00d7 100%
-);
-}
-
-.login-main__container::before {
-    content: '';
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../../../assets/images/court.png');
-    background-size: 21%;
-    background-position: center;
-    z-index: -10;
-    opacity: 0.4;
 }
 
 .login-title-logo__container {
@@ -51,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 .login-title {
@@ -104,12 +67,12 @@
     width: 50%;
     padding: 30px;
     
-    background: #ffffff1a;
+    /* background: #ffffff1a;
     border-radius: 16px;
     box-shadow: 0 4px 30px #0000001a;
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
-    border: 1px solid #ffffff30;
+    border: 1px solid #ffffff30; */
 }
 
 .login-form label {

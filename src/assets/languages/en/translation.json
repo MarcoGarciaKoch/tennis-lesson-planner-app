@@ -44,8 +44,11 @@
             "no" : "NO"
         },
         "lessonCreator" : {
-            "register" : "Register a New Lesson",
+            "register" : "Register New Lesson",
             "dismiss" : "Dismiss",
+            "date": "Date",
+            "start": "Starting Time",
+            "finish": "Finishing Time",
             "rate" : "Hour Rate",
             "type" : "Type",
             "school" : "School",

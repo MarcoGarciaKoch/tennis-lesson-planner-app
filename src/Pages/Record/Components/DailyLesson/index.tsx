@@ -107,18 +107,19 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                         }
                     </label>
                     <label>
-                        <span>Jugadores: </span>
-                        <textarea  
-                            onChange={e => updatePlayersValue(e.target.value)} 
-                            value={playersValue}
-                            readOnly={!disableButton} 
-                            disabled={!disableButton} />
-                    </label>
-                    <label>
                         <span>Club: </span>
                         <textarea  
                             onChange={e => updateClubValue(e.target.value)} 
                             value={clubValue} 
+                            readOnly={!disableButton} 
+                            disabled={!disableButton} />
+                    </label>
+                    <label>
+                        <span>Jugadores: </span>
+                        <textarea  
+                            onChange={e => updatePlayersValue(e.target.value)} 
+                            className='players-textarea'
+                            value={playersValue}
                             readOnly={!disableButton} 
                             disabled={!disableButton} />
                     </label>
