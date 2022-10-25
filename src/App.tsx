@@ -9,7 +9,7 @@ import AlertMessageCallProvider from './Context/AlertMessageCall/alertMessageCal
 import Register from './Pages/Auth/register';
 import Validate from './Pages/Auth/validate';
 import RequireAuth from './Core/auth/auth.component';
-import NotFound from './Pages/NotFound';
+import NotFound from './Pages/NotFound/index';
 
 
 function App() {
