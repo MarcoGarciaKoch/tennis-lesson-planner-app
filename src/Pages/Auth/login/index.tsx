@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { getLoginMessage } from '../../../Core/auth/auth.utils';
 import { useTranslation } from 'react-i18next';
 import Multilanguage from '../../../SharedComponents/Multilanguage';
-
+import Ripples from 'react-ripples';
 
 const Login: React.FC = () => {
     const { isAuth, isLoading, login } = useAuth()
@@ -63,7 +63,12 @@ const Login: React.FC = () => {
                     {t('specific.login.password')}
                     <input type="password" name='password' id='PASSWORD' required/>
                 </label>
-                <input id='LOGIN' type="submit" value={t('specific.login.button')} disabled={isLoading} />
+                <div className='log-in-button__container'>
+                    <Ripples color='#517fa450'>
+                        <button id='LOGIN' disabled={isLoading}>{t('specific.login.button')}</button>
+                    </Ripples>
+                </div>
+                
             </form>
             <h4 className='login-create-account-link'>
                 {t('specific.login.account')} <span onClick={() => navigate('/register')}>{t('specific.login.here')}</span>

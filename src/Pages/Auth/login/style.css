@@ -90,9 +90,18 @@
     margin-top: 5px;
 }
 
-#LOGIN {
-    align-self: center;
+.log-in-button__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.react-ripples {
     width: 60%;
+}
+
+#LOGIN {
+    width: 100%;
     height: 30px;
     font-style: oblique;
     font-weight: 900;
