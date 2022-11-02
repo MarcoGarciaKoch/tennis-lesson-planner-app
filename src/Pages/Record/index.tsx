@@ -41,6 +41,9 @@ const Record: React.FC = () => {
                     <span>{currentDate.monthName}</span>
                     <button className='totals-button' onClick={() => updateIsTotalVisible(!isTotalVisible)}>
                         TOTAL MES
+                        <span 
+                            className='totals-button-arrow'
+                        >▽</span>
                     </button>
                 </div>
                 <MonthTotals isTotalVisible={isTotalVisible} currentDate={currentDate} onCreatePDF={sendIntructionToCreatePdf}></MonthTotals>
@@ -55,7 +58,5 @@ const Record: React.FC = () => {
         </>
     )
 }
-
-
 
 export default Record;

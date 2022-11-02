@@ -89,7 +89,9 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                             disabled={!disableButton} />
                 </label>
             </div>
-            <div className={`${displayFullLessonData ? 'price-players-club__container' : 'non-visible__container'}
+            {displayFullLessonData && (
+            <>
+            <div className={`price-players-club__container
                         ${lesson.paid === 'no' ? 'pending__container' : 'paid__container'} 
                         ${disableButton === true ? lesson.paid === 'no' ? 'pending-editable' : 'paid-editable' : ''}`
                         }>
@@ -122,7 +124,7 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                                 wrap='hard' />
                 </label>
             </div> 
-            <div className={displayFullLessonData ? 'buttons__container' : 'non-visible__container'}>
+            <div className='buttons__container'>
                 <button className={`button ${disableButton === false ? lesson.paid === 'no' ? 'pending-button' : 'paid-button' : 'innactive-move-button'}`} 
                         onClick={() => disableButton === false ? updateAlertParameters({id:lesson.id, show:true, action:'move'}) : ''}>
                             {lesson.paid === 'no' ? t('specific.lesson.buttonPaid') : t('specific.lesson.buttonPending')}
@@ -141,7 +143,9 @@ const Lessons: React.FC<{lesson:LessonData}> = ({lesson}) => {
                 `${lesson.paid === 'no'? 'arrow-pending' : 'arrow-paid'}
                 ${displayFullLessonData ? 'arrow-display-close' : 'arrow-display-open'}`
                 }
-            >▽</div>  
+            >▽</div> 
+            </>
+            )} 
         </main>
     )
     

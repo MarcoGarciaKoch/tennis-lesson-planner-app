@@ -32,12 +32,13 @@
     flex-direction: column;
     gap: 3px;
     margin-top: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     padding-left: 5px;
 }
 
 .daily-details__container span {
     font-weight: 900;
+    font-size: 0.7rem;
     color: #46465e;
     margin-top: 1px;
 }
@@ -47,15 +48,17 @@
     gap: 3px;
     margin-left: 5px;
     height: 25px;
+    font-size: 0.7rem;
 }
 
 .daily-details__container select, .daily-details__container textarea, .daily-details__container textarea {
     font-weight: 600;
     background: none;
-    color: #683c10;
+    color: #46465e;
     text-align: left;
     margin: 0px;
     box-shadow: none;
+    font-size: 0.7rem;
 }
 
 .players-textarea {
@@ -73,16 +76,16 @@
     margin-block-end: 0em;
     width: 150px;
     margin-right: 7px;
-    color: #683c10;
+    color: #46465e;
     font-weight: 600;
 }
 
 .hyphen-container {
-    margin-right: 12px;
+    margin-right: 5px;
 }
 
 .lesson-time {
-    width: 50px;
+    width: 40px;
 }
 
 .lesson-price {
@@ -102,20 +105,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .daily-buttons {
-    width: 60px;
-    height: 25px;
+    width: 50px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: #ddd3d3;
     border-radius: 5px;
     border: none;
     box-shadow: 1px 1px 2px #7c7c7c;
+    cursor: pointer;
 }
 
 .daily-buttons:active {

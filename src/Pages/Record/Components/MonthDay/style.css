@@ -28,6 +28,8 @@
 .day-lesson-title {
     width: 90%;
     color: #505080;
+    cursor: pointer;
+    font-size: 0.75rem;
 }
 
 .day-lessons-qty {

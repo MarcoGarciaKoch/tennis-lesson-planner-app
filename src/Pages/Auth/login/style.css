@@ -108,6 +108,7 @@
     color: #61370e;
     border-radius: 7px;
     border: none;
+    cursor: pointer;
 }
 
 #LOGIN:active {
@@ -128,4 +129,5 @@
 .login-create-account-link span {
     font-size: 0.9rem;
     text-decoration: underline;
+    cursor: pointer;
 }

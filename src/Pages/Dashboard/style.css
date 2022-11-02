@@ -12,7 +12,7 @@
 
 .user-welcome__title {
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 300;
     margin-top: 15px;
     margin-left: 20px;
@@ -39,12 +39,14 @@
     background-image: url('../../assets/images/notes.png');
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .pending-lessons-title, .paid-lessons-title {
     align-self: center;
     font-size: 0.9rem;
     color: #ffffff;
+    font-size: 0.8rem;
 }
 
 .register-lesson-instrucctions {

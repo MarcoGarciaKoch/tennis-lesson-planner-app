@@ -23,6 +23,10 @@
     margin-left: 5px;
 }
 
+.footer-attributions {
+    cursor: pointer;
+}
+
 .github-info__container {
     display: flex;
     height: 20px;
