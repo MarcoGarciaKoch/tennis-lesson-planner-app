@@ -15,11 +15,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #cea76d;
     margin-top: 10px;
     margin-bottom: 3px;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 3px 5px;
+
+    background-color: #cea76ded;
+    box-shadow: 0 4px 30px #0000001a;
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
+    border-radius: 10px;
+    border: 1px solid #ffffff30;
 }
 
 .month-title__container {
@@ -29,7 +34,7 @@
     align-items: center;
     align-self: center;
     color: #424271;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 900;
     margin: 5px 0px;
 }
@@ -38,15 +43,20 @@
     padding: 2px 8px;
     background-color: #d3d2d2;
     color: #424271;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 900;
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 2px #898989;
+    cursor: pointer;
 }
 
 .totals-button:active {
     transform: scale(0.98);
     box-shadow: 1px 1px 2px #6d6c6c;
+}
+
+.totals-button-arrow {
+    margin-left: 2px;
 }
 

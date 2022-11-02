@@ -1,21 +1,39 @@
 .filters__container {
     width: 90vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
-    padding-bottom: 10px;
-    background-color: #4d4dbd37;
-    border-radius: 5px;
-    border: solid 1px #43438e;
+    border-radius: 10px;
 }
 
-.date-filter__form {
+.show-filters__button {
+    height: 30px;
+    width: 40%;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.7rem;
+    background-color: #3b6180e9;
+    box-shadow: 1px 1px 2px #3e617ee9;
+    border: solid 1px #457ca9e9;
+    border-radius: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+.filters-divider {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px;
+}
+
+.date-filter__form, .more-filters {
+    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 10px 0px 10px 15px;
+    margin: 5px 0px;
 }
 
 .date-filter__form label {

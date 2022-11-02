@@ -39,11 +39,12 @@ const LessonCreator: React.FC = () => {
     }
     
     return (
-        <section className='lesson-creator__container'>
+        <main className='lesson-creator__container'>
             <button className='register-lesson__button' onClick={() => updateIsFormVisible(!isFormVisible)}>
                 {isFormVisible ? t('specific.lessonCreator.dismiss') : t('specific.lessonCreator.register')}
             </button>
-            <form className={isFormVisible ? 'form__container' : 'hidden-form__container'} onSubmit={createNewLesson}>
+            {isFormVisible && (
+            <form className='form__container' onSubmit={createNewLesson}>
                     <div className='label-input__container'>
                         <label className='input-title'>{t('specific.lessonCreator.date')}</label>
                         <input type="date" name='date' required />
@@ -85,7 +86,8 @@ const LessonCreator: React.FC = () => {
                     </div>
                     <input id='SUBMIT' type="submit" value={'GO!'} />
             </form>
-        </section>
+            )}
+        </main>
     )
 }
 

@@ -54,8 +54,8 @@ const MonthTotals: React.FC<{isTotalVisible:boolean, currentDate:CurrentDate, on
                 </div>
             </li>
             <li className='calcs-button__list-item'>
-                <button className='calculations__button' onClick={getMonthCalculations}>CALCULAR TOTALES</button>
-                <button onClick={() => onCreatePDF(true)}>Exportar PDF</button>
+                <button className='month-total-button calculations__button' onClick={getMonthCalculations}>CALCULAR TOTALES</button>
+                <button className='month-total-button pdf-button' onClick={() => onCreatePDF(true)}>Exportar PDF</button>
             </li>
         </ul>
     )

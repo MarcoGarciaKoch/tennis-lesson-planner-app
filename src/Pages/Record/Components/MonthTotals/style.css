@@ -6,7 +6,9 @@
     justify-content: center;
     align-self: center;
     background-color: #d3d2d2;
-    border-radius: 5px;
+    border-radius: 10px;
+    border: 1px solid #ffffff30;
+    box-shadow: 0 4px 30px #0000001a;
     padding-inline-start: 0px;
 }
 
@@ -20,7 +22,7 @@
     justify-content:left;
     align-items: center;
     color: #555592;
-    font-size: 0.8rem;
+    font-size: 0.65rem;
     font-weight: 700;
     border-bottom: dotted 1px #a09f9f;
 }
@@ -28,12 +30,14 @@
 .lesson-calcs__list-item h4 {
     color: #424271;
     font-weight: 900;
+    font-size: 0.7rem;
     margin: 20px 17px 20px 15px;
 }
 
 .lesson-calcs__list-item span {
     color: #4f4f55;
     font-weight: 700;
+    font-size: 0.65rem;
 }
 
 .calcs-button__list-item {
@@ -43,14 +47,23 @@
     gap: 20px;
 }
 
-.calculations__button {
-    width: 50%;
+.month-total-button {
     height: 30px;
     color: #ffffff;
     font-weight: 700;
+    font-size: 0.6rem;
     background-color: #8383e1;
     box-shadow: 1px 1px 2px #6262aa;
     border: solid 1px #7a7ac7;
     border-radius: 5px;
     margin: 20px 0px;
+    cursor: pointer;
+}
+
+.calculations__button {
+    width: 50%;
+}
+
+.pdf-button {
+    width: 30%;
 }
