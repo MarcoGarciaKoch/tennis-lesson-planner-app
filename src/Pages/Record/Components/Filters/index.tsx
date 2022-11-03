@@ -7,14 +7,12 @@ import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonReco
 const Filters: React.FC = () => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [isFilterVisible, updateIsFilterVisible] = useState<boolean>(false);
+    const [filterStartDate, updateFilterStartDate] = useState<string>('');
+    const [filterFinishtDate, updateFilterFinishDate] = useState<string>('');
     
     
     // Function that gets the start and finish dates to filter lessons by given date.
-    const searchLessonsByDate = (e:React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-
-        const startDate = e.currentTarget.startDate.value.split('-');
-        const finishDate =  e.currentTarget.finishDate.value.split('-');
+    const searchLessonsByDate = () => {
 
         const dateDetails = [
             {
@@ -25,9 +23,6 @@ const Filters: React.FC = () => {
             }
         ]
 
-        console.log(startDate, finishDate)
-        
-        e.currentTarget.reset();
     }
 
     return (
@@ -36,21 +31,46 @@ const Filters: React.FC = () => {
                 FILTROS
             </button>
             {isFilterVisible && (
-            <section className='filters-divider'>
-                <form className='date-filter__form' onSubmit={searchLessonsByDate}>
-                    <label>
-                        Fecha Inicio
-                        <input type="date" name='startDate' placeholder='dd/mm/aaaa' required/>
-                    </label>
-                    <label>
-                        Fecha Fin
-                        <input type="date" name='finishDate' placeholder='dd/mm/aaaa' required/>
-                    </label>
-                    <button className='search__button' type='submit'>BUSCAR</button>
-                <button className='delete-filters__button' type='button'>BORRAR FILTROS</button>
-                </form>
-                <div className='more-filters'></div>
-            </section>
+                <main className='filter-buttons__divider'>
+                    <section className='filters-divider'>
+                        <div className='date-filter__container'>
+                            <label>
+                                Fecha Inicio
+                                <input 
+                                    onChange={(e) => updateFilterStartDate(e.target.value)}
+                                    value={filterStartDate}
+                                    type="date" 
+                                    name='startDate' 
+                                    placeholder='dd/mm/aaaa' 
+                                    required/>
+                            </label>
+                            <label>
+                                Fecha Fin
+                                <input 
+                                    onChange={(e) => updateFilterFinishDate(e.target.value)}
+                                    value={filterFinishtDate}
+                                    type="date" 
+                                    name='finishDate' 
+                                    placeholder='dd/mm/aaaa' 
+                                    required/>
+                            </label>
+                        </div>
+                        <div className='more-filters'></div>
+                    </section>
+                    <section className='buttons_container'>
+                        <button 
+                            onClick={searchLessonsByDate}
+                            className='search__button' 
+                            type='submit'
+                            >BUSCAR
+                        </button>
+                        <button 
+                            className='delete-filters__button' 
+                            type='button'
+                            >BORRAR FILTROS
+                        </button>
+                    </section>
+                </main>
             )}
         </main>
     )
