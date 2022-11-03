@@ -1,5 +1,5 @@
 import './style.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
 import { monthDays } from './record.utils';
@@ -9,10 +9,13 @@ import { CurrentDate } from './record.model'
 import Filters from './Components/Filters';
 import PdfGenerator from './Components/PdfGenerator';
 import MonthTotals from './Components/MonthTotals';
+import { LessonRecordContext } from '../../Context/LessonRecord/lessonRecord.context';
+import { LessonData } from '../Dashboard/dashboard.model';
 
 
 
 const Record: React.FC = () => {
+    const { lessonRecord } = useContext(LessonRecordContext) 
     const [ currentDate, updateCurrentDate ] = useState<CurrentDate>({monthNumber:0, monthName:'', year:0});
     const [ isTotalVisible, updateIsTotalVisible ] = useState<boolean>(false);
     const [createPdf, updateCreatePdf] = useState<boolean>(false);
