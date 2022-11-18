@@ -1,11 +1,10 @@
 import './style.css'
-import { useContext, useState } from 'react';
-import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
+import { useState } from 'react';
+import { FilteredDateData } from '../../record.model';
 
 
 
-const Filters: React.FC = () => {
-    const { lessonRecord } = useContext(LessonRecordContext);
+const Filters: React.FC<{onGetFilteredDate(filterdeDate:FilteredDateData):void}> = ({onGetFilteredDate}) => {
     const [isFilterVisible, updateIsFilterVisible] = useState<boolean>(false);
     const [filterStartDate, updateFilterStartDate] = useState<string>('');
     const [filterFinishtDate, updateFilterFinishDate] = useState<string>('');
@@ -13,15 +12,20 @@ const Filters: React.FC = () => {
     
     // Function that gets the start and finish dates to filter lessons by given date.
     const searchLessonsByDate = () => {
+        const startDateFilter = new Date(filterStartDate)
+        const finishDateFilter = new Date(filterFinishtDate)
 
-        const dateDetails = [
-            {
-                
-            },
-            {
+        const differenceInTime = finishDateFilter.getTime() - startDateFilter.getTime();
+        const differenceInDays = differenceInTime / (1000 * 3600 * 24)+1;
 
-            }
-        ]
+        onGetFilteredDate({
+            filterStartDate,
+            filterFinishtDate,
+            differenceInDays
+        })
+
+        updateFilterStartDate('');
+        updateFilterFinishDate('');
 
     }
 

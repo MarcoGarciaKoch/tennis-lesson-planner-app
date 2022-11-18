@@ -1,11 +1,11 @@
 import './style.css';
 import { useState, useContext } from 'react';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
-import { CurrentDate, TotalCalcValues } from '../../record.model';
+import { DateData, TotalCalcValues } from '../../record.model';
 import { handleCalculations } from '../../record.utils';
 
 
-const MonthTotals: React.FC<{isTotalVisible:boolean, currentDate:CurrentDate, onCreatePDF:(value:boolean) => void}> = ({isTotalVisible, currentDate, onCreatePDF}) => {
+const MonthTotals: React.FC<{isTotalVisible:boolean, date:DateData, onCreatePDF:(value:boolean) => void}> = ({isTotalVisible, date, onCreatePDF}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ totalValues, updateTotalValues] = useState<TotalCalcValues>({schoolPaidHours:0, schoolPaidMoney:0, schoolNotPaidHours:0,
         schoolNotPaidMoney:0, privatePaidHours:0, privatePaidMoney:0,
@@ -13,7 +13,7 @@ const MonthTotals: React.FC<{isTotalVisible:boolean, currentDate:CurrentDate, on
         specialPaidMoney:0, specialNotPaidHours:0, specialNotPaidMoney:0})
 
     const getMonthCalculations = () => {
-        const results = handleCalculations(lessonRecord, currentDate);
+        const results = handleCalculations(lessonRecord, date);
         updateTotalValues(results);
     }
 

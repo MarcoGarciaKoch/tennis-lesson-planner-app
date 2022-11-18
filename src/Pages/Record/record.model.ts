@@ -12,10 +12,16 @@ export interface DailyLessonData {
     club: string;
 }
 
-export interface CurrentDate {
+export interface DateData {
     monthNumber:number; 
     monthName:string;
     year: number;
+}
+
+export interface FilteredDateData {
+    filterStartDate:string,
+    filterFinishtDate:string,
+    differenceInDays:number
 }
 
 export interface TotalCalcValues {
@@ -32,3 +38,4 @@ export interface TotalCalcValues {
     specialNotPaidHours: number;
     specialNotPaidMoney: number;
 }
+

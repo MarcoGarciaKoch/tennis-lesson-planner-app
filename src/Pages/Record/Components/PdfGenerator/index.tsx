@@ -3,13 +3,13 @@ import { useContext, useEffect, useRef } from 'react';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
 import { LessonData } from '../../../Dashboard/dashboard.model';
 import PdfDailyLesson from './Components/PdfDailyLesson';
-import { CurrentDate } from '../../record.model';
+import { DateData } from '../../record.model';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
 
 
-const PdfGenerator: React.FC<{currentDate:CurrentDate, createPDF:boolean, onUpdateCreatePdf:(value:boolean)=>void}> = ({currentDate, createPDF, onUpdateCreatePdf}) => {
+const PdfGenerator: React.FC<{currentDate:DateData, createPDF:boolean, onUpdateCreatePdf:(value:boolean)=>void}> = ({currentDate, createPDF, onUpdateCreatePdf}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const printRef = useRef(null);
 
