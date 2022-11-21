@@ -16,6 +16,12 @@
     margin-left: 5px;
 }
 
+.hamburguer-button {
+    background-color: #ffffff00;
+    border: none;
+    z-index: 10;
+}
+
 .logo {
     background-size: contain;
     background-repeat: no-repeat;
@@ -102,11 +108,11 @@ menu {
 
 menu ul {
     list-style: none;
-    margin: 20px 15px;
+    margin: 30px 15px;
     padding: 0px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
 }
 
 menu ul li {

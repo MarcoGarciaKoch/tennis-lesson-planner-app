@@ -1,28 +1,34 @@
 import './style.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../Core/auth/auth.hook';
 import Multilanguage from '../Multilanguage';
+import { useTranslation } from 'react-i18next';
 import { HiMenu } from 'react-icons/hi';
 import { IoHome, IoFolderOpen } from 'react-icons/io5';
+import { AiOutlineClose } from 'react-icons/ai'
+
+
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
     const { logout } = useAuth();
     const [menuVisible, setMenuVisible] = useState(false);
+    const hamburgerBtnRef = useRef(null);
+    const [t] = useTranslation('translation');
 
+    useEffect(() => {
 
-    // useEffect(() => {
+        const closeMenu = (e:any) => {
+            if(e.path[2] !== hamburgerBtnRef.current) {
+                setMenuVisible(false)
+            }
+        };
 
-    //     const closeMenu = (e:MouseEvent | TouchEvent) => {
-    //         console.log(e)
-    //         setMenuVisible(false)
-    //     }
+        document.body.addEventListener('click', closeMenu)
 
-    //     document.body.addEventListener('click', closeMenu)
-
-    //     return () => document.body.removeEventListener('click', closeMenu);
-    // },[])
+        return () => document.body.removeEventListener('click', closeMenu);
+    },[menuVisible, setMenuVisible])
 
     const handleLogout = () => {
         logout();
@@ -33,7 +39,13 @@ const Header: React.FC = () => {
         <>
             <nav className='nav__container'>
                 <div className='menu-hamburguer__container'>
-                    <HiMenu color='#ffffffd3' fontSize='27px' onClick={() => setMenuVisible(prev => !prev)} />
+                    <button ref={hamburgerBtnRef} className='hamburguer-button' onClick={() => setMenuVisible(!menuVisible)}>
+                        {
+                         menuVisible
+                         ? <AiOutlineClose color='#ffffffd3' fontSize='24px' />
+                         : <HiMenu color='#ffffffd3' fontSize='27px' />
+                        }           
+                    </button>
                     <div className='logo nav-logo' onClick={() => navigate('/dashboard')}></div>
                 </div>
                 {/* <h1 className='nav_title' onClick={() => navigate('/dashboard')}>Tennis Lesson Planner</h1> */}
@@ -48,15 +60,15 @@ const Header: React.FC = () => {
                         <ul>
                             <li>
                                 <IoHome color='#ffffffd3' fontSize='18px' />
-                                <div onClick={() => navigate('/dashboard')}>Home</div>
+                                <div onClick={() => navigate('/dashboard')}>{t('general.header.home')}</div>
                             </li>
                             <li>
                                 <IoFolderOpen color='#ffffffd3' fontSize='18px' />
-                                <div onClick={() => navigate('/record')}>Historial</div>
+                                <div onClick={() => navigate('/record')}>{t('general.header.record')}</div>
                             </li>
                         </ul>
                         <section className='logout__container'>
-                            Cerrar Sesión  
+                            {t('general.header.logout')}  
                             <div className='logo logout-logo' onClick={handleLogout}></div>
                         </section>
                     </menu>

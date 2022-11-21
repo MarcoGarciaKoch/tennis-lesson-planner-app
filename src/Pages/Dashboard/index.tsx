@@ -7,7 +7,6 @@ import { LessonRecordContext } from '../../Context/LessonRecord/lessonRecord.con
 import AlertMessage from './Components/AlertMessage';
 import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { sortLessons, getLastSevenPaidLessons } from './utils'
 import { useUsers } from '../../Core/users/users.hook';
@@ -17,7 +16,6 @@ const Dashboard: React.FC = () => {
     const { lessonRecord, updateLessonRecord } = useContext(LessonRecordContext);
     const [ userNameLastname, updateUserNameLastname ] = useState<string[]>([])
     const { getUserData } = useUsers()
-    const navigate = useNavigate();
     const [t] = useTranslation('translation');
 
     useEffect(() => {
@@ -35,10 +33,7 @@ const Dashboard: React.FC = () => {
         <Header></Header>
         <main className='dashboard__container'>
             <div className='user-welcome__title'>{t('specific.dashboard.greetings')} <span>{`${userNameLastname[0]} ${userNameLastname[1]}`}</span></div>
-            <section className='lesson-creator-record__container'>
-                <LessonCreator></LessonCreator>
-                <div className='record-logo' onClick={() => navigate('/record')}></div>
-            </section>
+            <LessonCreator></LessonCreator>
             <div className={lessonRecord.length > 0 ? 'hidden-register-lesson-instrucctions' : 'register-lesson-instrucctions'}>
                 <p>{t('specific.dashboard.messageOne')}</p>
                 <p>{t('specific.dashboard.messageTwo')}</p>

@@ -1,5 +1,10 @@
 {
     "general": {
+        "header": {
+            "home": "Home",
+            "record": "Record",
+            "logout": "LogOut"
+        },
         "footer": {
             "github": "Check the GitHub repository",
             "here" : "here",

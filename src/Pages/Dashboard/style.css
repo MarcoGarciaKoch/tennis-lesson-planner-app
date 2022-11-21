@@ -24,23 +24,7 @@
     
 }
 
-.lesson-creator-record__container {
-    position: relative;
-    width: 100%;
-}
 
-.record-logo {
-    position: absolute;
-    top: 16px;
-    right: 0;
-    margin-right: 30px;
-    width: 30px;
-    height: 30px;
-    background-image: url('../../assets/images/notes.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
 
 .pending-lessons-title, .paid-lessons-title {
     align-self: center;

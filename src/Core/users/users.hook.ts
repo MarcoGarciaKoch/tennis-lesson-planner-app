@@ -21,7 +21,7 @@ export const useUsers = () => {
 
     const getUserData = async () => {
         updateIsLoading(true); // loading mode on
-        const userData = await getUserDataAPI();
+        const userData = getUserDataAPI();
         updateIsLoading(false); // When API call finishes, loading mode off
         return userData;
     }
