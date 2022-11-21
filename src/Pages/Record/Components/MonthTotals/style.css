@@ -28,6 +28,7 @@
 }
 
 .lesson-calcs__list-item h4 {
+    width: 24%;
     color: #424271;
     font-weight: 900;
     font-size: 0.7rem;
@@ -58,10 +59,6 @@
     border-radius: 5px;
     margin: 20px 0px;
     cursor: pointer;
-}
-
-.calculations__button {
-    width: 50%;
 }
 
 .pdf-button {

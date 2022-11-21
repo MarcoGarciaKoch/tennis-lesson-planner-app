@@ -39,7 +39,7 @@
             "messageThree": "Una vez la clase se haya creado, podrás visualizarla en tu panel.",
             "greetings": "Bienvenido",
             "pending": "Clases Pendientes de Pago",
-            "paid": "Clases Pagadas ( 7 más recientes )"
+            "paid": "Clases Pagadas"
         },
         "alertMessage" : {
             "messageStart": "¿Estás seguro que quieres ",
