@@ -24,13 +24,46 @@
     
 }
 
-
-
 .pending-lessons-title, .paid-lessons-title {
     align-self: center;
     font-size: 0.9rem;
     color: #ffffff;
     font-size: 0.8rem;
+}
+    
+
+.paid-lesson-fieldset {
+    width: 80%;
+    border: solid 1px #5282a7;
+    border-radius: 10px;
+    padding-block-start: 0.10em;
+    padding-block-end: 0.5em;
+}
+
+.paid-lesson-fieldset legend {
+    margin: 0 auto;
+}
+
+.paid-lesson-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paid-lesson-fieldset label {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    align-items: center;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.paid-lesson-option input {
+    width: 30%;
+    margin: 0px
 }
 
 .register-lesson-instrucctions {

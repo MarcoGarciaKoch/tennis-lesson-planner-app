@@ -39,7 +39,13 @@ export const calcFinalPrice = (start:string, finish:string, rate:string) => {
 
 // Function that given the array with all the lessons, returns a new array with ONLY the LAST 7 lessons PAID
 
-export const getLastSevenPaidLessons = (sortedLessonArray:LessonData[]) => {
-    const paidLessons = sortedLessonArray.filter((l:LessonData) => l.paid === 'yes').slice(-7, sortedLessonArray.length);
-    return paidLessons;
+export const getLastSevenPaidLessons = (sortedLessonArray:LessonData[], optionSelected:string) => {
+    if(optionSelected === 'all') {
+        const paidLessons = sortedLessonArray.filter((l:LessonData) => l.paid === 'yes')
+        return paidLessons
+    }else{
+        const lessonQty = Number(optionSelected);
+        const paidLessons = sortedLessonArray.filter((l:LessonData) => l.paid === 'yes').slice(-lessonQty, sortedLessonArray.length);
+        return paidLessons;
+    }
 }
