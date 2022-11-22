@@ -15,12 +15,12 @@ import { useUsers } from '../../Core/users/users.hook';
 const Dashboard: React.FC = () => {
     const { lessonRecord, updateLessonRecord } = useContext(LessonRecordContext);
     const [ userNameLastname, updateUserNameLastname ] = useState<string[]>([])
-    const radioOptions = [{id:1,name:'last7',value:'7',title:'Last 7'},{id:2,name:'last15',value:'15',title:'Last 15'},
-                            {id:3,name:'last30',value:'30',title:'Last 30'},{id:4,name:'all',value:'all', title:'All'}]
+    const [t] = useTranslation('translation');
+    const radioOptions = [{id:1,name:'last7',value:'7',title:`${t('specific.dashboard.last7')}`},{id:2,name:'last15',value:'15',title:`${t('specific.dashboard.last15')}`},
+                            {id:3,name:'last30',value:'30',title:`${t('specific.dashboard.last30')}`},{id:4,name:'all',value:'all', title:`${t('specific.dashboard.allLessons')}`}]
     const [paidLessonOption, setPaidLessonOption] = useState<string>('7')
     const [lessonsToPrint, setLessonsToPrint] = useState<LessonData[]>([])
     const { getUserData } = useUsers()
-    const [t] = useTranslation('translation');
 
     useEffect(() => {
         getUserData().then((r:{name:string, lastname:string, lessons:LessonData[]}) => {

@@ -39,7 +39,11 @@
             "messageThree": "Once the lesson is created, you will see it in your dashboard.",
             "greetings": "Welcome",
             "pending": "Pending Lessons To Get Paid",
-            "paid": "Paid Lessons"
+            "paid": "Paid Lessons",
+            "last7": "Last 7",
+            "last15": "Last 15",
+            "last30": "Last 30",
+            "allLessons": "All"
         },
         "alertMessage" : {
             "messageStart": "Are you sure you want to ",
