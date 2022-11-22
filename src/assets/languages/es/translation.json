@@ -40,9 +40,9 @@
             "greetings": "Bienvenido",
             "pending": "Clases Pendientes de Pago",
             "paid": "Clases Pagadas",
-            "last7": "Ùltimas 7",
-            "last15": "Ùltimas 15",
-            "last30": "Ùltimas 30",
+            "last7": "Últimas 7",
+            "last15": "Últimas 15",
+            "last30": "Últimas 30",
             "allLessons": "Todas"
         },
         "alertMessage" : {
