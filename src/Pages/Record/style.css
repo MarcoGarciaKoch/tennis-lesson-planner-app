@@ -34,16 +34,16 @@
     align-items: center;
     align-self: center;
     color: #424271;
-    font-size: 0.7rem;
+    font-size: 0.69rem;
     font-weight: 900;
     margin: 5px 0px;
 }
 
 .totals-button {
-    padding: 2px 8px;
+    padding: 3px 8px;
     background-color: #d3d2d2;
     color: #424271;
-    font-size: 0.7rem;
+    font-size: 0.69rem;
     font-weight: 900;
     border: none;
     border-radius: 5px;

@@ -1,28 +1,48 @@
 import './style.css'
 import { useState } from 'react';
-import { FilteredDateData } from '../../record.model';
+import moment  from 'moment';
+import { DateData } from '../../record.model';
+import { monthNames } from '../../record.utils';
 
-
-
-const Filters: React.FC<{onGetFilteredDate(filterdeDate:FilteredDateData):void}> = ({onGetFilteredDate}) => {
+const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, onResetFilters:()=> void}> = ({onGetFilteredDate, onResetFilters}) => {
     const [isFilterVisible, updateIsFilterVisible] = useState<boolean>(false);
     const [filterStartDate, updateFilterStartDate] = useState<string>('');
     const [filterFinishtDate, updateFilterFinishDate] = useState<string>('');
     
     
-    // Function that gets the start and finish dates to filter lessons by given date.
+    // Function that generates and array of dates between two given dates.
     const searchLessonsByDate = () => {
         const startDateFilter = new Date(filterStartDate)
         const finishDateFilter = new Date(filterFinishtDate)
 
-        const differenceInTime = finishDateFilter.getTime() - startDateFilter.getTime();
-        const differenceInDays = differenceInTime / (1000 * 3600 * 24)+1;
+        const calculateDateList = ({ start, end }:any) => {
+            let now = moment.utc(start);
+            end = moment.utc(end);
+            let monthList = [];
+            while (now.isValid() && end.isValid() && now.isSameOrBefore(end, 'day') /* end day inclusive */) {
+                monthList.push(now.format('DD-MM-YYYY'));
+                now = moment(now).add(1, 'days'); // add 1 day on a new instance 
+            }
+            let initialMonth = '';
+            let lastMonth = '';
+            let year = '';
+            if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2]) {
+                initialMonth = monthNames[Number(monthList[0].split('-')[1])-1];
+                lastMonth = monthNames[Number(monthList[monthList.length-1].split('-')[1])-1];
+                year = monthList[monthList.length-1].split('-')[2];
+            } else {
+                initialMonth = `${monthNames[Number(monthList[0].split('-')[1])-1]} ${monthList[0].split('-')[2]}`;
+                lastMonth = `${monthNames[Number(monthList[monthList.length-1].split('-')[1])-1]} ${monthList[monthList.length-1].split('-')[2]}`;
+            }
+            return {
+                monthName:`${initialMonth} - ${lastMonth}`,
+                year,
+                monthList
+            };
+        }
+        const dateDataFiltered = calculateDateList({start: startDateFilter, end: finishDateFilter})
 
-        onGetFilteredDate({
-            filterStartDate,
-            filterFinishtDate,
-            differenceInDays
-        })
+        onGetFilteredDate(dateDataFiltered)
 
         updateFilterStartDate('');
         updateFilterFinishDate('');
@@ -71,6 +91,7 @@ const Filters: React.FC<{onGetFilteredDate(filterdeDate:FilteredDateData):void}>
                         <button 
                             className='delete-filters__button' 
                             type='button'
+                            onClick={onResetFilters}
                             >BORRAR FILTROS
                         </button>
                     </section>
