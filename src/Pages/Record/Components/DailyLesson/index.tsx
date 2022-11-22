@@ -5,7 +5,7 @@ import { DailyLessonData } from '../../record.model';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
 import { useUsers } from '../../../../Core/users/users.hook';
 import { sortLessons, calcFinalPrice } from '../../../Dashboard/utils';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { AiFillSave } from 'react-icons/ai';
@@ -25,7 +25,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
     const [typeValue, updateTypeValue] = useState<string>(dailyLesson.type);
     const { updateLesson } = useUsers();
     const { updateLessonRecord } = useContext(LessonRecordContext);
-    const [t] = useTranslation('translation');
+    // const [t] = useTranslation('translation');
 
 
     //Function that allows to edit the card editable fields and update the main array of lessons with the lesson edited

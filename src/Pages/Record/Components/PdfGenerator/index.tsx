@@ -43,8 +43,8 @@ const PdfGenerator: React.FC<{currentDate:DateData, createPDF:boolean, onUpdateC
             <span>{currentDate.monthName}</span>
             {
                 lessonRecord.map((l:LessonData) => (
-                    parseInt(l.date.split('-')[1]) === currentDate.monthNumber &&
-                    parseInt(l.date.split('-')[2]) === currentDate.year
+                    parseInt(l.date.split('-')[1]) === /*currentDate.monthNumber*/ 11 &&
+                    parseInt(l.date.split('-')[2]) === Number(currentDate.year)
                     ? 
                     <PdfDailyLesson key={l.id} lesson={l}></PdfDailyLesson> 
                     : 

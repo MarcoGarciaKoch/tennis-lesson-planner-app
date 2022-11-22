@@ -5,13 +5,13 @@ import { DateData } from '../../record.model';
 import { handleCalculations } from '../../record.utils';
 
 
-const MonthTotals: React.FC<{isTotalVisible:boolean, date:DateData, onCreatePDF:(value:boolean) => void}> = ({isTotalVisible, date, onCreatePDF}) => {
+const MonthTotals: React.FC<{isTotalVisible:boolean, dateData:DateData, onCreatePDF:(value:boolean) => void}> = ({isTotalVisible, dateData, onCreatePDF}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
 
     const monthlyCalculations = useMemo(() => {
-        const results = handleCalculations(lessonRecord, date);
+        const results = handleCalculations(lessonRecord, dateData);
         return results
-    },[lessonRecord, date])
+    },[lessonRecord, dateData])
 
 
 

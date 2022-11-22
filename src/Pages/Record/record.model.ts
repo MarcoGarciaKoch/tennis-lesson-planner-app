@@ -13,15 +13,9 @@ export interface DailyLessonData {
 }
 
 export interface DateData {
-    monthNumber:number; 
     monthName:string;
-    year: number;
-}
-
-export interface FilteredDateData {
-    filterStartDate:string,
-    filterFinishtDate:string,
-    differenceInDays:number
+    year: string;
+    monthList:string[];
 }
 
 export interface TotalCalcValues {
