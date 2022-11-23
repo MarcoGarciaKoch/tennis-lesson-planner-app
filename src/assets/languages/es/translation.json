@@ -3,8 +3,11 @@
         "header": {
             "home": "Home",
             "record": "Historial",
-            "logout": "Cerrar Sesión",
-            "settings": "Config"
+            "about": "Acerca de",
+            "faqs": "FAQ",
+            "profile": "Perfil",
+            "settings": "Config",
+            "logout": "Cerrar Sesión"
         },
         "footer": {
             "github": "Comprueba el repositorio de GitHub",

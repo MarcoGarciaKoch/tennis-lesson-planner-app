@@ -1,53 +1,57 @@
 
-menu {
+.navigation-menu__wrapper {
     position: absolute;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    padding-inline-start: 0px;
-    width: 39%;
+    width: 50%;
     height: 30vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #3b5d77f3;
-    border-radius: 0px 0px 4px 0px;
+    background-color: #74b6e9bc;
+    border-radius: 0px 0px 50% 0px;
     z-index: 100;
-    animation: MenuDisplay 0.2s 1 linear;
-    transform-origin: left;
+    animation: WrapperMenuDisplay 0.4s 1 linear;
+    transform-origin: top left;
+}
+
+menu {
+    padding-inline-start: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    width: 96%;
+    height: 96%;
+    background-color: #3b5d77ed;
+    border-radius: 0px 0px 80% 0px;
+    animation: MenuDisplay 0.4s 1 linear;
+    transform-origin: top left;
 }
 
 /* ANIMATION HEADER & NAV MENU */
 
+@keyframes WrapperMenuDisplay {
+    from {
+        transform:scale(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 @keyframes MenuDisplay {
-    0% {
-        transform: scaleX(0);
+    from {
+        transform: scale(0);
         opacity: 1;
     }
 
-    25% {
-        transform: scaleX(0.25);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scaleX(0.5);
-        opacity: 1;
-    }
-
-    75% {
-        transform: scaleX(0.75);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scaleX(1);
+    to {
+        transform: scale(1);
         opacity: 1;
     }
 }
 
 menu ul {
     list-style: none;
-    margin: 30px 15px;
+    margin: 23px 15px 23px 20px;
     padding: 0px;
     display: flex;
     flex-direction: column;
@@ -58,7 +62,6 @@ menu ul li {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-left: 10px;
     font-size: 0.9rem;
     color: #ffffffd3;
     font-weight: 500;
@@ -68,24 +71,4 @@ menu ul li {
 menu ul li div:active {
     transform: scale(0.98);
     color: #70afdf;
-}
-
-.logout__container {
-    display: flex;
-    align-self: flex-end;
-    align-items: center;
-    gap: 7px;
-    color: #ffffffd3;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-bottom: 15px;
-}
-
-.logout-logo {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('../../../../assets/images/log-out.png');
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
 }

@@ -28,15 +28,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url('../../assets/images/tennis-logo.png');
-    width: 45px;
-    height: 45px;
-    transform: rotateZ(30deg);
-}
-
-.nav_title {
-    color: #ffffff;
-    font-size: 1rem;
-    cursor: pointer;
+    width: 53px;
+    height: 53px;
+    transform: rotateZ(35deg);
 }
 
 .languages-logout-buttons__container {

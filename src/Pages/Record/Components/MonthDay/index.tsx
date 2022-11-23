@@ -20,7 +20,7 @@ const MonthDay: React.FC<{dayOfMonth:string}> = ({dayOfMonth}) => {
         <main className='individual-day__container'>
             <section className='monthday-qty__container'>
                 <div className='day-lesson-title' onClick={() => updateIsDailyVisible(!isDailyVisible)}>
-                    Clases día {dayOfMonth.split('-')[0]} de {monthNames[Number(dayOfMonth.split('-')[1])-1]}
+                    Clases {dayOfMonth.split('-')[0]} de {monthNames[Number(dayOfMonth.split('-')[1])-1]}
                 </div>
                 <div className='day-lessons-qty'>
                     {lessonRecord.filter((l:LessonData) => l.date === dayOfMonth).length}
