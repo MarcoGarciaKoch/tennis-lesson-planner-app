@@ -31,7 +31,6 @@ export const handleCalculations = (lessons:LessonData[], dateData:DateData) => {
         return ''
     })
 
-    // const numericYear = Number(dateData.year)
     const schoolPaidHours = calcHours(lessonsToUse, 'school', 'yes')
     const schoolPaidMoney = calcMoney(lessonsToUse, 'school', 'yes')
     const schoolNotPaidHours = calcHours(lessonsToUse, 'school', 'no')
@@ -46,9 +45,10 @@ export const handleCalculations = (lessons:LessonData[], dateData:DateData) => {
     const specialPaidMoney = calcMoney(lessonsToUse, 'special', 'yes')
     const specialNotPaidHours = calcHours(lessonsToUse, 'special', 'no')
     const specialNotPaidMoney = calcMoney(lessonsToUse, 'special', 'no')
+
     return {schoolPaidHours, schoolPaidMoney, schoolNotPaidHours, schoolNotPaidMoney,
-                        privatePaidHours, privatePaidMoney, privateNotPaidHours, privateNotPaidMoney,
-                            specialPaidHours, specialPaidMoney, specialNotPaidHours, specialNotPaidMoney}
+            privatePaidHours, privatePaidMoney, privateNotPaidHours, privateNotPaidMoney,
+            specialPaidHours, specialPaidMoney, specialNotPaidHours, specialNotPaidMoney}
 }
 
 
@@ -61,6 +61,7 @@ const calcHours = (lessons:LessonData[], lessonType:string, paid:string) => {
     const hoursCalc = filteredTypeLesson?.reduce((acc:number, lesson:LessonData): number => 
         acc += new Date("01/01/2007 " + lesson.finishTime).getHours() - new Date("01/01/2007 " + lesson.startTime).getHours()
         , 0)
+
     return hoursCalc
 }
 
@@ -73,5 +74,6 @@ const calcMoney = (lessons:LessonData[], lessonType:string, paid:string) => {
 
     const moneyCalc = filteredTypeLesson?.reduce((acc:number, lesson:LessonData): number => 
             acc += parseFloat(lesson.price), 0)
+            
     return moneyCalc
 }

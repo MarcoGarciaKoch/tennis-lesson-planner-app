@@ -42,7 +42,6 @@ const Header: React.FC = () => {
                     </button>
                     <div className='nav-logo' onClick={() => navigate('/dashboard')}></div>
                 </div>
-                {/* <h1 className='nav_title' onClick={() => navigate('/dashboard')}>Tennis Lesson Planner</h1> */}
                 <section className='languages-logout-buttons__container'>
                     <Multilanguage></Multilanguage>
                     <div className='user-logo' onClick={() => seteUserConfig(!userConfig)}></div>

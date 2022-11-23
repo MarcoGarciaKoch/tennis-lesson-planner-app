@@ -26,16 +26,22 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
             let initialMonth = '';
             let lastMonth = '';
             let year = '';
-            if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2]) {
+            if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2] &&
+                monthList[0].split('-')[1] === monthList[monthList.length-1].split('-')[1]) {
+                    initialMonth = monthNames[Number(monthList[0].split('-')[1])-1];
+                    year = monthList[monthList.length-1].split('-')[2];
+
+            } else if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2]) {
                 initialMonth = monthNames[Number(monthList[0].split('-')[1])-1];
-                lastMonth = monthNames[Number(monthList[monthList.length-1].split('-')[1])-1];
+                lastMonth = `- ${monthNames[Number(monthList[monthList.length-1].split('-')[1])-1]}`;
                 year = monthList[monthList.length-1].split('-')[2];
+
             } else {
                 initialMonth = `${monthNames[Number(monthList[0].split('-')[1])-1]} ${monthList[0].split('-')[2]}`;
-                lastMonth = `${monthNames[Number(monthList[monthList.length-1].split('-')[1])-1]} ${monthList[monthList.length-1].split('-')[2]}`;
+                lastMonth = `- ${monthNames[Number(monthList[monthList.length-1].split('-')[1])-1]} ${monthList[monthList.length-1].split('-')[2]}`;
             }
             return {
-                monthName:`${initialMonth} - ${lastMonth}`,
+                monthName:`${initialMonth} ${lastMonth}`,
                 year,
                 monthList
             };
