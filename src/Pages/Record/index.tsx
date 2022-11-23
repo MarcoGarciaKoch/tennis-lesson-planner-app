@@ -59,7 +59,7 @@ const Record: React.FC = () => {
                 <div className='month-title__container'>
                     <span>{`${dateData.monthName.toUpperCase()} ${dateData.year}`}</span>
                     <button className='totals-button' onClick={() => updateIsTotalVisible(!isTotalVisible)}>
-                        TOTAL MES
+                        TOTALES
                         <span 
                             className='totals-button-arrow'
                         >▽</span>
