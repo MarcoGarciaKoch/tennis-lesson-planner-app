@@ -50,8 +50,9 @@
                 "private": "Particulares",
                 "special": "Especiales",
                 "totals": "TOTAL",
-                "paidHours": "Horas Pagadas:",
-                "unpaidHours": "Horas No Pagadas:",
+                "paidHours": "Horas Pagadas: ",
+                "unpaidHours": "Horas No Pagadas: ",
+                "hours": "horas",
                 "exportpdf": "EXPORTAR PDF"
             },
             "monthDay": {

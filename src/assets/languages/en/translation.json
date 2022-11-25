@@ -62,8 +62,9 @@
                 "private": "Private",
                 "special": "Special",
                 "totals": "TOTAL",
-                "paidHours": "Paid Hours:",
-                "unpaidHours": "Unpaid Hours:",
+                "paidHours": "Paid Hours: ",
+                "unpaidHours": "Unpaid Hours: ",
+                "hours": "hours",
                 "exportpdf": "EXPORT PDF"
             },
             "monthDay": {

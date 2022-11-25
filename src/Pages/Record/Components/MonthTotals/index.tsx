@@ -23,33 +23,61 @@ const MonthTotals: React.FC<{isTotalVisible:boolean, dateData:DateData, onCreate
             <li className='lesson-calcs__list-item'>
                 <h4> {t('specific.record.totals.school')}</h4>
                 <div>
-                    <p>{t('specific.record.totals.paidHours')} <span>{`${monthlyCalculations.schoolPaidHours} horas  -  ${monthlyCalculations.schoolPaidMoney} €`}</span></p>
-                    <p>{t('specific.record.totals.unpaidHours')} <span>{`${monthlyCalculations.schoolNotPaidHours} horas  -  ${monthlyCalculations.schoolNotPaidMoney} €`}</span></p>
+                    <p>{t('specific.record.totals.paidHours')} 
+                        <span>{`${monthlyCalculations.schoolPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.schoolPaidMoney} €`}
+                        </span>
+                    </p>
+                    <p>{t('specific.record.totals.unpaidHours')} 
+                        <span>{`${monthlyCalculations.schoolNotPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.schoolNotPaidMoney} €`}
+                        </span>
+                    </p>
                 </div>
             </li>
             <li className='lesson-calcs__list-item'>
                 <h4>{t('specific.record.totals.private')}</h4>
                 <div>
-                    <p>{t('specific.record.totals.paidHours')} <span>{`${monthlyCalculations.privatePaidHours} horas  -  ${monthlyCalculations.privatePaidMoney} €`}</span></p>
-                    <p>{t('specific.record.totals.unpaidHours')} <span>{`${monthlyCalculations.privateNotPaidHours} horas  -  ${monthlyCalculations.privateNotPaidMoney} €`}</span></p>
+                    <p>{t('specific.record.totals.paidHours')} 
+                        <span>{`${monthlyCalculations.privatePaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.privatePaidMoney} €`}
+                        </span>
+                    </p>
+                    <p>{t('specific.record.totals.unpaidHours')} 
+                        <span>{`${monthlyCalculations.privateNotPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.privateNotPaidMoney} €`}
+                        </span>
+                    </p>
                 </div>
             </li>
             <li className='lesson-calcs__list-item'>
                 <h4>{t('specific.record.totals.special')}</h4>
                 <div>
-                    <p>{t('specific.record.totals.paidHours')} <span>{`${monthlyCalculations.specialPaidHours} horas  -  ${monthlyCalculations.specialPaidMoney} €`}</span></p>
-                    <p>{t('specific.record.totals.unpaidHours')} <span>{`${monthlyCalculations.specialNotPaidHours} horas  -  ${monthlyCalculations.specialNotPaidMoney} €`}</span></p>
+                    <p>{t('specific.record.totals.paidHours')} 
+                        <span>{`${monthlyCalculations.specialPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.specialPaidMoney} €`}
+                        </span>
+                    </p>
+                    <p>{t('specific.record.totals.unpaidHours')} 
+                        <span>{`${monthlyCalculations.specialNotPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.specialNotPaidMoney} €`}
+                        </span>
+                    </p>
                 </div>
             </li>
             <li className='lesson-calcs__list-item'>
                 <h4>{t('specific.record.totals.totals')}</h4>
                 <div>
-                    <p>{t('specific.record.totals.paidHours')} <span>{`${monthlyCalculations.schoolPaidHours + monthlyCalculations.privatePaidHours + monthlyCalculations.specialPaidHours} horas  -  
-                                            ${monthlyCalculations.schoolPaidMoney + monthlyCalculations.privatePaidMoney + monthlyCalculations.specialPaidMoney} €`}
-                                        </span></p>
-                    <p>{t('specific.record.totals.unpaidHours')} <span>{`${monthlyCalculations.schoolNotPaidHours + monthlyCalculations.privateNotPaidHours + monthlyCalculations.specialNotPaidHours} horas  -  
-                                            ${monthlyCalculations.schoolNotPaidMoney + monthlyCalculations.privateNotPaidMoney + monthlyCalculations.specialNotPaidMoney} €`}
-                                        </span></p>
+                    <p>{t('specific.record.totals.paidHours')} 
+                        <span>{`${monthlyCalculations.schoolPaidHours + monthlyCalculations.privatePaidHours + monthlyCalculations.specialPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.schoolPaidMoney + monthlyCalculations.privatePaidMoney + monthlyCalculations.specialPaidMoney} €`}
+                        </span>
+                    </p>
+                    <p>{t('specific.record.totals.unpaidHours')} 
+                        <span>{`${monthlyCalculations.schoolNotPaidHours + monthlyCalculations.privateNotPaidHours + monthlyCalculations.specialNotPaidHours} ${t('specific.record.totals.hours')}  -  
+                                ${monthlyCalculations.schoolNotPaidMoney + monthlyCalculations.privateNotPaidMoney + monthlyCalculations.specialNotPaidMoney} €`}
+                        </span>
+                    </p>
                 </div>
             </li>
             <li className='calcs-button__list-item'>
