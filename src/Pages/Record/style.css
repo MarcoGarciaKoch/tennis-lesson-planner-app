@@ -40,6 +40,8 @@
 }
 
 .totals-button {
+    display: flex;
+    gap: 7px;
     padding: 3px 8px;
     background-color: #d3d2d2;
     color: #424271;

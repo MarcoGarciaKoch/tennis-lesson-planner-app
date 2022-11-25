@@ -5,11 +5,12 @@ import { DailyLessonData } from '../../record.model';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
 import { useUsers } from '../../../../Core/users/users.hook';
 import { sortLessons, calcFinalPrice } from '../../../Dashboard/utils';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { AiFillSave } from 'react-icons/ai';
 import TypeLessonIcon from '../../../../SharedComponents/typeLessonIcon';
+
 
 
 
@@ -25,7 +26,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
     const [typeValue, updateTypeValue] = useState<string>(dailyLesson.type);
     const { updateLesson } = useUsers();
     const { updateLessonRecord } = useContext(LessonRecordContext);
-    // const [t] = useTranslation('translation');
+    const [t] = useTranslation('translation');
 
 
     //Function that allows to edit the card editable fields and update the main array of lessons with the lesson edited
@@ -56,7 +57,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                 />
                 <div className={disableButton === false ? 'daily-details__container' : 'daily-details__container editable-daily-details__container'}>
                     <label>
-                        <span>Horario:</span>
+                        <span>{t('specific.record.dayLesson.schedule')}</span>
                         <textarea  
                             className='lesson-time'
                             onChange={e => {
@@ -78,7 +79,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                             disabled={!disableButton} />
                     </label>
                     <label>
-                        <span>Precio:</span>
+                        <span>{t('specific.record.dayLesson.price')}</span>
                         <textarea  
                             className='lesson-price'
                             onChange={e => updateTotalPriceValue(e.target.value)} 
@@ -94,20 +95,20 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                             onChange={e => updateIsPaidValue(e.target.value)}
                             defaultValue={isPaidValue}>
                                 <option value='yes'>
-                                    Pagada
+                                    {t('specific.record.dayLesson.paid')}
                                 </option>
                                 <option value='no'>
-                                    No Pagada
+                                    {t('specific.record.dayLesson.unpaid')}
                                 </option>
                         </select>
                         :
                         <p  className='lesson-select-ispaid'>
-                            {`${isPaidValue === 'yes' ? 'Pagada' : 'No Pagada'}`}
+                            {isPaidValue === 'yes' ? t('specific.record.dayLesson.paid') : t('specific.record.dayLesson.unpaid')}
                         </p>
                         }
                     </label>
                     <label>
-                        <span>Club: </span>
+                        <span>{t('specific.record.dayLesson.club')} </span>
                         <textarea  
                             onChange={e => updateClubValue(e.target.value)} 
                             value={clubValue} 
@@ -115,7 +116,7 @@ const DailyLesson:  React.FC<{dailyLesson:DailyLessonData, isDailyVisible:boolea
                             disabled={!disableButton} />
                     </label>
                     <label>
-                        <span>Jugadores: </span>
+                        <span>{t('specific.record.dayLesson.players')} </span>
                         <textarea  
                             onChange={e => updatePlayersValue(e.target.value)} 
                             className='players-textarea'

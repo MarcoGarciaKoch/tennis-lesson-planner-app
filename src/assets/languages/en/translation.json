@@ -48,6 +48,51 @@
             "last30": "Last 30",
             "allLessons": "All"
         },
+        "record": {
+            "totalsButton": "TOTALS",
+            "filters": {
+                "filters": "FILTERS",
+                "startDate": "Start Date",
+                "finishDate": "Finish Date",
+                "search": "SEARCH",
+                "deleteFilters": "DELETE FILTERS"
+            },
+            "totals": {
+                "school": "School",
+                "private": "Private",
+                "special": "Special",
+                "totals": "TOTAL",
+                "paidHours": "Paid Hours:",
+                "unpaidHours": "Unpaid Hours:",
+                "exportpdf": "EXPORT PDF"
+            },
+            "monthDay": {
+                "lessons": "Lessons",
+                "of": " of"
+            },
+            "dayLesson": {
+                "schedule": "Schedule:",
+                "price": "Price:",
+                "paid": "Paid",
+                "unpaid": "Unpaid",
+                "club": "Club:",
+                "players": "Players:"
+            },
+            "monthName": {
+                "1": "January",
+                "2": "February",
+                "3": "March",
+                "4": "April",
+                "5": "May",
+                "6": "June",
+                "7": "July",
+                "8": "August",
+                "9": "September",
+                "10": "October",
+                "11": "November",
+                "12": "December"
+            }
+        },
         "alertMessage" : {
             "messageStart": "Are you sure you want to ",
             "delete" : "delete ",

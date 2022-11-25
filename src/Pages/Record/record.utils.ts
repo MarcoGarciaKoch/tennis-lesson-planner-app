@@ -1,22 +1,6 @@
 import { LessonData } from "../Dashboard/dashboard.model";
 import { DateData } from "./record.model";
 
-export const monthNames = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre'
-]
-
-
 //Function that handles all the calculations for the different lesson types and returns and object with all the calculated data
 export const handleCalculations = (lessons:LessonData[], dateData:DateData) => {
     

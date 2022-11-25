@@ -3,13 +3,17 @@ import DailyLesson from '../DailyLesson';
 import { LessonData } from '../../../Dashboard/dashboard.model';
 import { useContext, useState } from 'react';
 import { LessonRecordContext } from '../../../../Context/LessonRecord/lessonRecord.context';
-import { monthNames } from '../../record.utils';
+import { useTranslation } from 'react-i18next';
+import { useMonthTranslation } from '../UseMonthTranslation';
 
 
 
 const MonthDay: React.FC<{dayOfMonth:string}> = ({dayOfMonth}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ isDailyVisible, updateIsDailyVisible] = useState<boolean>(false);
+    const [t] = useTranslation('translation');
+    const { getMonthName } = useMonthTranslation();
+
 
     return (
         lessonRecord.filter((l:LessonData) => l.date === dayOfMonth).length === 0
@@ -20,7 +24,8 @@ const MonthDay: React.FC<{dayOfMonth:string}> = ({dayOfMonth}) => {
         <main className='individual-day__container'>
             <section className='monthday-qty__container'>
                 <div className='day-lesson-title' onClick={() => updateIsDailyVisible(!isDailyVisible)}>
-                    Clases {dayOfMonth.split('-')[0]} de {monthNames[Number(dayOfMonth.split('-')[1])-1]}
+                    {t('specific.record.monthDay.lessons')} {dayOfMonth.split('-')[0]} 
+                    {t('specific.record.monthDay.of')} {getMonthName(Number(dayOfMonth.split('-')[1]))}
                 </div>
                 <div className='day-lessons-qty'>
                     {lessonRecord.filter((l:LessonData) => l.date === dayOfMonth).length}

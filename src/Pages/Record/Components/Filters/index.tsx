@@ -2,13 +2,17 @@ import './style.css'
 import { useState } from 'react';
 import moment  from 'moment';
 import { DateData } from '../../record.model';
-import { monthNames } from '../../record.utils';
+import { useTranslation } from 'react-i18next';
+import { useMonthTranslation } from '../UseMonthTranslation';
+
 
 const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, onResetFilters:()=> void}> = ({onGetFilteredDate, onResetFilters}) => {
     const [isFilterVisible, updateIsFilterVisible] = useState<boolean>(false);
     const [filterStartDate, updateFilterStartDate] = useState<string>('');
     const [filterFinishtDate, updateFilterFinishDate] = useState<string>('');
-    
+    const [t] = useTranslation('translation');
+    const { getMonthName } = useMonthTranslation()
+
     
     // Function that generates and array of dates between two given dates.
     const searchLessonsByDate = () => {
@@ -28,17 +32,17 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
             let year = '';
             if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2] &&
                 monthList[0].split('-')[1] === monthList[monthList.length-1].split('-')[1]) {
-                    initialMonth = monthNames[Number(monthList[0].split('-')[1])-1];
+                    initialMonth = getMonthName(Number(monthList[0].split('-')[1]));
                     year = monthList[monthList.length-1].split('-')[2];
 
             } else if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2]) {
-                initialMonth = monthNames[Number(monthList[0].split('-')[1])-1];
-                lastMonth = `- ${monthNames[Number(monthList[monthList.length-1].split('-')[1])-1]}`;
+                initialMonth = getMonthName(Number(monthList[0].split('-')[1]));
+                lastMonth = `- ${getMonthName(Number(monthList[monthList.length-1].split('-')[1]))}`;
                 year = monthList[monthList.length-1].split('-')[2];
 
             } else {
-                initialMonth = `${monthNames[Number(monthList[0].split('-')[1])-1]} ${monthList[0].split('-')[2]}`;
-                lastMonth = `- ${monthNames[Number(monthList[monthList.length-1].split('-')[1])-1]} ${monthList[monthList.length-1].split('-')[2]}`;
+                initialMonth = `${getMonthName(Number(monthList[0].split('-')[1]))} ${monthList[0].split('-')[2]}`;
+                lastMonth = `- ${getMonthName(Number(monthList[monthList.length-1].split('-')[1]))} ${monthList[monthList.length-1].split('-')[2]}`;
             }
             return {
                 monthName:`${initialMonth} ${lastMonth}`,
@@ -58,14 +62,14 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
     return (
         <main className='filters__container'>
             <button className='show-filters__button' onClick={() => updateIsFilterVisible(!isFilterVisible)}>
-                FILTROS
+                {t('specific.record.filters.filters')}
             </button>
             {isFilterVisible && (
                 <main className='filter-buttons__divider'>
                     <section className='filters-divider'>
                         <div className='date-filter__container'>
                             <label>
-                                Fecha Inicio
+                            {t('specific.record.filters.startDate')}
                                 <input 
                                     onChange={(e) => updateFilterStartDate(e.target.value)}
                                     value={filterStartDate}
@@ -75,7 +79,7 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
                                     required/>
                             </label>
                             <label>
-                                Fecha Fin
+                                {t('specific.record.filters.finishDate')}
                                 <input 
                                     onChange={(e) => updateFilterFinishDate(e.target.value)}
                                     value={filterFinishtDate}
@@ -92,13 +96,13 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
                             onClick={searchLessonsByDate}
                             className='search__button' 
                             type='submit'
-                            >BUSCAR
+                            >{t('specific.record.filters.search')}
                         </button>
                         <button 
                             className='delete-filters__button' 
                             type='button'
                             onClick={onResetFilters}
-                            >BORRAR FILTROS
+                            >{t('specific.record.filters.deleteFilters')}
                         </button>
                     </section>
                 </main>

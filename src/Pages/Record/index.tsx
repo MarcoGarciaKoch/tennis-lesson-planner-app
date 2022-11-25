@@ -9,7 +9,9 @@ import Filters from './Components/Filters';
 import PdfGenerator from './Components/PdfGenerator';
 import MonthTotals from './Components/MonthTotals';
 import moment from 'moment';
-import { monthNames } from './record.utils';
+import { useTranslation } from 'react-i18next';
+import { useMonthTranslation } from './Components/UseMonthTranslation';
+
 
 
 const Record: React.FC = () => {
@@ -17,10 +19,13 @@ const Record: React.FC = () => {
     const [ isTotalVisible, updateIsTotalVisible ] = useState<boolean>(false);
     const [createPdf, updateCreatePdf] = useState<boolean>(false);
     const [resetFilters, setResetFilters] = useState<boolean>(false);
+    const [t] = useTranslation('translation');
+    const { getMonthName } = useMonthTranslation();
+
 
     useEffect( () => {
         const monthNumber = Number(moment().format('MM'));
-        const monthName = monthNames[monthNumber-1];
+        const monthName = getMonthName(monthNumber);
         const year = moment().format('YYYY'); 
         
         function getDaysArrayCurrentDate() {
@@ -36,13 +41,12 @@ const Record: React.FC = () => {
         const result = getDaysArrayCurrentDate();
         const monthList = result.map(day => day.format('DD-MM-YYYY')).reverse();
         updateDateData({ monthName, year, monthList });
-    },[resetFilters]);
+    },[resetFilters, getMonthName]);
 
 
     const getFilteredDate = (dateDataFiltered:DateData) => {
         updateDateData(dateDataFiltered)
     }
-
 
 
     const sendIntructionToCreatePdf = (value:boolean) => {
@@ -59,7 +63,7 @@ const Record: React.FC = () => {
                 <div className='month-title__container'>
                     <span>{`${dateData.monthName.toUpperCase()} ${dateData.year}`}</span>
                     <button className='totals-button' onClick={() => updateIsTotalVisible(!isTotalVisible)}>
-                        TOTALES
+                        {t('specific.record.totalsButton')}
                         <span 
                             className='totals-button-arrow'
                         >▽</span>

@@ -36,6 +36,51 @@
             "account": "Todavía no tienes una cuenta? Regístrate",
             "here" : "aquí"
         },
+        "record": {
+            "totalsButton": "TOTALES",
+            "filters": {
+                "filters": "FILTROS",
+                "startDate": "Fecha Inicio",
+                "finishDate": "Fecha Fin",
+                "search": "BUSCAR",
+                "deleteFilters": "BORRAR FILTROS"
+            },
+            "totals": {
+                "school": "Escuela",
+                "private": "Particulares",
+                "special": "Especiales",
+                "totals": "TOTAL",
+                "paidHours": "Horas Pagadas:",
+                "unpaidHours": "Horas No Pagadas:",
+                "exportpdf": "EXPORTAR PDF"
+            },
+            "monthDay": {
+                "lessons": "Clases",
+                "of": " de"
+            },
+            "dayLesson": {
+                "schedule": "Horario:",
+                "price": "Precio:",
+                "paid": "Pagada",
+                "unpaid": "No Pagada",
+                "club": "Club:",
+                "players": "Jugadores:"
+            },
+            "monthName": {
+                "1": "Enero",
+                "2": "Febrero",
+                "3": "Marzo",
+                "4": "Abril",
+                "5": "Mayo",
+                "6": "Junio",
+                "7": "Julio",
+                "8": "Agosto",
+                "9": "Septiembre",
+                "10": "Octubre",
+                "11": "Noviembre",
+                "12": "Diciembre"
+            }
+        },
         "dashboard": {
             "messageOne": "No hay ninguna clase creada todavía.",
             "messageTwo": "Para registrar tu primera clase, presiona el botón de arriba y completa los campos requeridos.",
