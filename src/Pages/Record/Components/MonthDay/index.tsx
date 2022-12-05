@@ -12,7 +12,7 @@ const MonthDay: React.FC<{dayOfMonth:string}> = ({dayOfMonth}) => {
     const { lessonRecord } = useContext(LessonRecordContext);
     const [ isDailyVisible, updateIsDailyVisible] = useState<boolean>(false);
     const [t] = useTranslation('translation');
-    const { getMonthName } = useMonthTranslation();
+    const { getMonthNamebyNumber } = useMonthTranslation();
 
 
     return (
@@ -25,7 +25,7 @@ const MonthDay: React.FC<{dayOfMonth:string}> = ({dayOfMonth}) => {
             <section className='monthday-qty__container'>
                 <div className='day-lesson-title' onClick={() => updateIsDailyVisible(!isDailyVisible)}>
                     {t('specific.record.monthDay.lessons')} {dayOfMonth.split('-')[0]} 
-                    {t('specific.record.monthDay.of')} {getMonthName(Number(dayOfMonth.split('-')[1]))}
+                    {t('specific.record.monthDay.of')} {getMonthNamebyNumber(Number(dayOfMonth.split('-')[1]))}
                 </div>
                 <div className='day-lessons-qty'>
                     {lessonRecord.filter((l:LessonData) => l.date === dayOfMonth).length}

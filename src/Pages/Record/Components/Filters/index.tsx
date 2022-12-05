@@ -11,7 +11,7 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
     const [filterStartDate, updateFilterStartDate] = useState<string>('');
     const [filterFinishtDate, updateFilterFinishDate] = useState<string>('');
     const [t] = useTranslation('translation');
-    const { getMonthName } = useMonthTranslation()
+    const { getMonthNamebyNumber } = useMonthTranslation()
 
     
     // Function that generates and array of dates between two given dates.
@@ -32,17 +32,17 @@ const Filters: React.FC<{onGetFilteredDate:(dateDataFiltered:DateData) => void, 
             let year = '';
             if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2] &&
                 monthList[0].split('-')[1] === monthList[monthList.length-1].split('-')[1]) {
-                    initialMonth = getMonthName(Number(monthList[0].split('-')[1]));
+                    initialMonth = getMonthNamebyNumber(Number(monthList[0].split('-')[1]));
                     year = monthList[monthList.length-1].split('-')[2];
 
             } else if(monthList[0].split('-')[2] === monthList[monthList.length-1].split('-')[2]) {
-                initialMonth = getMonthName(Number(monthList[0].split('-')[1]));
-                lastMonth = `- ${getMonthName(Number(monthList[monthList.length-1].split('-')[1]))}`;
+                initialMonth = getMonthNamebyNumber(Number(monthList[0].split('-')[1]));
+                lastMonth = `- ${getMonthNamebyNumber(Number(monthList[monthList.length-1].split('-')[1]))}`;
                 year = monthList[monthList.length-1].split('-')[2];
 
             } else {
-                initialMonth = `${getMonthName(Number(monthList[0].split('-')[1]))} ${monthList[0].split('-')[2]}`;
-                lastMonth = `- ${getMonthName(Number(monthList[monthList.length-1].split('-')[1]))} ${monthList[monthList.length-1].split('-')[2]}`;
+                initialMonth = `${getMonthNamebyNumber(Number(monthList[0].split('-')[1]))} ${monthList[0].split('-')[2]}`;
+                lastMonth = `- ${getMonthNamebyNumber(Number(monthList[monthList.length-1].split('-')[1]))} ${monthList[monthList.length-1].split('-')[2]}`;
             }
             return {
                 monthName:`${initialMonth} ${lastMonth}`,

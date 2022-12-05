@@ -1,5 +1,5 @@
 import './style.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Header from '../../SharedComponents/Header';
 import Footer from '../../SharedComponents/Footer';
 import MonthDay from './Components/MonthDay';
@@ -20,12 +20,12 @@ const Record: React.FC = () => {
     const [createPdf, updateCreatePdf] = useState<boolean>(false);
     const [resetFilters, setResetFilters] = useState<boolean>(false);
     const [t] = useTranslation('translation');
-    const { getMonthName } = useMonthTranslation();
+    const { getMonthNamebyNumber, getMonthNamebyName } = useMonthTranslation();
 
 
     useEffect( () => {
         const monthNumber = Number(moment().format('MM'));
-        const monthName = getMonthName(monthNumber);
+        const monthName = getMonthNamebyNumber(monthNumber);
         const year = moment().format('YYYY'); 
         
         function getDaysArrayCurrentDate() {
@@ -41,12 +41,29 @@ const Record: React.FC = () => {
         const result = getDaysArrayCurrentDate();
         const monthList = result.map(day => day.format('DD-MM-YYYY')).reverse();
         updateDateData({ monthName, year, monthList });
-    },[resetFilters, getMonthName]);
+    },[resetFilters]);
 
 
     const getFilteredDate = (dateDataFiltered:DateData) => {
         updateDateData(dateDataFiltered)
     }
+
+    const getTotalsTimePeriodTitle = useMemo(() => {
+        const monthNameArr = dateData.monthName.split(' ');
+        let finalMonthName = getMonthNamebyName(monthNameArr[0])
+        if(monthNameArr.length === 1) {
+            finalMonthName = getMonthNamebyName(monthNameArr[0])
+        }else if(monthNameArr.length === 3) {
+            const initialMonth = getMonthNamebyName(monthNameArr[0]);
+            const lastMonth = getMonthNamebyName(monthNameArr[2]);
+            finalMonthName = `${initialMonth} - ${lastMonth}`;
+        }else if(monthNameArr.length === 5) {
+            const initialMonth = getMonthNamebyName(monthNameArr[0]);
+            const lastMonth = getMonthNamebyName(monthNameArr[3]);
+            finalMonthName = `${initialMonth} ${monthNameArr[1]} - ${lastMonth} ${monthNameArr[4]}`;
+        }
+        return finalMonthName.toUpperCase() + ' ' + dateData.year;
+    },[dateData, getMonthNamebyName, resetFilters])
 
 
     const sendIntructionToCreatePdf = (value:boolean) => {
@@ -61,7 +78,7 @@ const Record: React.FC = () => {
             <Filters onGetFilteredDate={getFilteredDate} onResetFilters={() => setResetFilters(!resetFilters)}></Filters>
             <section className='month-ref__container'>
                 <div className='month-title__container'>
-                    <span>{`${dateData.monthName.toUpperCase()} ${dateData.year}`}</span>
+                    <span>{getTotalsTimePeriodTitle}</span>
                     <button className='totals-button' onClick={() => updateIsTotalVisible(!isTotalVisible)}>
                         {t('specific.record.totalsButton')}
                         <span 
